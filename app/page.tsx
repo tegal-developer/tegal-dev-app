@@ -13,7 +13,12 @@ export default async function Home() {
 
   return (
     <main>
-      <Navbar logoContent={logoContent} />
+      <Navbar
+        imageSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image?.data?.attributes?.url}`}
+        imageAlt={logoContent?.data?.attributes?.alt}
+        imageWidth={logoContent?.data?.attributes?.width}
+        imageHeight={logoContent?.data?.attributes?.height}
+      />
     </main>
   );
 }

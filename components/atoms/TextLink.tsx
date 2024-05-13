@@ -10,7 +10,12 @@ export default function TextLink({
   return (
     <Link
       href={href}
-      className="hover:text-[#1B71D8] hover:underline hover:underline-offset-8 hover:decoration-4"
+      className="
+        hover:text-[#1B71D8]
+        hover:underline
+        hover:underline-offset-8
+        hover:decoration-4
+        tracking-wide"
     >
       {text}
     </Link>

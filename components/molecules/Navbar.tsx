@@ -3,23 +3,36 @@ import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
 import TextLink from '../atoms/TextLink';
 
-interface ILogoContent {
+export default function Navbar({
+  imageSource,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+}: {
   imageSource: string;
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-}
-
-export default function Navbar({ logoContent }: { logoContent: ILogoContent }) {
+}) {
   return (
-    <nav className="bg-white w-full flex items-center justify-between px-10 py-5 text-[#5F6368]">
+    <nav
+      className="
+        bg-white
+        w-full
+        flex
+        items-center
+        justify-between
+        px-10
+        py-5
+        text-[#5F6368]"
+    >
       <div className="flex items-center gap-20">
         <Link href={'#'}>
           <Logo
-            imageSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image?.data?.attributes?.url}`}
-            imageAlt={logoContent?.data?.attributes?.alt}
-            imageWidth={logoContent?.data?.attributes?.width}
-            imageHeight={logoContent?.data?.attributes?.height}
+            imageSource={imageSource}
+            imageAlt={imageAlt}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
           />
         </Link>
         <ul className="font-semibold flex gap-5">
