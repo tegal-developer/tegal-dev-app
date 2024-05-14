@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
-import TextLink from '../atoms/TextLink';
+import Navigation from './Navigation';
+import AuthNav from './AuthNav';
 
 export default function Navbar({
   imageSource,
@@ -35,30 +35,9 @@ export default function Navbar({
             imageHeight={imageHeight}
           />
         </Link>
-        <ul className="font-semibold flex gap-5">
-          <li>
-            <TextLink href="#" text="Explore" />
-          </li>
-          <li>
-            <TextLink href="#" text="Community" />
-          </li>
-          <li>
-            <TextLink href="#" text="About" />
-          </li>
-        </ul>
+        <Navigation />
       </div>
-      <ul className="font-semibold flex gap-5 items-center">
-        <li>
-          <TextLink href="#" text="Sign In" />
-        </li>
-        <li>
-          <Button
-            label="Register"
-            backgroundColor="#1B71D8"
-            textColor="white"
-          />
-        </li>
-      </ul>
+      <AuthNav />
     </nav>
   );
 }

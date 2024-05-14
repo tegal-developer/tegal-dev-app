@@ -1,3 +1,5 @@
+import Headline from '@/components/molecules/Headline';
+import Hero from '@/components/molecules/Hero';
 import Navbar from '@/components/molecules/Navbar';
 
 async function getLogoContent() {
@@ -19,6 +21,8 @@ export default async function Home() {
         imageWidth={logoContent?.data?.attributes?.width}
         imageHeight={logoContent?.data?.attributes?.height}
       />
+      <Headline text="Coming Soon" />
+      <Hero />
     </main>
   );
 }
