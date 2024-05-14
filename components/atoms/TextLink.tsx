@@ -11,6 +11,7 @@ export default function TextLink({
     <Link
       href={href}
       className="
+        dark:text-white
         hover:text-[#1B71D8]
         hover:underline
         hover:underline-offset-8

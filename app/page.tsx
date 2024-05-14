@@ -1,6 +1,6 @@
-import Headline from '@/components/molecules/Headline';
+import Footer from '@/components/molecules/Footer';
+import Header from '@/components/molecules/Header';
 import Hero from '@/components/molecules/Hero';
-import Navbar from '@/components/molecules/Navbar';
 
 async function getLogoContent() {
   const response = await fetch(
@@ -14,15 +14,17 @@ export default async function Home() {
   const logoContent = await getLogoContent();
 
   return (
-    <main>
-      <Navbar
+    <>
+      <Header
         imageSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image?.data?.attributes?.url}`}
         imageAlt={logoContent?.data?.attributes?.alt}
         imageWidth={logoContent?.data?.attributes?.width}
         imageHeight={logoContent?.data?.attributes?.height}
       />
-      <Headline text="Coming Soon" />
-      <Hero />
-    </main>
+      <main>
+        <Hero />
+      </main>
+      <Footer />
+    </>
   );
 }

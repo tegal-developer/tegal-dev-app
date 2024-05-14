@@ -8,12 +8,14 @@ import SocialIconList from './SocialIconList';
 export default function SubHeroContent() {
   return (
     <div className="mr-auto place-self-center lg:col-span-7">
-      <TextHeroHeading text="Tegal Developer Group" />
-      <TextHeroBody
-        text="Sebuah komunitas yang mewadahi dan menghubungkan para developer di Tegal
+      <div className="flex flex-col gap-5">
+        <TextHeroHeading text="Tegal Developer Group" />
+        <TextHeroBody
+          text="Sebuah komunitas yang mewadahi dan menghubungkan para developer di Tegal
 untuk tumbuh bersama melalui kolaborasi dan inovasi menuju kemajuan
 teknologi"
-      />
+        />
+      </div>
       <div className="flex flex-col gap-10">
         <div className="flex gap-5">
           <ButtonLink href="#" text="Join Membership" />
