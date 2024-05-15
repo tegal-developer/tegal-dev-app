@@ -1,19 +1,25 @@
+'use client';
+
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 
 export default function Logo({
-  imageSource,
+  imageLightSource,
+  imageDarkSource,
   imageAlt,
   imageWidth,
   imageHeight,
 }: {
-  imageSource: string;
+  imageLightSource: string;
+  imageDarkSource: string;
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
 }) {
+  const { resolvedTheme } = useTheme();
   return (
     <Image
-      src={imageSource}
+      src={resolvedTheme === 'dark' ? imageDarkSource : imageLightSource}
       alt={imageAlt}
       width={imageWidth}
       height={imageHeight}

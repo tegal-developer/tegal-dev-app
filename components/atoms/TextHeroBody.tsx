@@ -2,7 +2,7 @@ export default function TextHeroBody({ text }: { text: string }) {
   return (
     <p
       className="
-        max-w-3xl
+        max-w-4xl
         mb-6
         font-light
         text-gray-500

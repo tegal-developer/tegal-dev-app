@@ -1,30 +1,32 @@
-import Footer from '@/components/molecules/Footer';
-import Header from '@/components/molecules/Header';
-import Hero from '@/components/molecules/Hero';
-
-async function getLogoContent() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/logo-content?populate=image`,
-  );
-
-  return response.json();
-}
+import ActivitySection from '@/components/molecules/ActivitySection';
+import HeroSection from '@/components/organisms/HeroSection';
+import Template from '@/components/templates/Template';
+import {
+  getCommunityPhotos,
+  getHomePageContent,
+  getInvitationLinks,
+  postNewsLetterSubscriber,
+} from '@/data/remote';
 
 export default async function Home() {
-  const logoContent = await getLogoContent();
+  const homePageContent = await getHomePageContent();
+  const invitationLinks = await getInvitationLinks();
+  const addNewsletterSubscriber = async (email: string) => {
+    'use server';
+    postNewsLetterSubscriber(email);
+  };
+  const communityPhotos = await getCommunityPhotos();
 
   return (
-    <>
-      <Header
-        imageSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image?.data?.attributes?.url}`}
-        imageAlt={logoContent?.data?.attributes?.alt}
-        imageWidth={logoContent?.data?.attributes?.width}
-        imageHeight={logoContent?.data?.attributes?.height}
+    <Template>
+      <HeroSection
+        heroHeading={homePageContent?.data?.attributes?.hero_heading}
+        heroBody={homePageContent?.data?.attributes?.hero_description}
+        invitationLinks={invitationLinks}
+        addNewsletterSubscriber={addNewsletterSubscriber}
+        communityPhotos={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${communityPhotos?.data[0]?.attributes?.photos?.data?.attributes?.url}`}
       />
-      <main>
-        <Hero />
-      </main>
-      <Footer />
-    </>
+      <ActivitySection />
+    </Template>
   );
 }

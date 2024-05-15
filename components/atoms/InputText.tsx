@@ -2,11 +2,15 @@ export default function InputText({
   type,
   id,
   placeholder,
+  value,
+  onEmailChange,
   isRequired,
 }: {
   type: string;
   id: string;
   placeholder: string;
+  value: any;
+  onEmailChange: any;
   isRequired: boolean;
 }) {
   return (
@@ -23,7 +27,7 @@ export default function InputText({
         focus:ring-blue-500
         focus:border-blue-500
         block
-        w-[480px]
+        w-[540px]
         p-2.5
         dark:bg-gray-700
         dark:border-gray-600
@@ -32,6 +36,8 @@ export default function InputText({
         dark:focus:ring-blue-500
         dark:focus:border-blue-500"
       placeholder={placeholder}
+      value={value}
+      onChange={onEmailChange}
       required={isRequired}
     />
   );

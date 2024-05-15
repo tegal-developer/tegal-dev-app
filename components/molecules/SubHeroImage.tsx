@@ -1,13 +1,18 @@
 import Image from 'next/image';
 
-export default function SubHeroImage() {
+export default function SubHeroImage({
+  communityPhotos,
+}: {
+  communityPhotos: any;
+}) {
   return (
-    <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+    <div className="hidden lg:mt-0 lg:col-span-5 lg:flex hover:cursor-pointer hover:brightness-50 duration-500">
       <Image
-        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
+        src={communityPhotos}
         alt="mockup"
-        width={500}
-        height={500}
+        width={900}
+        height={900}
+        className="rounded-xl"
       />
     </div>
   );
