@@ -53,6 +53,14 @@ async function getCommunityPhotos() {
   return response.json();
 }
 
+async function getCommunityActivities() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/community-activities?populate=image`,
+  );
+
+  return response.json();
+}
+
 export {
   getLogoContent,
   getHeadlineContent,
@@ -60,4 +68,5 @@ export {
   getInvitationLinks,
   postNewsLetterSubscriber,
   getCommunityPhotos,
+  getCommunityActivities,
 };

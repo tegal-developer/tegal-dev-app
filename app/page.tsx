@@ -2,6 +2,7 @@ import ActivitySection from '@/components/molecules/ActivitySection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
 import {
+  getCommunityActivities,
   getCommunityPhotos,
   getHomePageContent,
   getInvitationLinks,
@@ -16,6 +17,7 @@ export default async function Home() {
     postNewsLetterSubscriber(email);
   };
   const communityPhotos = await getCommunityPhotos();
+  const communityActivities = await getCommunityActivities();
 
   return (
     <Template>
@@ -26,7 +28,7 @@ export default async function Home() {
         addNewsletterSubscriber={addNewsletterSubscriber}
         communityPhotos={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${communityPhotos?.data[0]?.attributes?.photos?.data?.attributes?.url}`}
       />
-      <ActivitySection />
+      <ActivitySection communityActivities={communityActivities?.data} />
     </Template>
   );
 }

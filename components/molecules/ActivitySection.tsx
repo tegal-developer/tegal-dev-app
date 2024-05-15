@@ -1,6 +1,10 @@
 import ActivityItemList from './ActivityItemList';
 
-export default function ActivitySection() {
+export default function ActivitySection({
+  communityActivities,
+}: {
+  communityActivities: any;
+}) {
   return (
     <section
       id="about"
@@ -22,7 +26,7 @@ export default function ActivitySection() {
         Kegiatan di{' '}
         <span className="text-[#1B71D8]">Tegal Developer Group</span>
       </h1>
-      <ActivityItemList />
+      <ActivityItemList communityActivities={communityActivities} />
     </section>
   );
 }
