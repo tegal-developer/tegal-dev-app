@@ -1,4 +1,6 @@
-import ActivitySection from '@/components/molecules/ActivitySection';
+import ActivitySection from '@/components/organisms/ActivitySection';
+import ContactUsSection from '@/components/organisms/ContactUsSection';
+import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
 import {
@@ -29,6 +31,8 @@ export default async function Home() {
         communityPhotos={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${communityPhotos?.data[0]?.attributes?.photos?.data?.attributes?.url}`}
       />
       <ActivitySection communityActivities={communityActivities?.data} />
+      <ContactUsSection />
+      <FAQSection />
     </Template>
   );
 }

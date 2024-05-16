@@ -35,23 +35,23 @@ export default function ActivityItemList({
             selectedActivity === communityActivity?.id ? 'block' : 'hidden'
           }`}
         >
-          <div className="max-w-[240px] flex flex-col gap-20">
+          <div className="max-w-[325px] flex flex-col gap-20">
             <Image
               src={UnNamed}
               alt="image"
-              width={550}
-              height={550}
+              width={325}
+              height={325}
               className="rounded-xl"
             />
             <Image
               src={UnNamed}
               alt="image"
-              width={550}
-              height={550}
+              width={325}
+              height={325}
               className="rounded-xl"
             />
           </div>
-          <div className="w-[50%vh] flex flex-col gap-10 tracking-wider">
+          <div className="max-w-7xl flex flex-col gap-10 tracking-wider">
             <h2 className="text-4xl font-bold">
               {communityActivity?.attributes?.name}
             </h2>

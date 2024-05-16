@@ -6,7 +6,16 @@ export default function SubHeroImage({
   communityPhotos: any;
 }) {
   return (
-    <div className="hidden lg:mt-0 lg:col-span-5 lg:flex hover:cursor-pointer hover:brightness-50 duration-500">
+    <div
+      className="
+        hidden
+        lg:mt-0
+        lg:col-span-5
+        lg:flex
+        hover:cursor-pointer
+        hover:brightness-50
+        duration-500"
+    >
       <Image
         src={communityPhotos}
         alt="mockup"

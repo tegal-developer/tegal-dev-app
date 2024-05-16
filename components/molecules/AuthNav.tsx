@@ -16,6 +16,7 @@ export default function AuthNav() {
         <Button
           label="Register"
           backgroundColor="#1B71D8"
+          hoverBackgroundColor="#1865c2"
           textColor="white"
           action={() => handleButtoClick()}
         />

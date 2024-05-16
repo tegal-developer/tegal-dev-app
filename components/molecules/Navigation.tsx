@@ -17,14 +17,14 @@ export default function Navigation() {
       <li onClick={() => handleButtoClick()}>
         <TextLink href="#" text="Blogs" />
       </li>
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="About" />
+      <li>
+        <TextLink href="/#about" text="About" />
       </li>
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="Contact Us" />
+      <li>
+        <TextLink href="/#contact-us" text="Contact Us" />
       </li>
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="FAQ" />
+      <li>
+        <TextLink href="/#faq" text="FAQ" />
       </li>
     </ul>
   );
