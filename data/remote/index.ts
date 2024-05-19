@@ -53,7 +53,7 @@ async function getCommunityActivities() {
   return response.json();
 }
 
-async function getFAQs() {
+async function getAllFAQs() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/faqs`,
   );
@@ -76,6 +76,6 @@ export {
   postNewsLetterSubscriber,
   getCommunityPhotos,
   getCommunityActivities,
-  getFAQs,
+  getAllFAQs,
   getAllServices,
 };

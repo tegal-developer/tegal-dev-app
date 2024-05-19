@@ -16,7 +16,8 @@ export default function Footer() {
         md:flex-row
         gap-5
         justify-between
-        items-center"
+        items-center
+        text-sm"
     >
       <p>
         &copy; 2024{' '}

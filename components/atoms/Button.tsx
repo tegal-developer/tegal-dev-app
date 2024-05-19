@@ -20,7 +20,8 @@ export default function Button({
         bg-[${backgroundColor}]
         hover:bg-[${hoverBackgroundColor}]
         text-${textColor}
-        p-3
+        py-3
+        px-5
         text-sm
         font-semibold
         md:text-${textSize}

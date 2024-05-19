@@ -8,8 +8,8 @@ export default function TextHeroBody({ text }: { text: string }) {
         text-gray-500
         text-sm
         lg:mb-8
-        md:text-lg
-        lg:text-xl
+        md:text-md
+        lg:text-lg
         dark:text-gray-400
         tracking-wide"
     >

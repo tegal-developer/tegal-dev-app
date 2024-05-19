@@ -18,7 +18,7 @@ export default function HeroSection({
 }) {
   return (
     <section className="bg-[#E5E8E9] dark:bg-gray-900 pt-24">
-      <div className="px-5 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 md:flex justify-between">
+      <div className="px-5 py-8 mx-auto lg:gap-8 xl:gap-10 lg:py-16 md:flex justify-between">
         <SubHeroContent
           heroHeading={heroHeading}
           heroBody={heroBody}

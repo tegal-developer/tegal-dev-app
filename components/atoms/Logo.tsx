@@ -19,6 +19,7 @@ export default function Logo({
   const { resolvedTheme } = useTheme();
   return (
     <Image
+      className="hover:scale-110 duration-150"
       src={resolvedTheme === 'dark' ? imageDarkSource : imageLightSource}
       alt={imageAlt}
       width={imageWidth}

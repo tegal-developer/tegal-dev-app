@@ -27,7 +27,9 @@ export default function InputText({
         focus:ring-blue-500
         focus:border-blue-500
         block
-        md:w-[540px]
+        w-full
+        max-w-[490px]
+        lg:w-[570px]
         p-2.5
         dark:bg-gray-700
         dark:border-gray-600

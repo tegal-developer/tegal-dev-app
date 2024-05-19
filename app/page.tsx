@@ -4,6 +4,7 @@ import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
 import {
+  getAllFAQs,
   getAllServices,
   getCommunityActivities,
   getCommunityPhotos,
@@ -22,6 +23,7 @@ export default async function Home() {
   const communityPhotos = await getCommunityPhotos();
   const communityActivities = await getCommunityActivities();
   const services = await getAllServices();
+  const faqs = await getAllFAQs();
 
   return (
     <Template>
@@ -34,7 +36,7 @@ export default async function Home() {
       />
       <ActivitySection communityActivities={communityActivities?.data} />
       <ContactUsSection services={services?.data} />
-      <FAQSection />
+      <FAQSection faqs={faqs?.data} />
     </Template>
   );
 }

@@ -6,7 +6,7 @@ export default function HamburgerButton({
   setIsOpen: any;
 }) {
   return (
-    <label className="swap swap-rotate md:hidden">
+    <label className="swap swap-rotate lg:hidden">
       <input
         type="checkbox"
         checked={isOpen}

@@ -8,7 +8,8 @@ export default function ContactUsSection({ services }: { services: any }) {
         bg-[#E5E8E9]
         dark:bg-gray-900
         px-5
-        py-12
+        py-6
+        md:py-12
         text-black
         dark:text-white
         text-center"

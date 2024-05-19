@@ -4,10 +4,11 @@ export default function TextHeroHeading({ text }: { text: string }) {
       className="
         max-w-4xl
         mb-4
-        text-3xl
+        text-2xl
         font-extrabold
-        md:text-4xl
-        xl:text-5xl
+        lg:text-3xl
+        xl:text-4xl
+        2xl:text-5xl
         text-black
         dark:text-white
         leading-relaxed

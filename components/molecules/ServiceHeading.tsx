@@ -5,8 +5,8 @@ import Button from '../atoms/Button';
 export default function ServiceHeading() {
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex flex-col justify-center items-center gap-10">
-        <h1 className="text-3xl md:text-6xl font-bold">
+      <div className="flex flex-col justify-center items-center gap-5 md:gap-10">
+        <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold">
           Ingin Berkolaborasi dengan{' '}
           <span className="text-[#1B71D8]">Tegal Dev</span>?
         </h1>

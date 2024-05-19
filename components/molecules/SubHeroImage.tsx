@@ -11,7 +11,7 @@ export default function SubHeroImage({
         hidden
         lg:mt-0
         lg:col-span-5
-        lg:flex
+        xl:flex
         hover:cursor-pointer
         hover:brightness-50
         duration-500"

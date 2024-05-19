@@ -1,6 +1,17 @@
-import Link from 'next/link';
+'use client';
 
-export default function PopUpMenu({ isOpen }: { isOpen: boolean }) {
+import Link from 'next/link';
+import toast from 'react-hot-toast';
+
+export default function PopUpMenu({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: any;
+}) {
+  const handleButtoClick = () => toast('Coming soon!');
+
   return (
     <ul
       className={`
@@ -20,34 +31,46 @@ export default function PopUpMenu({ isOpen }: { isOpen: boolean }) {
         dark:text-white
         gap-2`}
     >
-      <li className="w-full">
+      <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Community</a>
       </li>
-      <li className="w-full">
+      <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Events</a>
       </li>
-      <li className="w-full">
+      <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Blogs</a>
       </li>
       <li className="w-full">
-        <Link href="/#about" className="w-full justify-center">
+        <Link
+          href="/#about"
+          className="w-full justify-center"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           About
         </Link>
       </li>
       <li className="w-full">
-        <Link href="/contact-us" className="w-full justify-center">
+        <Link
+          href="/#contact-us"
+          className="w-full justify-center"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           Contact Us
         </Link>
       </li>
       <li className="w-full">
-        <Link href="/#faq" className="w-full justify-center">
+        <Link
+          href="/#faq"
+          className="w-full justify-center"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           FAQ
         </Link>
       </li>
-      <li className="w-full">
+      <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Sign In</a>
       </li>
-      <li className="w-full">
+      <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Register</a>
       </li>
     </ul>

@@ -56,12 +56,12 @@ export default function Navbar({
         </Link>
         <Navigation />
       </div>
-      <div className="md:flex items-center gap-10 hidden">
+      <div className="lg:flex items-center gap-10 hidden">
         <AuthNav />
         <ThemeSwitcher />
       </div>
       <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      <PopUpMenu isOpen={isOpen} />
+      <PopUpMenu isOpen={isOpen} setIsOpen={setIsOpen} />
     </nav>
   );
 }

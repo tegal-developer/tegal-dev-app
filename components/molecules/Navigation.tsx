@@ -7,7 +7,7 @@ export default function Navigation() {
   const handleButtoClick = () => toast('Coming soon!');
 
   return (
-    <ul className="font-semibold md:flex gap-5 hidden">
+    <ul className="font-semibold lg:flex gap-5 hidden">
       <li onClick={() => handleButtoClick()}>
         <TextLink href="#" text="Community" />
       </li>
