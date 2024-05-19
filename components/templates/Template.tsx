@@ -1,4 +1,4 @@
-import { getHeadlineContent, getLogoContent } from '@/data/remote';
+import { getLogoContent } from '@/data/remote';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
@@ -6,7 +6,6 @@ export default async function Template({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const logoContent = await getLogoContent();
-  const headlineContent = await getHeadlineContent();
 
   return (
     <>
@@ -16,7 +15,6 @@ export default async function Template({
         logoImageAlt={logoContent?.data?.attributes?.alt}
         logoImageWidth={logoContent?.data?.attributes?.width}
         logoImageHeight={logoContent?.data?.attributes?.height}
-        headlineContent={headlineContent?.data?.attributes?.content}
       />
       <main>{children}</main>
       <Footer />

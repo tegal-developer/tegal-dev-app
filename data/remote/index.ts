@@ -6,14 +6,6 @@ async function getLogoContent() {
   return response.json();
 }
 
-async function getHeadlineContent() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/headline-content`,
-  );
-
-  return response.json();
-}
-
 async function getHomePageContent() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/home-page-content`,
@@ -55,7 +47,7 @@ async function getCommunityPhotos() {
 
 async function getCommunityActivities() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/community-activities?populate=image`,
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/community-activities?populate=images`,
   );
 
   return response.json();
@@ -69,13 +61,21 @@ async function getFAQs() {
   return response.json();
 }
 
+async function getAllServices() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/services`,
+  );
+
+  return response.json();
+}
+
 export {
   getLogoContent,
-  getHeadlineContent,
   getHomePageContent,
   getInvitationLinks,
   postNewsLetterSubscriber,
   getCommunityPhotos,
   getCommunityActivities,
   getFAQs,
+  getAllServices,
 };

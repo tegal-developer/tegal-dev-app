@@ -4,6 +4,7 @@ import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
 import {
+  getAllServices,
   getCommunityActivities,
   getCommunityPhotos,
   getHomePageContent,
@@ -20,6 +21,7 @@ export default async function Home() {
   };
   const communityPhotos = await getCommunityPhotos();
   const communityActivities = await getCommunityActivities();
+  const services = await getAllServices();
 
   return (
     <Template>
@@ -31,7 +33,7 @@ export default async function Home() {
         communityPhotos={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${communityPhotos?.data[0]?.attributes?.photos?.data?.attributes?.url}`}
       />
       <ActivitySection communityActivities={communityActivities?.data} />
-      <ContactUsSection />
+      <ContactUsSection services={services?.data} />
       <FAQSection />
     </Template>
   );

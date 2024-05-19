@@ -1,7 +1,6 @@
 import ServiceHeading from '../molecules/ServiceHeading';
-import ServiceItemList from '../molecules/ServiceItemList';
 
-export default function ContactUsSection() {
+export default function ContactUsSection({ services }: { services: any }) {
   return (
     <section
       id="contact-us"
@@ -9,14 +8,13 @@ export default function ContactUsSection() {
         bg-[#E5E8E9]
         dark:bg-gray-900
         px-5
-        py-28
-        border-t-2
+        py-12
         text-black
-        dark:text-white"
+        dark:text-white
+        text-center"
     >
-      <div className="flex flex-col gap-10 tracking-wider max-w-[100vh]">
+      <div className="flex flex-col gap-10 tracking-wider">
         <ServiceHeading />
-        <ServiceItemList />
       </div>
     </section>
   );

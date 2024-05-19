@@ -13,11 +13,14 @@ export default function ActivityItem({
     <div
       className={`
         text-center
-        py-5
-        w-[400px]
+        py-3
+        md:py-5
+        min-w-[250px]
+        md:min-w-[400px]
         border
         rounded-full
-        text-xl
+        text-sm
+        md:text-xl
         tracking-wider
         shadow-md
         cursor-pointer

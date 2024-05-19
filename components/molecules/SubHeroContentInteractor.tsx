@@ -9,7 +9,7 @@ export default function SubHeroContentInteractor({
   addNewsletterSubscriber: any;
 }) {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5 md:gap-10">
       <SubHeroContentButton invitationLinks={invitationLinks} />
       <NewsletterForm addNewsletterSubscriber={addNewsletterSubscriber} />
     </div>

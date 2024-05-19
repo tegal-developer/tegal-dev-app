@@ -4,15 +4,18 @@ export default function TextHeroHeading({ text }: { text: string }) {
       className="
         max-w-4xl
         mb-4
-        text-4xl
+        text-3xl
         font-extrabold
-        leading-none
-        md:text-5xl
-        xl:text-6xl
+        md:text-4xl
+        xl:text-5xl
         text-black
-        dark:text-white"
+        dark:text-white
+        leading-relaxed
+        flex
+        flex-col
+        md:block"
     >
-      {text}
+      {text} <span className="text-[#1B71D8]">Tegal Dev</span>
     </h1>
   );
 }

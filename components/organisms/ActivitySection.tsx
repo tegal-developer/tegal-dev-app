@@ -14,17 +14,16 @@ export default function ActivitySection({
         border-t-2
         dark:bg
         px-5
-        py-28
+        py-12
         text-black
         dark:text-white
         flex
         flex-col
-        gap-20
+        gap-10
         items-center"
     >
-      <h1 className="text-6xl font-bold">
-        Kegiatan di{' '}
-        <span className="text-[#1B71D8]">Tegal Developer Group</span>
+      <h1 className="text-3xl md:text-6xl font-bold">
+        Kegiatan di <span className="text-[#1B71D8]">Tegal Dev</span>
       </h1>
       <ActivityItemList communityActivities={communityActivities} />
     </section>

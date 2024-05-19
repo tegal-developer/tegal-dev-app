@@ -8,8 +8,8 @@ import Provider from '@/contexts/provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Tegal Developer Group',
-  description: 'Learn, Connect, Growth Together',
+  title: 'Tegal Dev',
+  description: 'Ngopi | Ngoding | Nginovasi',
 };
 
 export default function RootLayout({

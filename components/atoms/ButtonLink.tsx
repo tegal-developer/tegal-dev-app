@@ -16,7 +16,8 @@ export default function ButtonLink({
         justify-center
         px-5
         py-3
-        text-base
+        text-sm
+        md:text-base
         font-medium
         text-center
         text-gray-900

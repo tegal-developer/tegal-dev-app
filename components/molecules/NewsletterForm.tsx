@@ -14,11 +14,11 @@ export default function NewsletterForm({
   const handleButtoClick = () => toast('Coming soon!');
 
   return (
-    <div className="flex gap-10">
+    <div className="flex flex-col md:flex-row gap-3 md:gap-10">
       <InputText
         type="text"
         id="email"
-        placeholder="johndoe@contoh.com"
+        placeholder="johndoe@example.com"
         value={email}
         onEmailChange={handleEmailChange}
         isRequired={true}

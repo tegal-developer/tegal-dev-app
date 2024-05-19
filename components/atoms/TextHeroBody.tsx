@@ -6,6 +6,7 @@ export default function TextHeroBody({ text }: { text: string }) {
         mb-6
         font-light
         text-gray-500
+        text-sm
         lg:mb-8
         md:text-lg
         lg:text-xl

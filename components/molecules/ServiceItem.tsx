@@ -1,4 +1,6 @@
-export default function ServiceItem({ text }: { text: string }) {
+import parse from 'html-react-parser';
+
+export default function ServiceItem({ content }: { content: any }) {
   return (
     <div
       className="
@@ -13,11 +15,9 @@ export default function ServiceItem({ text }: { text: string }) {
         text-black
         dark:text-white
         w-full
-        rounded-xl"
+        rounded-3xl"
     >
-      <p className="text-sm leading-relaxed group-hover:font-semibold duration-150">
-        {text}
-      </p>
+      {parse(content)}
     </div>
   );
 }

@@ -12,13 +12,16 @@ export default function Footer() {
         border-gray-300
         border-t-2
         flex
+        flex-col-reverse
+        md:flex-row
+        gap-5
         justify-between
         items-center"
     >
       <p>
         &copy; 2024{' '}
         <Link href={'/'} className="hover:text-[#1B71D8]">
-          Tegal Developer Group
+          Tegal Dev
         </Link>
         . All rights reserved
       </p>

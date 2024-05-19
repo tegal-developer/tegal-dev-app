@@ -1,13 +1,26 @@
+'use client';
+
+import Button from '../atoms/Button';
+
 export default function ServiceHeading() {
   return (
-    <>
-      <h1 className="text-[2.7rem] font-semibold">
-        Ingin Berkolaborasi dengan{' '}
-        <span className="text-[#1B71D8]">Tegal Dev</span>?
-      </h1>
-      <h2 className="text-2xl">
-        Mari eksplorasi bagaimana Tegal Dev dapat membantu
-      </h2>
-    </>
+    <div className="flex flex-col gap-5">
+      <div className="flex flex-col justify-center items-center gap-10">
+        <h1 className="text-3xl md:text-6xl font-bold">
+          Ingin Berkolaborasi dengan{' '}
+          <span className="text-[#1B71D8]">Tegal Dev</span>?
+        </h1>
+        <div className="w-full md:w-fit hover:scale-110 duration-150">
+          <Button
+            label="Hubungi Kami"
+            backgroundColor="#1B71D8"
+            hoverBackgroundColor="#1865c2"
+            textColor="white"
+            action={() => (window.location.href = 'mailto:contact@tegal.dev')}
+            textSize="xl"
+          />
+        </div>
+      </div>
+    </div>
   );
 }

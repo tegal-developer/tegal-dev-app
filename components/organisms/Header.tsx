@@ -1,4 +1,6 @@
-import Headline from '../molecules/Headline';
+'use client';
+
+import { useState } from 'react';
 import Navbar from '../molecules/Navbar';
 
 export default function Header({
@@ -7,15 +9,15 @@ export default function Header({
   logoImageAlt,
   logoImageWidth,
   logoImageHeight,
-  headlineContent,
 }: {
   logoImageLightSource: string;
   logoImageDarkSource: string;
   logoImageAlt: string;
   logoImageWidth: number;
   logoImageHeight: number;
-  headlineContent: string;
 }) {
+  const [isClosed, setIsClosed] = useState(false);
+
   return (
     <header>
       <Navbar
@@ -25,7 +27,6 @@ export default function Header({
         logoImageWidth={logoImageWidth}
         logoImageHeight={logoImageHeight}
       />
-      {headlineContent !== undefined ? <Headline text={headlineContent} /> : ''}
     </header>
   );
 }

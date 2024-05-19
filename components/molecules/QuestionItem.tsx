@@ -12,10 +12,12 @@ export default function QuestionItem({
   return (
     <div className="flex flex-col gap-2 group cursor-pointer">
       <div className="flex items-center justify-between cursor-pointer">
-        <h2 className="text-2xl group-hover:font-semibold duration-150">
+        <h2 className="md:text-2xl group-hover:font-semibold duration-150">
           {questionText}
         </h2>
-        <IoIosArrowDown size={25} />
+        <div>
+          <IoIosArrowDown size={25} />
+        </div>
       </div>
       <hr
         className={`${
