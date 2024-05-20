@@ -30,8 +30,8 @@ export default function Navbar({
         fixed
         top-0
         z-20
-        bg-[#E5E8E9]
-        dark:bg-gray-900
+        bg-[#ffffffd0]
+        dark:bg-[#111827d2]
         w-full
         flex
         items-center
@@ -39,10 +39,9 @@ export default function Navbar({
         px-5
         py-5
         text-[#5F6368]
-        border-b-2
+        shadow-lg
         dark:border-[#1B71D8]
-        bg-transparent
-        backdrop-blur-3xl"
+        backdrop-blur-xl"
     >
       <div className="flex items-center gap-20">
         <Link href={'#'}>
