@@ -12,30 +12,30 @@ export default function ActivityItem({
   return (
     <div
       className={`
-        text-center
+        inline-flex
+        items-center
+        justify-center
+        px-5
         py-3
-        lg:py-5
-        min-w-[250px]
-        md:min-w-[400px]
+        text-xs
+        font-medium
+        text-center
+        text-gray-900
         border
-        rounded-full
-        text-sm
-        md:text-base
-        lg:text-xl
-        tracking-wider
-        shadow-md
-        cursor-pointer
-        ${
-          selectedActivity === id
-            ? 'bg-[#202124] -translate-y-1 md:scale-110 text-white'
-            : 'bg-[#E8EAED] text-black'
-        }
-        transition
-        ease-in-out
-        delay-150
-        hover:-translate-y-1
-        md:hover:scale-110
-        duration-300`}
+        hover:cursor-pointer
+        min-w-[240px]
+        border-gray-300
+        rounded-lg
+        hover:bg-gray-100
+        active:scale-95
+        duration-150
+        ${selectedActivity === id ? 'bg-gray-100 dark:bg-gray-700' : ''}
+        focus:ring-4
+        focus:ring-gray-100
+        dark:text-white
+        dark:border-gray-700
+        dark:hover:bg-gray-700
+        dark:focus:ring-gray-800"`}
       onClick={() => setSelectedActivity(id)}
     >
       {text}

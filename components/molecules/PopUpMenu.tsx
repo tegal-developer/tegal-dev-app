@@ -10,7 +10,7 @@ export default function PopUpMenu({
   isOpen: boolean;
   setIsOpen: any;
 }) {
-  const handleButtoClick = () => toast('Coming soon!');
+  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
 
   return (
     <ul
@@ -19,26 +19,42 @@ export default function PopUpMenu({
         left-0
         w-full
         menu
-        mt-[460px]
+        mt-[380px]
         py-5
         z-20
-        bg-[#E5E8E9]
-        dark:bg-gray-900
+        lg:hidden
+        ease-in-out
+        duration-300
+        block
+        bg-[#ffffffd0]
+        backdrop-blur-2xl
+        dark:bg-[#111827d2]
         items-center
-        border-y-2
-        border-gray-300
-        dark:border-white ${isOpen ? '' : 'hidden'} text-black
+        border-y
+        dark:border-gray-700 ${isOpen ? '' : 'hidden'} text-black
         dark:text-white
         gap-2`}
     >
       <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Community</a>
       </li>
-      <li className="w-full" onClick={() => handleButtoClick()}>
-        <a className="w-full justify-center">Events</a>
+      <li className="w-full">
+        <Link
+          href="/#event"
+          className="w-full justify-center"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Event
+        </Link>
       </li>
-      <li className="w-full" onClick={() => handleButtoClick()}>
-        <a className="w-full justify-center">Blogs</a>
+      <li className="w-full">
+        <Link
+          href="/#blog"
+          className="w-full justify-center"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Blog
+        </Link>
       </li>
       <li className="w-full">
         <Link

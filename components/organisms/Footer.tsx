@@ -5,28 +5,34 @@ export default function Footer() {
   return (
     <footer
       className="
-        bg-[#E5E8E9]
+      bg-[#1B71D8]
         dark:bg-gray-900 
-        text-gray-500
+        text-white
+        dark:text-white
         p-5
-        border-gray-300
-        border-t-2
+        dark:border-y
+        dark:border-gray-700
+        text-xs
+        tracking-wider"
+    >
+      <div
+        className="lg:container lg:mx-auto
         flex
         flex-col-reverse
         md:flex-row
         gap-5
         justify-between
-        items-center
-        text-sm"
-    >
-      <p>
-        &copy; 2024{' '}
-        <Link href={'/'} className="hover:text-[#1B71D8]">
-          Tegal Dev
-        </Link>
-        . All rights reserved
-      </p>
-      <SocialIconList />
+        items-center"
+      >
+        <p>
+          &copy; 2024{' '}
+          <Link href={'/'} className="hover:text-[#1B71D8]">
+            Tegal Dev
+          </Link>
+          . All rights reserved
+        </p>
+        <SocialIconList />
+      </div>
     </footer>
   );
 }

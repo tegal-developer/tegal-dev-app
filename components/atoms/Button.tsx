@@ -20,12 +20,15 @@ export default function Button({
         bg-[${backgroundColor}]
         hover:bg-[${hoverBackgroundColor}]
         text-${textColor}
-        py-3
-        px-5
-        text-sm
+        active:scale-95
+        duration-150
+        dark:text-white
+        py-1
+        px-3
+        text-xs
         font-semibold
         md:text-${textSize}
-        rounded-full`}
+        rounded-lg`}
       onClick={action}
     >
       {label}

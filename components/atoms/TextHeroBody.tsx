@@ -1,19 +1,21 @@
+import parse from 'html-react-parser';
+
 export default function TextHeroBody({ text }: { text: string }) {
   return (
-    <p
+    <div
       className="
         max-w-4xl
+        md:text-center
+        xl:text-start
         mb-6
-        font-light
-        text-gray-500
+        text-gray-700
         text-sm
         lg:mb-8
         md:text-md
-        lg:text-lg
-        dark:text-gray-400
-        tracking-wide"
+        dark:text-white
+        tracking-widest"
     >
-      {text}
-    </p>
+      {text !== undefined ? parse(text) : ''}
+    </div>
   );
 }

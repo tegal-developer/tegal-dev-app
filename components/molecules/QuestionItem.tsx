@@ -1,46 +1,62 @@
 'use client';
 
-import { useTheme } from 'next-themes';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import parse from 'html-react-parser';
 import { useState } from 'react';
 
 export default function QuestionItem({
+  questionId,
   questionText,
   answerText,
+  selected,
+  setIsSelected,
 }: {
+  questionId: number;
   questionText: string;
   answerText: string;
+  selected: number;
+  setIsSelected: any;
 }) {
-  const { resolvedTheme } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div
       className="flex flex-col gap-2 group cursor-pointer"
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={() => {
+        if (selected === questionId) setIsSelected(0);
+        else setIsSelected(questionId);
+      }}
     >
-      <div className="flex items-center justify-between cursor-pointer">
-        <h2
-          className={`lg:text-2xl group-hover:font-semibold duration-150 ${
-            isOpen ? 'font-semibold' : ''
-          }`}
-        >
-          {questionText}
-        </h2>
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          cursor-pointer
+          bg-[#FAFBFD]
+          border-black
+          dark:bg-gray-800
+          p-3
+          rounded-lg"
+      >
+        <h2>{questionText}</h2>
         <div>
-          {isOpen ? <IoIosArrowUp size={25} /> : <IoIosArrowDown size={25} />}
+          {selected === questionId ? (
+            <IoIosArrowUp size={25} />
+          ) : (
+            <IoIosArrowDown size={25} />
+          )}
         </div>
       </div>
-      <hr
-        className={`${
-          resolvedTheme === 'dark' ? 'group-hover:border-[#1B71D8]' : ''
-        }`}
-      />
       <div
-        className={`${
-          isOpen ? 'block' : 'hidden'
-        } duration-150 text-sm tracking-widest leading-relaxed`}
+        className={`${selected === questionId ? 'block' : 'hidden'} duration-150
+        text-sm
+        tracking-wide
+        leading-relaxed
+        mb-1
+        bg-[#FAFBFD]/50
+        border-black
+        dark:bg-gray-800/30
+        p-3
+        rounded-lg`}
       >
         {parse(answerText)}
       </div>

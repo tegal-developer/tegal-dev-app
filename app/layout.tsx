@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import './globals.css';
 import Provider from '@/contexts/provider';
+import ThemeSwitcher from '@/components/molecules/ThemeSwitcher';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,6 +25,22 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <Provider>
+          <div
+            className="
+              fixed
+              bottom-5
+              flex
+              items-center
+              justify-center
+              right-5
+              bg-[#1B71D8]
+              p-3
+              rounded-full
+              z-40
+              md:hidden"
+          >
+            <ThemeSwitcher />
+          </div>
           <Toaster position="bottom-center" />
           {children}
         </Provider>

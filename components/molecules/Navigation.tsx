@@ -4,21 +4,24 @@ import toast from 'react-hot-toast';
 import TextLink from '../atoms/TextLink';
 
 export default function Navigation() {
-  const handleButtoClick = () => toast('Coming soon!');
+  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
 
   return (
     <ul className="font-semibold lg:flex gap-5 hidden">
-      <li onClick={() => handleButtoClick()}>
+      <li onClick={handleButtoClick}>
         <TextLink href="#" text="Community" />
       </li>
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="Events" />
+      <li>
+        <TextLink href="/#event" text="Event" />
       </li>
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="Blogs" />
+      <li>
+        <TextLink href="/#blog" text="Blog" />
       </li>
       <li>
         <TextLink href="/#about" text="About" />
+      </li>
+      <li>
+        <TextLink href="/#activity" text="Activity" />
       </li>
       <li>
         <TextLink href="/#contact-us" text="Contact Us" />

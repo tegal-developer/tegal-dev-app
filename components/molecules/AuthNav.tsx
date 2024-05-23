@@ -5,20 +5,26 @@ import Button from '../atoms/Button';
 import TextLink from '../atoms/TextLink';
 
 export default function AuthNav() {
-  const handleButtoClick = () => toast('Coming soon!');
+  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
 
   return (
-    <ul className="font-semibold flex gap-5 items-center">
-      <li onClick={() => handleButtoClick()}>
-        <TextLink href="#" text="Sign In" />
+    <ul className="font-semibold flex gap-3 items-center">
+      <li>
+        <Button
+          label="Sign In"
+          backgroundColor="#E7EDF2"
+          hoverBackgroundColor="#1865c2"
+          textColor="gray-700"
+          action={handleButtoClick}
+        />
       </li>
       <li>
         <Button
-          label="Register"
+          label="Sign Up"
           backgroundColor="#1B71D8"
           hoverBackgroundColor="#1865c2"
           textColor="white"
-          action={() => handleButtoClick()}
+          action={handleButtoClick}
         />
       </li>
     </ul>

@@ -6,7 +6,7 @@ export default function SubHeroContentButton({
   invitationLinks: any;
 }) {
   return (
-    <div className="flex flex-col md:flex-row gap-3 md:gap-5">
+    <div className="flex flex-col md:flex-row md:justify-center xl:justify-normal gap-3">
       <InvitationButtonLinks invitationLinks={invitationLinks} />
     </div>
   );

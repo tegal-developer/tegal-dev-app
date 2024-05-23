@@ -1,22 +1,25 @@
+import parse from 'html-react-parser';
+
 export default function TextHeroHeading({ text }: { text: string }) {
   return (
     <h1
       className="
-        max-w-4xl
         mb-4
-        text-2xl
+        text-[1.8rem]
+        sm:text-[3rem]
         font-extrabold
-        lg:text-3xl
         xl:text-4xl
         2xl:text-5xl
-        text-black
+        text-gray-700
         dark:text-white
-        leading-relaxed
         flex
         flex-col
-        md:block"
+        xl:flex-row
+        xl:gap-2
+        md:items-center
+        xl:items-start"
     >
-      {text} <span className="text-[#1B71D8]">Tegal Dev</span>
+      {text !== undefined ? parse(text) : ''}
     </h1>
   );
 }

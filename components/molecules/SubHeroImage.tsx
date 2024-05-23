@@ -1,10 +1,6 @@
 import Image from 'next/image';
 
-export default function SubHeroImage({
-  communityPhotos,
-}: {
-  communityPhotos: any;
-}) {
+export default function SubHeroImage({ heroImages }: { heroImages: any }) {
   return (
     <div
       className="
@@ -13,15 +9,16 @@ export default function SubHeroImage({
         lg:col-span-5
         xl:flex
         hover:cursor-pointer
-        hover:brightness-50
-        duration-500"
+        duration-500
+        hover:scale-105
+        active:scale-95"
     >
       <Image
-        src={communityPhotos}
+        src={heroImages}
         alt="mockup"
         width={900}
         height={900}
-        className="rounded-xl"
+        className="rounded-xl object-cover bg-white"
       />
     </div>
   );

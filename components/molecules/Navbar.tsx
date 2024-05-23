@@ -29,38 +29,41 @@ export default function Navbar({
       className="
         fixed
         top-0
-        z-20
+        z-40
         bg-[#ffffffd0]
         dark:bg-[#111827d2]
         w-full
-        flex
-        items-center
-        justify-between
         px-5
-        py-5
+        py-3
         text-[#5F6368]
         shadow-lg
         dark:border-[#1B71D8]
         backdrop-blur-xl"
     >
-      <div className="flex items-center gap-20">
-        <Link href={'#'}>
-          <Logo
-            imageLightSource={logoImageLightSource}
-            imageDarkSource={logoImageDarkSource}
-            imageAlt={logoImageAlt}
-            imageWidth={logoImageWidth}
-            imageHeight={logoImageHeight}
-          />
-        </Link>
-        <Navigation />
+      <div
+        className="lg:container lg:mx-auto flex
+        items-center
+        justify-between"
+      >
+        <div className="flex items-center gap-20">
+          <Link href={'#'}>
+            <Logo
+              imageLightSource={logoImageLightSource}
+              imageDarkSource={logoImageDarkSource}
+              imageAlt={logoImageAlt}
+              imageWidth={logoImageWidth}
+              imageHeight={logoImageHeight}
+            />
+          </Link>
+          <Navigation />
+        </div>
+        <div className="lg:flex items-center gap-10 hidden">
+          <AuthNav />
+          <ThemeSwitcher />
+        </div>
+        <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
+        <PopUpMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
-      <div className="lg:flex items-center gap-10 hidden">
-        <AuthNav />
-        <ThemeSwitcher />
-      </div>
-      <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      <PopUpMenu isOpen={isOpen} setIsOpen={setIsOpen} />
     </nav>
   );
 }

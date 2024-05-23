@@ -16,20 +16,22 @@ export default function ButtonLink({
         justify-center
         px-5
         py-3
-        text-sm
-        md:text-base
+        text-xs
         font-medium
         text-center
-        text-gray-900
+        text-gray-700
         border
         border-gray-300
         rounded-lg
-        hover:bg-gray-100
         focus:ring-4
+        active:scale-95
+        duration-150
         focus:ring-gray-100
         dark:text-white
-        dark:border-gray-700
+        hover:bg-gray-100
         dark:hover:bg-gray-700
+        ease-in-out
+        dark:hover:shadow-slate-500
         dark:focus:ring-gray-800"
       target="_blank"
     >

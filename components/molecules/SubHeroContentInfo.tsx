@@ -9,7 +9,7 @@ export default function SubHeroContentInfo({
   heroBody: string;
 }) {
   return (
-    <div className="flex flex-col md:gap-5">
+    <div className="flex flex-col md:items-center xl:items-start">
       <TextHeroHeading text={heroHeading} />
       <TextHeroBody text={heroBody} />
     </div>
