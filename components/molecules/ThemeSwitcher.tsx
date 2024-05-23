@@ -14,7 +14,7 @@ export default function ThemeSwitcher() {
         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       />
       <svg
-        className="swap-on fill-current w-6 h-6"
+        className="swap-on fill-current w-6 h-6 text-white"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
       </svg>
 
       <svg
-        className="swap-off fill-current w-6 h-6"
+        className="swap-off fill-current w-6 h-6 text-white"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
