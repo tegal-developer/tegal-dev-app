@@ -1,8 +1,10 @@
 'use client';
 
+import { getInitialTheme } from '@/utils';
 import { useTheme } from 'next-themes';
 
 export default function ThemeSwitcher() {
+  const theme = getInitialTheme();
   const { resolvedTheme, setTheme } = useTheme();
 
   return (
@@ -10,7 +12,11 @@ export default function ThemeSwitcher() {
       <input
         type="checkbox"
         checked={resolvedTheme === 'dark'}
-        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+        onClick={() =>
+          setTheme(
+            resolvedTheme === 'dark' || theme === 'dark' ? 'light' : 'dark',
+          )
+        }
       />
       <svg
         className="swap-on fill-current w-6 h-6 text-white"

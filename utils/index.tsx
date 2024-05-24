@@ -1,3 +1,7 @@
+function getInitialTheme() {
+  return localStorage.getItem('theme');
+}
+
 function isValidEmail(emailAdress: any) {
   let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -5,4 +9,4 @@ function isValidEmail(emailAdress: any) {
   else return false;
 }
 
-export { isValidEmail };
+export { isValidEmail, getInitialTheme };
