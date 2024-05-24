@@ -1,8 +1,8 @@
 'use client';
 
-import { getInitialTheme } from '@/utils';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Logo({
   imageLightSource,
@@ -17,14 +17,19 @@ export default function Logo({
   imageWidth: number;
   imageHeight: number;
 }) {
-  const theme = getInitialTheme();
   const { resolvedTheme } = useTheme();
+  const [localStorageTheme, setLocalStorageTheme] = useState('');
+
+  useEffect(() => {
+    const theme = window.localStorage.getItem('theme');
+    setLocalStorageTheme(theme ? theme : '');
+  }, []);
 
   return (
     <Image
       className="hover:scale-110 duration-150"
       src={
-        resolvedTheme === 'dark' || theme === 'dark'
+        resolvedTheme === 'dark' && localStorageTheme === 'dark'
           ? imageDarkSource
           : imageLightSource
       }

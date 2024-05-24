@@ -1,22 +1,23 @@
 'use client';
 
-import { getInitialTheme } from '@/utils';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function ThemeSwitcher() {
-  const theme = getInitialTheme();
   const { resolvedTheme, setTheme } = useTheme();
+  const [localStorageTheme, setLocalStorageTheme] = useState('');
+
+  useEffect(() => {
+    const theme = window.localStorage.getItem('theme');
+    setLocalStorageTheme(theme ? theme : '');
+  }, []);
 
   return (
     <label className="swap swap-rotate">
       <input
         type="checkbox"
-        checked={resolvedTheme === 'dark'}
-        onClick={() =>
-          setTheme(
-            resolvedTheme === 'dark' || theme === 'dark' ? 'light' : 'dark',
-          )
-        }
+        checked={resolvedTheme === 'dark' && localStorageTheme === 'dark'}
+        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       />
       <svg
         className="swap-on fill-current w-6 h-6 text-white"
