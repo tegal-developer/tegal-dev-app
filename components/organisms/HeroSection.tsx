@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes';
 import SubHeroContent from '../molecules/SubHeroContent';
 import SubHeroImage from '../molecules/SubHeroImage';
+import { useEffect, useState } from 'react';
 
 export default function HeroSection({
   heroHeading,
@@ -22,11 +23,22 @@ export default function HeroSection({
   communityHashtags: any;
 }) {
   const { resolvedTheme } = useTheme();
+  const [localStorageTheme, setLocalStorageTheme] = useState('');
+
+  useEffect(() => {
+    const theme = window.localStorage.getItem('theme');
+    setLocalStorageTheme(theme ? theme : '');
+  }, []);
+
   return (
     <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900">
       <div
         className={`
-          ${resolvedTheme === 'dark' ? 'block' : 'hidden md:hidden'}
+          ${
+            resolvedTheme === 'dark' && localStorageTheme === 'dark'
+              ? 'block'
+              : 'hidden md:hidden'
+          }
           -z-0
           md:block
           bg-[#28f3dfce]
