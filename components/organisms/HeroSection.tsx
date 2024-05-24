@@ -26,7 +26,7 @@ export default function HeroSection({
     <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900">
       <div
         className={`
-          ${resolvedTheme === 'dark' ? 'block' : 'hidden'}
+          ${resolvedTheme === 'dark' ? 'block' : 'hidden md:hidden'}
           -z-0
           md:block
           bg-[#28f3dfce]
