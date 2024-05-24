@@ -1,9 +1,13 @@
 import ServiceHeading from '../molecules/ServiceHeading';
 
-export default function ContactUsSection() {
+export default function ContactSection({
+  contactHeading,
+}: {
+  contactHeading: string;
+}) {
   return (
     <section
-      id="contact-us"
+      id="contact"
       className="
         bg-[#FAFBFD]
         dark:bg-gray-900
@@ -18,7 +22,7 @@ export default function ContactUsSection() {
         text-center"
     >
       <div className="flex flex-col gap-10 tracking-wider">
-        <ServiceHeading />
+        <ServiceHeading contactHeading={contactHeading} />
       </div>
     </section>
   );

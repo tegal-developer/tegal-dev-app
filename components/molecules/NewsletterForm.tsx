@@ -3,6 +3,7 @@
 import toast from 'react-hot-toast';
 import InputText from '../atoms/InputText';
 import useInputText from '@/hooks/useInputText';
+import { isValidEmail } from '@/utils';
 
 export default function NewsletterForm({
   addNewsletterSubscriber,
@@ -11,7 +12,9 @@ export default function NewsletterForm({
 }) {
   const [email, handleEmailChange] = useInputText('');
   const handleButtoClick = async () => {
-    if (email === '') toast.error('Email kamu perlu dicantumkan yah!');
+    if (email === '') toast.error('Ups! Kamu perlu ngisi email dulu nih!');
+    else if (!isValidEmail(email))
+      toast.error('Ups! Email yang kamu isi gak valid nih!');
     else {
       const responseJson = await addNewsletterSubscriber(email);
 
@@ -34,7 +37,7 @@ export default function NewsletterForm({
         md:flex-row gap-3"
     >
       <InputText
-        type="text"
+        type="email"
         id="email"
         placeholder="johndoe@example.com"
         value={email}

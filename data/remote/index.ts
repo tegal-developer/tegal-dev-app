@@ -1,6 +1,6 @@
-async function getLogoContent() {
+async function getHeaderContent() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/logo-content?populate=*`,
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/header-content?populate=*`,
   );
 
   return response.json();
@@ -8,7 +8,7 @@ async function getLogoContent() {
 
 async function getHomePageContent() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/home-page-content?populate=hero_images`,
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/home-page-content?populate=hero_section_images`,
   );
 
   return response.json();
@@ -69,8 +69,16 @@ async function getAllFAQs() {
   return response.json();
 }
 
+async function getFooterContent() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_CMS_BASE_URL}/api/footer-content`,
+  );
+
+  return response.json();
+}
+
 export {
-  getLogoContent,
+  getHeaderContent,
   getHomePageContent,
   getAllInvitationLinks,
   postNewsLetterSubscriber,
@@ -78,4 +86,5 @@ export {
   getAllCommunityHastags,
   getAllCommunityActivities,
   getAllFAQs,
+  getFooterContent,
 };

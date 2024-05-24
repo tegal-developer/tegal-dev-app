@@ -8,6 +8,7 @@ export default function SubHeroImage({ heroImages }: { heroImages: any }) {
         lg:mt-0
         lg:col-span-5
         xl:flex
+        2xl:min-w-[680px]
         hover:cursor-pointer
         duration-500
         hover:scale-105

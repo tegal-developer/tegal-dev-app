@@ -1,6 +1,12 @@
 import FAQ from '../molecules/FAQ';
 
-export default function FAQSection({ faqs }: { faqs: any }) {
+export default function FAQSection({
+  faqHeading,
+  faqs,
+}: {
+  faqHeading: string;
+  faqs: any;
+}) {
   return (
     <section
       id="faq"
@@ -14,7 +20,7 @@ export default function FAQSection({ faqs }: { faqs: any }) {
         dark:border-gray-700"
     >
       <div className="lg:container lg:mx-auto">
-        <FAQ faqs={faqs} />
+        <FAQ faqHeading={faqHeading} faqs={faqs} />
       </div>
     </section>
   );

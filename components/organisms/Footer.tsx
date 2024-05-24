@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import parse from 'html-react-parser';
 import SocialIconList from '../molecules/SocialIconList';
 
-export default function Footer() {
+export default function Footer({ content }: { content: string }) {
   return (
     <footer
       className="
@@ -24,13 +24,10 @@ export default function Footer() {
         justify-between
         items-center"
       >
-        <p>
-          &copy; 2024{' '}
-          <Link href={'/'} className="hover:text-[#1B71D8]">
-            Tegal Dev
-          </Link>
-          . All rights reserved
-        </p>
+        <div className="flex gap-1">
+          &copy; {`${new Date().getFullYear()} `}{' '}
+          {content !== undefined ? parse(content) : ''}
+        </div>
         <SocialIconList />
       </div>
     </footer>

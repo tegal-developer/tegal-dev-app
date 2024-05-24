@@ -9,7 +9,7 @@ export default function TextHeroHeading({ text }: { text: string }) {
         sm:text-[3rem]
         font-extrabold
         xl:text-4xl
-        2xl:text-5xl
+        2xl:text-[2.9rem]
         text-gray-700
         dark:text-white
         flex

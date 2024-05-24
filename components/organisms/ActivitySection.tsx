@@ -1,8 +1,11 @@
+import parse from 'html-react-parser';
 import ActivityItemList from '../molecules/ActivityItemList';
 
 export default function ActivitySection({
+  activityHeading,
   communityActivities,
 }: {
+  activityHeading: string;
   communityActivities: any;
 }) {
   return (
@@ -26,9 +29,9 @@ export default function ActivitySection({
         gap-10
         items-center"
       >
-        <h1 className="text-2xl md:text-4xl lg:text-4xl font-bold">
-          Kegiatan di <span className="text-[#1B71D8]">Tegal Dev</span>
-        </h1>
+        <div className="text-2xl md:text-4xl lg:text-4xl font-bold">
+          {activityHeading !== undefined ? parse(activityHeading) : ''}
+        </div>
         <ActivityItemList communityActivities={communityActivities} />
       </div>
     </section>

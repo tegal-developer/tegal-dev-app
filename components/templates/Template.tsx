@@ -1,23 +1,24 @@
-import { getLogoContent } from '@/data/remote';
+import { getFooterContent, getHeaderContent } from '@/data/remote';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
 export default async function Template({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const logoContent = await getLogoContent();
+  const headerContent = await getHeaderContent();
+  const footerContent = await getFooterContent();
 
   return (
     <>
       <Header
-        logoImageLightSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image_light?.data?.attributes?.url}`}
-        logoImageDarkSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${logoContent.data?.attributes?.image_dark?.data?.attributes?.url}`}
-        logoImageAlt={logoContent?.data?.attributes?.alt}
-        logoImageWidth={logoContent?.data?.attributes?.width}
-        logoImageHeight={logoContent?.data?.attributes?.height}
+        logoImageLightSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${headerContent.data?.attributes?.logo_image_light?.data?.attributes?.url}`}
+        logoImageDarkSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${headerContent.data?.attributes?.logo_image_dark?.data?.attributes?.url}`}
+        logoImageAlt={headerContent?.data?.attributes?.logo_image_alt}
+        logoImageWidth={headerContent?.data?.attributes?.logo_image_width}
+        logoImageHeight={headerContent?.data?.attributes?.logo_image_height}
       />
       <main>{children}</main>
-      <Footer />
+      <Footer content={footerContent?.data?.attributes?.content} />
     </>
   );
 }

@@ -67,11 +67,11 @@ export default function PopUpMenu({
       </li>
       <li className="w-full">
         <Link
-          href="/#contact-us"
+          href="/#contact"
           className="w-full justify-center"
           onClick={() => setIsOpen(!isOpen)}
         >
-          Contact Us
+          Contact
         </Link>
       </li>
       <li className="w-full">

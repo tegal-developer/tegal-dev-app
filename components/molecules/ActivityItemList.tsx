@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import ActivityItem from './ActivityItem';
-import Image from 'next/image';
-import UnNamed from '@/public/unnamed.jpg';
 import parse from 'html-react-parser';
 
 export default function ActivityItemList({
@@ -19,12 +17,12 @@ export default function ActivityItemList({
     <>
       <div
         className="
-            flex
-            w-full
-            py-3
-            md:hidden
-            gap-3
-            overflow-x-scroll"
+          flex
+          w-full
+          py-3
+          md:hidden
+          gap-3
+          overflow-x-scroll"
       >
         {communityActivities?.map((communityActivity: any) => (
           <ActivityItem
@@ -70,47 +68,6 @@ export default function ActivityItemList({
                 {parse(communityActivity?.attributes?.description)}
               </div>
             </div>
-            {communityActivity?.attributes?.images?.data !== null ? (
-              <div className="flex gap-10 w-full overflow-x-scroll">
-                <Image
-                  src={UnNamed}
-                  alt="image"
-                  width={325}
-                  height={325}
-                  className="rounded-xl"
-                />
-                <Image
-                  src={UnNamed}
-                  alt="image"
-                  width={325}
-                  height={325}
-                  className="rounded-xl"
-                />
-                <Image
-                  src={UnNamed}
-                  alt="image"
-                  width={325}
-                  height={325}
-                  className="rounded-xl"
-                />
-                <Image
-                  src={UnNamed}
-                  alt="image"
-                  width={325}
-                  height={325}
-                  className="rounded-xl"
-                />
-                <Image
-                  src={UnNamed}
-                  alt="image"
-                  width={325}
-                  height={325}
-                  className="rounded-xl"
-                />
-              </div>
-            ) : (
-              ''
-            )}
           </div>
         ))}
       </div>
