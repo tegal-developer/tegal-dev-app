@@ -2,7 +2,6 @@
 
 import toast from 'react-hot-toast';
 import Button from '../atoms/Button';
-import TextLink from '../atoms/TextLink';
 
 export default function AuthNav() {
   const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
@@ -10,13 +9,22 @@ export default function AuthNav() {
   return (
     <ul className="font-semibold flex gap-3 items-center">
       <li>
-        <Button
-          label="Sign In"
-          backgroundColor="#E7EDF2"
-          hoverBackgroundColor="#1865c2"
-          textColor="gray-700"
-          action={handleButtoClick}
-        />
+        <button
+          type="button"
+          className={`
+            bg-[#E7EDF2]
+            text-gray-700
+            active:scale-95
+            duration-150
+            py-1
+            px-3
+            text-xs
+            font-semibold
+            rounded-lg`}
+          onClick={handleButtoClick}
+        >
+          Sign In
+        </button>
       </li>
       <li>
         <Button

@@ -87,7 +87,7 @@ export default function PopUpMenu({
         <a className="w-full justify-center">Sign In</a>
       </li>
       <li className="w-full" onClick={() => handleButtoClick()}>
-        <a className="w-full justify-center">Register</a>
+        <a className="w-full justify-center">Sign Up</a>
       </li>
     </ul>
   );

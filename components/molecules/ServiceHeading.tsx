@@ -1,7 +1,6 @@
 'use client';
 
 import parse from 'html-react-parser';
-import Button from '../atoms/Button';
 
 export default function ServiceHeading({
   contactHeading,
@@ -14,15 +13,25 @@ export default function ServiceHeading({
         <div className="text-2xl md:text-3xl lg:text-4xl font-bold">
           {contactHeading !== undefined ? parse(contactHeading) : ''}
         </div>
-        <div className="w-full md:w-fit hover:scale-110 duration-150">
-          <Button
-            label="Hubungi Kami"
-            backgroundColor="#1B71D8"
-            hoverBackgroundColor="#1865c2"
-            textColor="white"
-            action={() => (window.location.href = 'mailto:contact@tegal.dev')}
-          />
-        </div>
+        <button
+          type="button"
+          className={`
+            sm:min-w-[160px]
+            bg-[#1B71D8]
+            hover:bg-[#0d4385]
+            active:scale-95
+            duration-150
+            text-white
+            dark:text-white
+            py-3
+            px-3
+            text-xs
+            font-semibold
+            rounded-lg`}
+          onClick={() => (window.location.href = 'mailto:contact@tegal.dev')}
+        >
+          Hubungi Kami
+        </button>
       </div>
     </div>
   );

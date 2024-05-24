@@ -62,7 +62,7 @@ export default function SubHeroContent({
           {communityHashtags?.map((communityHashtag: any) => (
             <p
               key={communityHashtag?.id}
-              className="text-xs border border-gray-700 w-fit p-1 rounded-lg dark:border-white"
+              className="text-xs border border-gray-300 w-fit p-1 rounded-lg dark:border-white"
             >
               {communityHashtag?.attributes?.hashtag}
             </p>

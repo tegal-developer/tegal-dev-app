@@ -2,7 +2,6 @@
 
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import parse from 'html-react-parser';
-import { useState } from 'react';
 
 export default function QuestionItem({
   questionId,
@@ -31,7 +30,7 @@ export default function QuestionItem({
           items-center
           justify-between
           cursor-pointer
-          bg-[#FAFBFD]
+          bg-gray-100
           border-black
           dark:bg-gray-800
           p-3
@@ -52,7 +51,7 @@ export default function QuestionItem({
         tracking-wide
         leading-relaxed
         mb-1
-        bg-[#FAFBFD]/50
+        bg-gray-100/50
         border-black
         dark:bg-gray-800/30
         p-3
