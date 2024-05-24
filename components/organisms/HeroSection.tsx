@@ -24,24 +24,22 @@ export default function HeroSection({
   const { resolvedTheme } = useTheme();
   return (
     <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900">
-      {resolvedTheme === 'dark' ? (
-        <div
-          className="
-            -z-0
-            md:block
-            bg-[#28f3dfce]
-            absolute
-            top-0
-            left-0
-            w-96
-            h-96
-            opacity-20
-            rounded-full
-            blur-3xl"
-        />
-      ) : (
-        ''
-      )}
+      <div
+        className={`
+          ${resolvedTheme === 'dark' ? 'block' : 'hidden'}
+          -z-0
+          md:block
+          bg-[#28f3dfce]
+          absolute
+          top-0
+          left-0
+          w-full
+          md:w-96
+          h-96
+          opacity-20
+          rounded-full
+          blur-3xl`}
+      />
       <div
         className="
           py-8
