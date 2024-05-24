@@ -4,14 +4,12 @@ export default function Button({
   hoverBackgroundColor,
   textColor,
   action,
-  textSize,
 }: {
   label: string;
   backgroundColor: string;
   hoverBackgroundColor: string;
   textColor: string;
   action: any;
-  textSize: string;
 }) {
   return (
     <button
@@ -27,7 +25,6 @@ export default function Button({
         px-3
         text-xs
         font-semibold
-        md:text-${textSize}
         rounded-lg`}
       onClick={action}
     >
