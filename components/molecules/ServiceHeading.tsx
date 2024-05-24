@@ -21,7 +21,6 @@ export default function ServiceHeading({
             hoverBackgroundColor="#1865c2"
             textColor="white"
             action={() => (window.location.href = 'mailto:contact@tegal.dev')}
-            textSize="xl"
           />
         </div>
       </div>
