@@ -1,9 +1,5 @@
-'use client';
-
-import { useTheme } from 'next-themes';
 import SubHeroContent from '../molecules/SubHeroContent';
 import SubHeroImage from '../molecules/SubHeroImage';
-import { useEffect, useState } from 'react';
 
 export default function HeroSection({
   heroHeading,
@@ -22,25 +18,15 @@ export default function HeroSection({
   communityBenefits: any;
   communityHashtags: any;
 }) {
-  const { resolvedTheme } = useTheme();
-  const [localStorageTheme, setLocalStorageTheme] = useState('');
-
-  useEffect(() => {
-    const theme = window.localStorage.getItem('theme');
-    setLocalStorageTheme(theme ? theme : '');
-  }, []);
-
   return (
     <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900">
       <div
-        className={`
-          ${
-            resolvedTheme === 'dark' && localStorageTheme === 'dark'
-              ? 'block'
-              : 'hidden md:hidden'
-          }
+        className="
+          dark:block
+          hidden
+          md:hidden
           -z-0
-          md:block
+          dark:md:block
           bg-[#28f3dfce]
           absolute
           top-0
@@ -50,7 +36,7 @@ export default function HeroSection({
           h-96
           opacity-20
           rounded-full
-          blur-3xl`}
+          blur-3xl"
       />
       <div
         className="
