@@ -5,18 +5,18 @@ import { useEffect, useState } from 'react';
 
 export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [localStorageTheme, setLocalStorageTheme] = useState('');
+  const [_, setMounted] = useState(false);
 
   useEffect(() => {
-    const theme = window.localStorage.getItem('theme');
-    setLocalStorageTheme(theme ? theme : '');
-  }, []);
+    setMounted(true);
+    return () => setMounted(false);
+  }, [resolvedTheme]);
 
   return (
     <label className="swap swap-rotate">
       <input
         type="checkbox"
-        checked={resolvedTheme === 'dark' && localStorageTheme === 'dark'}
+        checked={resolvedTheme === 'dark'}
         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       />
       <svg
