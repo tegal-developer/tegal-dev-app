@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 
-export default function useInputText(defaultValue: string) {
+type UseInputTextReturnType = [
+  string,
+  (event: ChangeEvent<HTMLInputElement>) => void,
+  Dispatch<SetStateAction<string>>,
+];
+
+export default function useInputText(
+  defaultValue: string,
+): UseInputTextReturnType {
   const [value, setValue] = useState(defaultValue);
-  const handleValueChange = (event: any) => setValue(event.target.value);
+  const handleValueChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setValue(event.target.value);
   return [value, handleValueChange, setValue];
 }
