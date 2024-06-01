@@ -26,7 +26,7 @@ export default async function Home() {
       <HeroSection
         heroHeading={homePageContent?.data?.attributes?.hero_section_heading}
         heroBody={homePageContent?.data?.attributes?.hero_section_body}
-        heroImages={`${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}${homePageContent?.data?.attributes?.hero_section_images?.data[0]?.attributes?.url}`}
+        heroImages={`${homePageContent?.data?.attributes?.hero_section_images?.data[0]?.attributes?.url}`}
         invitationLinks={invitationLinks}
         communityBenefits={communityBenefits?.data}
         communityHashtags={communityHashtags?.data}
