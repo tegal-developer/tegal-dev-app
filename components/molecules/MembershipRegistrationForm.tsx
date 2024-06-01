@@ -281,7 +281,7 @@ export default function MembershipRegistrationForm() {
           <div className="flex gap-2 justify-end">
             <ButtonAction
               buttonLabel="Batal"
-              buttonAction={() => document.getElementById('my_modal_2').close()}
+              buttonAction={() => document.getElementById('my_modal_2').close()!}
               backgroundColor="transparent"
               hoverBackgroundColor="gray-100"
               darkHoverBackgroundColor="gray-700"
