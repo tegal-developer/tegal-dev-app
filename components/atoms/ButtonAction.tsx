@@ -1,5 +1,4 @@
 export default function ButtonAction({
-  buttonType,
   buttonLabel,
   buttonAction,
   backgroundColor,
@@ -8,7 +7,6 @@ export default function ButtonAction({
   textColor,
   isDisabled,
 }: {
-  buttonType: string;
   buttonLabel: string;
   buttonAction: any;
   backgroundColor: string;
@@ -19,7 +17,7 @@ export default function ButtonAction({
 }) {
   return (
     <button
-      type={buttonType}
+      type="button"
       className={`
         bg-${backgroundColor}
         inline-flex

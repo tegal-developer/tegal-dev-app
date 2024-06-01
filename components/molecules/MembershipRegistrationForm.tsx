@@ -280,7 +280,6 @@ export default function MembershipRegistrationForm() {
           </div>
           <div className="flex gap-2 justify-end">
             <ButtonAction
-              buttonType="button"
               buttonLabel="Batal"
               buttonAction={() => document.getElementById('my_modal_2').close()}
               backgroundColor="transparent"
@@ -289,7 +288,6 @@ export default function MembershipRegistrationForm() {
               textColor="gray-700"
             />
             <ButtonAction
-              buttonType="button"
               buttonLabel="Daftar"
               buttonAction={async (e) => {
                 e.preventDefault();
