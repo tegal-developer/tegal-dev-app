@@ -112,7 +112,7 @@ export default function MembershipRegistrationForm() {
       {!isSuccess.isSuccess ? (
         <form
           className="my-5 flex flex-col gap-5"
-          onKeyUp={async (e: React.ChangeEvent<any>) => {
+          onKeyUp={(e: React.KeyboardEvent<any>) => {
             e.preventDefault();
 
             if (e.key === 'Enter') onRegisterNewMembership();
