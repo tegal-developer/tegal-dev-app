@@ -98,10 +98,10 @@ export default function MembershipRegistrationForm() {
       }
 
       setIsSuccess({ isSuccess: true, isSuccessMessage: true });
-    } catch (error) {
+    } catch (error: any) {
       setIsError({
         error: true,
-        message: error.message,
+        message: error?.message,
       });
     }
     setIsLoading(false);
