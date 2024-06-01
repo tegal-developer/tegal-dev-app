@@ -21,7 +21,7 @@ export default async function postNewMembership({
   formData.append('name', name);
   formData.append('username', username);
   formData.append('email', email);
-  formData.append('whatsapp', whatsapp);
+  formData.append('whatsapp', `62${whatsapp}`);
   formData.append('instagram', instagram);
   formData.append('linkedin', linkedin);
   formData.append('photo', photo as File);
