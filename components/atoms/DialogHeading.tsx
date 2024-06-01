@@ -17,7 +17,9 @@ export default function DialogHeading() {
       Pendaftaran Keanggotaan <span className="text-[#1B71D8]">Tegal Dev</span>
       <AiOutlineCloseCircle
         className="absolute right-5 top-5 cursor-pointer text-gray-400 dark:text-gray-700"
-        onClick={() => document?.getElementById('my_modal_2')?.close()!}
+        onClick={() =>
+          (document?.getElementById('my_modal_2') as HTMLDialogElement).close()
+        }
       />
     </h3>
   );
