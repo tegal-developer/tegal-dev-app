@@ -4,26 +4,36 @@ import toast from 'react-hot-toast';
 import InputText from '../atoms/InputText';
 import useInputText from '@/hooks/useInputText';
 import { isValidEmail } from '@/utils';
+import postNewsLetterSubscriber from '@/data/remote/collection/post-newsletter-subscriber';
+import { useState } from 'react';
 
-export default function NewsletterForm({
-  addNewsletterSubscriber,
-}: {
-  addNewsletterSubscriber: any;
-}) {
+export default function NewsletterForm() {
   const [email, handleEmailChange] = useInputText('');
+  const [isLoading, setIsLoading] = useState(false);
   const handleButtoClick = async () => {
-    if (email === '') toast.error('Ups! Kamu perlu ngisi email dulu nih!');
-    else if (!isValidEmail(email))
-      toast.error('Ups! Email yang kamu isi gak valid nih!');
-    else {
-      const responseJson = await addNewsletterSubscriber(email);
+    setIsLoading(true);
+    try {
+      if (email === '') {
+        setIsLoading(false);
+        return toast.error('Ups! Kamu perlu ngisi email dulu nih!');
+      } else if (!isValidEmail(email)) {
+        setIsLoading(false);
+        return toast.error('Ups! Email yang kamu isi gak valid nih!');
+      } else {
+        const responseJson = await postNewsLetterSubscriber(email);
 
-      if (responseJson.data)
-        return toast.success('Makasih yah udah bergabung!');
+        if (responseJson.data) {
+          setIsLoading(false);
+          return toast.success('Makasih yah udah bergabung!');
+        }
 
-      if (responseJson.error.status === 400)
-        return toast.error('Email kamu udah terdaftar nih!');
-    }
+        if (responseJson.error.status === 400) {
+          setIsLoading(false);
+          return toast.error('Email kamu udah terdaftar nih!');
+        }
+      }
+    } catch (error) {}
+    setIsLoading(false);
   };
 
   return (
@@ -60,8 +70,13 @@ export default function NewsletterForm({
         font-semibold
         rounded-lg`}
         onClick={handleButtoClick}
+        disabled={isLoading}
       >
-        Gabung Newsletter
+        {isLoading ? (
+          <span className="loading loading-spinner loading-xs" />
+        ) : (
+          'Gabung Newsletter'
+        )}
       </button>
     </div>
   );

@@ -1,6 +1,14 @@
-import parse from 'html-react-parser';
+'use client';
+
+import TextHeadingSection from '../atoms/TextHeadingSection';
+import Container from '../templates/Container';
+import BlogItemList from '../molecules/BlogItemList';
+import ButtonSection from '../atoms/ButtonSection';
+import toast from 'react-hot-toast';
 
 export default function BlogSection({ blogHeading }: { blogHeading: string }) {
+  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
+
   return (
     <section
       id="blog"
@@ -20,20 +28,12 @@ export default function BlogSection({ blogHeading }: { blogHeading: string }) {
         gap-10
         items-center"
     >
-      <div className="flex flex-col items-center gap-10">
-        <div className="text-2xl md:text-4xl lg:text-4xl font-bold ">
-          {blogHeading !== undefined ? parse(blogHeading) : ''}
-        </div>
+      <Container>
+        <TextHeadingSection heading={blogHeading} />
         <p>Belum ada blog nih!</p>
-        {/* <div>
-          <Button
-            label="Lihat Lebih Banyak"
-            backgroundColor="#1B71D8"
-            hoverBackgroundColor="#1865c2"
-            textColor="white"
-          />
-        </div> */}
-      </div>
+        {/* <BlogItemList />
+        <ButtonSection label="Muat lebih banyak" action={handleButtoClick} /> */}
+      </Container>
     </section>
   );
 }

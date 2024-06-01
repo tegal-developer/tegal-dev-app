@@ -6,23 +6,16 @@ import EventSection from '@/components/organisms/EventSection';
 import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
-import {
-  getAllCommunityBenefits,
-  getAllCommunityHastags,
-  getAllFAQs,
-  getAllCommunityActivities,
-  getHomePageContent,
-  getAllInvitationLinks,
-  postNewsLetterSubscriber,
-} from '@/data/remote';
+import { getHomePageContent } from '@/data/remote/single';
+import getAllInvitationLinks from '@/data/remote/collection/get-all-invitation-links';
+import getAllCommunityBenefits from '@/data/remote/collection/get-all-community-benefits';
+import getAllCommunityHastags from '@/data/remote/collection/get-all-community-hashtags';
+import getAllCommunityActivities from '@/data/remote/collection/get-all-community-activities';
+import getAllFAQs from '@/data/remote/collection/get-all-faqs';
 
 export default async function Home() {
   const homePageContent = await getHomePageContent();
   const invitationLinks = await getAllInvitationLinks();
-  const addNewsletterSubscriber = async (email: string) => {
-    'use server';
-    return postNewsLetterSubscriber(email);
-  };
   const communityBenefits = await getAllCommunityBenefits();
   const communityHashtags = await getAllCommunityHastags();
   const communityActivities = await getAllCommunityActivities();
@@ -35,7 +28,6 @@ export default async function Home() {
         heroBody={homePageContent?.data?.attributes?.hero_section_body}
         heroImages={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${homePageContent?.data?.attributes?.hero_section_images?.data[0]?.attributes?.url}`}
         invitationLinks={invitationLinks}
-        addNewsletterSubscriber={addNewsletterSubscriber}
         communityBenefits={communityBenefits?.data}
         communityHashtags={communityHashtags?.data}
       />

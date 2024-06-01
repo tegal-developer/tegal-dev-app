@@ -1,4 +1,5 @@
 import ServiceHeading from '../molecules/ServiceHeading';
+import Container from '../templates/Container';
 
 export default function ContactSection({
   contactHeading,
@@ -21,9 +22,11 @@ export default function ContactSection({
         dark:text-white
         text-center"
     >
-      <div className="flex flex-col gap-10 tracking-wider">
-        <ServiceHeading contactHeading={contactHeading} />
-      </div>
+      <Container>
+        <div className="flex flex-col gap-10 tracking-wider">
+          <ServiceHeading contactHeading={contactHeading} />
+        </div>
+      </Container>
     </section>
   );
 }

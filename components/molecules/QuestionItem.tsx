@@ -18,25 +18,15 @@ export default function QuestionItem({
 }) {
   return (
     <div
-      className="flex flex-col gap-2 group cursor-pointer"
+      className="collapse cursor-pointer bg-gray-100 dark:bg-gray-800"
       onClick={() => {
         if (selected === questionId) setIsSelected(0);
         else setIsSelected(questionId);
       }}
     >
-      <div
-        className="
-          flex
-          items-center
-          justify-between
-          cursor-pointer
-          bg-gray-100
-          border-black
-          dark:bg-gray-800
-          p-3
-          rounded-lg"
-      >
-        <h2>{questionText}</h2>
+      <input type="checkbox" checked={selected === questionId} />
+      <div className="collapse-title flex justify-between items-center p-4">
+        <h2 className="leading-relaxed">{questionText}</h2>
         <div>
           {selected === questionId ? (
             <IoIosArrowUp size={25} />
@@ -45,18 +35,7 @@ export default function QuestionItem({
           )}
         </div>
       </div>
-      <div
-        className={`${selected === questionId ? 'block' : 'hidden'} duration-150
-        text-sm
-        tracking-wide
-        leading-relaxed
-        mb-1
-        bg-gray-100/50
-        border-black
-        dark:bg-gray-800/30
-        p-3
-        rounded-lg`}
-      >
+      <div className="collapse-content text-sm tracking-wider leading-relaxed">
         {parse(answerText)}
       </div>
     </div>

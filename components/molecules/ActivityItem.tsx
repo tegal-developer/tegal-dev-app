@@ -29,7 +29,11 @@ export default function ActivityItem({
         hover:bg-gray-100
         active:scale-95
         duration-150
-        ${selectedActivity === id ? 'bg-gray-100 dark:bg-gray-700' : ''}
+        ${
+          selectedActivity === id
+            ? 'bg-gray-100 dark:bg-gray-700'
+            : 'bg-white dark:bg-transparent'
+        }
         focus:ring-4
         focus:ring-gray-100
         dark:text-white

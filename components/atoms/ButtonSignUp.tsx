@@ -1,13 +1,11 @@
-export default function Button({
+export default function ButtonSignUp({
   label,
   backgroundColor,
-  hoverBackgroundColor,
   textColor,
   action,
 }: {
   label: string;
   backgroundColor: string;
-  hoverBackgroundColor: string;
   textColor: string;
   action: any;
 }) {
@@ -15,16 +13,16 @@ export default function Button({
     <button
       type="button"
       className={`
-        bg-[${backgroundColor}]
-        hover:bg-[${hoverBackgroundColor}]
         text-${textColor}
+        dark:text-white
+        font-semibold
+        bg-[${backgroundColor}]
+        hover:bg-[#0d4385]
         active:scale-95
         duration-150
-        dark:text-white
-        py-1
         px-3
+        py-1
         text-xs
-        font-semibold
         rounded-lg`}
       onClick={action}
     >

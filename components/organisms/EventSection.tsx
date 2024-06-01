@@ -1,10 +1,18 @@
-import parse from 'html-react-parser';
+'use client';
+
+import Container from '../templates/Container';
+import TextHeadingSection from '../atoms/TextHeadingSection';
+import EventItemList from '../molecules/EventItemList';
+import ButtonSection from '../atoms/ButtonSection';
+import toast from 'react-hot-toast';
 
 export default function EventSection({
   eventHeading,
 }: {
   eventHeading: string;
 }) {
+  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
+
   return (
     <section
       id="event"
@@ -23,20 +31,12 @@ export default function EventSection({
         gap-10
         items-center"
     >
-      <div className="flex flex-col gap-10 items-center">
-        <div className="text-2xl md:text-4xl lg:text-4xl font-bold">
-          {eventHeading !== undefined ? parse(eventHeading) : ''}
-        </div>
+      <Container>
+        <TextHeadingSection heading={eventHeading} />
         <p>Belum ada event nih!</p>
-        {/* <div>
-          <Button
-            label="Lihat Lebih Banyak"
-            backgroundColor="#1B71D8"
-            hoverBackgroundColor="#1865c2"
-            textColor="white"
-          />
-        </div> */}
-      </div>
+        {/* <EventItemList />
+        <ButtonSection label="Muat lebih banyak" action={handleButtoClick} /> */}
+      </Container>
     </section>
   );
 }

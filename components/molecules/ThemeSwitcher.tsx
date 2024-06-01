@@ -13,7 +13,7 @@ export default function ThemeSwitcher() {
   }, [resolvedTheme]);
 
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate hover:scale-110 duration-300">
       <input
         type="checkbox"
         checked={resolvedTheme === 'dark'}

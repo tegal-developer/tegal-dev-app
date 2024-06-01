@@ -38,7 +38,8 @@ export default function Navbar({
         text-[#5F6368]
         shadow-lg
         dark:border-[#1B71D8]
-        backdrop-blur-xl"
+        backdrop-blur-xl
+        duration-300"
     >
       <div
         className="lg:container lg:mx-auto flex
@@ -46,7 +47,7 @@ export default function Navbar({
         justify-between"
       >
         <div className="flex items-center gap-20">
-          <Link href={'#'}>
+          <Link href={'#'} onClick={() => setIsOpen(!isOpen)}>
             <Logo
               imageLightSource={logoImageLightSource}
               imageDarkSource={logoImageDarkSource}
@@ -62,7 +63,7 @@ export default function Navbar({
           <ThemeSwitcher />
         </div>
         <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        <PopUpMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+        <PopUpMenu isOpen={isOpen} />
       </div>
     </nav>
   );

@@ -1,5 +1,6 @@
-import parse from 'html-react-parser';
 import ActivityItemList from '../molecules/ActivityItemList';
+import Container from '../templates/Container';
+import TextHeadingSection from '../atoms/TextHeadingSection';
 
 export default function ActivitySection({
   activityHeading,
@@ -14,6 +15,8 @@ export default function ActivitySection({
       className="
         bg-[#FAFBFD]
         dark:bg-gray-900
+        h-[560px]
+        md:h-full
         border-t
         border-gray-300
         dark:border-gray-700
@@ -22,18 +25,10 @@ export default function ActivitySection({
         text-gray-700
         dark:text-white"
     >
-      <div
-        className="lg:container lg:mx-auto 
-        flex
-        flex-col
-        gap-10
-        items-center"
-      >
-        <div className="text-2xl md:text-4xl lg:text-4xl font-bold">
-          {activityHeading !== undefined ? parse(activityHeading) : ''}
-        </div>
+      <Container>
+        <TextHeadingSection heading={activityHeading} />
         <ActivityItemList communityActivities={communityActivities} />
-      </div>
+      </Container>
     </section>
   );
 }

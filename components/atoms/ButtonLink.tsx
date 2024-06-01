@@ -26,6 +26,7 @@ export default function ButtonLink({
         focus:ring-4
         active:scale-95
         duration-150
+        md:w-56
         focus:ring-gray-100
         dark:text-white
         hover:bg-gray-100

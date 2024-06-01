@@ -1,4 +1,4 @@
-import { getFooterContent, getHeaderContent } from '@/data/remote';
+import { getFooterContent, getHeaderContent } from '@/data/remote/single';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
