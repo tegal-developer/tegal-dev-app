@@ -11,8 +11,8 @@ export default async function Template({
   return (
     <>
       <Header
-        logoImageLightSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${headerContent.data?.attributes?.logo_image_light?.data?.attributes?.url}`}
-        logoImageDarkSource={`${process.env.NEXT_PUBLIC_CMS_BASE_URL}${headerContent.data?.attributes?.logo_image_dark?.data?.attributes?.url}`}
+        logoImageLightSource={`${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}${headerContent.data?.attributes?.logo_image_light?.data?.attributes?.url}`}
+        logoImageDarkSource={`${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}${headerContent.data?.attributes?.logo_image_dark?.data?.attributes?.url}`}
         logoImageAlt={headerContent?.data?.attributes?.logo_image_alt}
         logoImageWidth={headerContent?.data?.attributes?.logo_image_width}
         logoImageHeight={headerContent?.data?.attributes?.logo_image_height}
