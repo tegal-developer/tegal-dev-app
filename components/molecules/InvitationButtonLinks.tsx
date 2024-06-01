@@ -13,7 +13,7 @@ export default function InvitationButtonLinks({
     <>
       <ButtonAction
         buttonLabel="Gabung Keanggotaan"
-        buttonAction={() => document.getElementById('my_modal_2').showModal()!}
+        buttonAction={() => document?.getElementById('my_modal_2')?.showModal()!}
         backgroundColor="transparent"
         hoverBackgroundColor="gray-100"
         darkHoverBackgroundColor="gray-700"
