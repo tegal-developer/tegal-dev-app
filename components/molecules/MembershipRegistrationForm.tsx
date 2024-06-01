@@ -21,7 +21,7 @@ export default function MembershipRegistrationForm() {
     isSuccess: false,
     isSuccessMessage: false,
   });
-  const onInputChange = (e) => {
+  const onInputChange = (e: React.ChangeEvent<any>) => {
     const file = e.target.files[0];
     if (file.size > 102400) {
       setIsWarning({
@@ -112,7 +112,7 @@ export default function MembershipRegistrationForm() {
       {!isSuccess.isSuccess ? (
         <form
           className="my-5 flex flex-col gap-5"
-          onKeyUp={async (e) => {
+          onKeyUp={async (e: React.ChangeEvent<any>) => {
             e.preventDefault();
 
             if (e.key === 'Enter') onRegisterNewMembership();
@@ -293,7 +293,7 @@ export default function MembershipRegistrationForm() {
             />
             <ButtonAction
               buttonLabel="Daftar"
-              buttonAction={async (e) => {
+              buttonAction={async (e: React.ChangeEvent<any>) => {
                 e.preventDefault();
                 onRegisterNewMembership();
               }}
