@@ -31,9 +31,9 @@ export default async function postNewMembership({
     {
       method: 'POST',
       headers: {
-        'x-username': process.env.NEXT_PUBLIC_EDITECH_X_USERNAME,
-        'x-password': process.env.NEXT_PUBLIC_EDITECH_X_PASSWORD,
-      },
+        'x-username': process.env.NEXT_PUBLIC_EDITECH_X_USERNAME || '',
+        'x-password': process.env.NEXT_PUBLIC_EDITECH_X_PASSWORD || '',
+      } as HeadersInit,
       body: formData,
     },
   );
