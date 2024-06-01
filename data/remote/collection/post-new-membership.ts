@@ -14,7 +14,7 @@ export default async function postNewMembership({
   instagram: string;
   linkedin: string;
   photo: File;
-}): Promise<object> {
+}) {
   const formData = new FormData();
 
   formData.append('token', `${process.env.NEXT_PUBLIC_EDITECH_TOKEN}`);
