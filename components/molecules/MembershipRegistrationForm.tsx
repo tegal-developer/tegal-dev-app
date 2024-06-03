@@ -21,7 +21,7 @@ export default function MembershipRegistrationForm() {
     isSuccess: false,
     isSuccessMessage: false,
   });
-  const onInputChange = (e) => {
+  const onInputChange = (e: React.ChangeEvent<any>) => {
     const file = e.target.files[0];
     if (file.size > 102400) {
       setIsWarning({
@@ -98,10 +98,10 @@ export default function MembershipRegistrationForm() {
       }
 
       setIsSuccess({ isSuccess: true, isSuccessMessage: true });
-    } catch (error) {
+    } catch (error: any) {
       setIsError({
         error: true,
-        message: error.message,
+        message: error?.message,
       });
     }
     setIsLoading(false);
@@ -112,7 +112,7 @@ export default function MembershipRegistrationForm() {
       {!isSuccess.isSuccess ? (
         <form
           className="my-5 flex flex-col gap-5"
-          onKeyUp={async (e) => {
+          onKeyUp={(e: React.KeyboardEvent<any>) => {
             e.preventDefault();
 
             if (e.key === 'Enter') onRegisterNewMembership();
@@ -281,7 +281,11 @@ export default function MembershipRegistrationForm() {
           <div className="flex gap-2 justify-end">
             <ButtonAction
               buttonLabel="Batal"
-              buttonAction={() => document.getElementById('my_modal_2').close()!}
+              buttonAction={() =>
+                (
+                  document?.getElementById('my_modal_2') as HTMLDialogElement
+                ).close()
+              }
               backgroundColor="transparent"
               hoverBackgroundColor="gray-100"
               darkHoverBackgroundColor="gray-700"
@@ -289,7 +293,7 @@ export default function MembershipRegistrationForm() {
             />
             <ButtonAction
               buttonLabel="Daftar"
-              buttonAction={async (e) => {
+              buttonAction={async (e: React.ChangeEvent<any>) => {
                 e.preventDefault();
                 onRegisterNewMembership();
               }}
