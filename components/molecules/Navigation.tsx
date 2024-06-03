@@ -24,6 +24,9 @@ export default function Navigation() {
         <TextLink href="/#activity" text="Activity" />
       </li>
       <li>
+        <TextLink href="/#membership" text="Membership" />
+      </li>
+      <li>
         <TextLink href="/#contact" text="Contact" />
       </li>
       <li>

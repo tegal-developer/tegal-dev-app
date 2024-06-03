@@ -26,7 +26,7 @@ export default async function postNewMembership({
     formData.append('linkedin', linkedin);
     formData.append('photo', photo as File);
 
-    const response = await fetch('api/memberships', {
+    const response = await fetch('api/memberships/registrations', {
       method: 'POST',
       body: formData,
     });

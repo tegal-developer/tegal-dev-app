@@ -23,7 +23,7 @@ export default function MemberSection({
 
   return (
     <section
-      id="contact"
+      id="membership"
       className="
         bg-white
         dark:bg-gray-900

@@ -37,7 +37,7 @@ export default function NewsletterForm() {
   };
 
   return (
-    <div
+    <form
       className="
         flex
         flex-col
@@ -45,6 +45,11 @@ export default function NewsletterForm() {
         md:justify-center
         xl:justify-normal
         md:flex-row gap-3"
+      onKeyUp={(e: React.KeyboardEvent<any>) => {
+        e.preventDefault();
+
+        if (e.key === 'Enter') handleButtoClick();
+      }}
     >
       <InputText
         type="email"
@@ -78,6 +83,6 @@ export default function NewsletterForm() {
           'Gabung Newsletter'
         )}
       </button>
-    </div>
+    </form>
   );
 }
