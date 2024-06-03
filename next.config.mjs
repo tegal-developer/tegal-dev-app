@@ -7,6 +7,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://tegal.dev/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
