@@ -16,6 +16,8 @@ export default function TextHeroHeading({ text }: { text: string }) {
         flex-col
         xl:flex-row
         xl:gap-2
+        md:text-center
+        xl:text-start
         md:items-center
         xl:items-start"
     >

@@ -89,7 +89,7 @@ export default function MembershipRegistrationForm() {
         photo,
       });
 
-      if (!response.value) {
+      if (response.error) {
         setIsError({
           error: true,
           message: response.message,

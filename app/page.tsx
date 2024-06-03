@@ -12,6 +12,7 @@ import getAllCommunityBenefits from '@/data/remote/collection/get-all-community-
 import getAllCommunityHastags from '@/data/remote/collection/get-all-community-hashtags';
 import getAllCommunityActivities from '@/data/remote/collection/get-all-community-activities';
 import getAllFAQs from '@/data/remote/collection/get-all-faqs';
+import MemberSection from '@/components/organisms/MemberSection';
 
 export default async function Home() {
   const homePageContent = await getHomePageContent();
@@ -26,7 +27,10 @@ export default async function Home() {
       <HeroSection
         heroHeading={homePageContent?.data?.attributes?.hero_section_heading}
         heroBody={homePageContent?.data?.attributes?.hero_section_body}
-        heroImages={`${homePageContent?.data?.attributes?.hero_section_images?.data[0]?.attributes?.url}`}
+        heroImages={
+          homePageContent?.data?.attributes?.hero_section_images?.data[0]
+            ?.attributes?.url
+        }
         invitationLinks={invitationLinks}
         communityBenefits={communityBenefits?.data}
         communityHashtags={communityHashtags?.data}
@@ -46,6 +50,11 @@ export default async function Home() {
           homePageContent?.data?.attributes?.activity_section_heading
         }
         communityActivities={communityActivities?.data}
+      />
+      <MemberSection
+        membershipHeading={
+          homePageContent?.data?.attributes?.member_section_heading
+        }
       />
       <ContactSection
         contactHeading={
