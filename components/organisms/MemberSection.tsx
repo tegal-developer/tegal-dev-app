@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Container from '../templates/Container';
 import TextHeadingSection from '../atoms/TextHeadingSection';
 import { useEffect, useState } from 'react';
-import postAllMembershipsByPage from '@/data/remote/collection/post-all-memberships-by-page';
+import postAllMembershipsByPage from '@/data/remote/next/post-all-memberships-by-page';
 
 export default function MemberSection({
   membershipHeading,
@@ -16,7 +16,7 @@ export default function MemberSection({
 
   useEffect(() => {
     postAllMembershipsByPage(page).then((retrievedAllMemberships) => {
-      if (retrievedAllMemberships?.length === 0) setPage(1);
+      if (retrievedAllMemberships?.data?.members?.length === 0) setPage(1);
       else setMemberships(retrievedAllMemberships?.data?.members);
     });
   }, [page]);

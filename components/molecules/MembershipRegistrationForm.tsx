@@ -4,7 +4,7 @@ import useInputText from '@/hooks/useInputText';
 import ButtonAction from '../atoms/ButtonAction';
 import { useState } from 'react';
 import Link from 'next/link';
-import postNewMembership from '@/data/remote/collection/post-new-membership';
+import postNewMembership from '@/data/remote/next/post-new-membership';
 
 export default function MembershipRegistrationForm() {
   const [name, nameChangeHandler] = useInputText('');
@@ -21,7 +21,7 @@ export default function MembershipRegistrationForm() {
     isSuccess: false,
     isSuccessMessage: false,
   });
-  const onInputChange = (e: React.ChangeEvent<any>) => {
+  const onInputChange = (e) => {
     const file = e.target.files[0];
     if (file.size > 102400) {
       setIsWarning({
@@ -89,7 +89,7 @@ export default function MembershipRegistrationForm() {
         photo,
       });
 
-      if (response.error) {
+      if (!response.value) {
         setIsError({
           error: true,
           message: response.message,
@@ -98,10 +98,10 @@ export default function MembershipRegistrationForm() {
       }
 
       setIsSuccess({ isSuccess: true, isSuccessMessage: true });
-    } catch (error: any) {
+    } catch (error) {
       setIsError({
         error: true,
-        message: error?.message,
+        message: error.message,
       });
     }
     setIsLoading(false);
@@ -112,7 +112,7 @@ export default function MembershipRegistrationForm() {
       {!isSuccess.isSuccess ? (
         <form
           className="my-5 flex flex-col gap-5"
-          onKeyUp={(e: React.KeyboardEvent<any>) => {
+          onKeyUp={async (e) => {
             e.preventDefault();
 
             if (e.key === 'Enter') onRegisterNewMembership();
@@ -281,11 +281,7 @@ export default function MembershipRegistrationForm() {
           <div className="flex gap-2 justify-end">
             <ButtonAction
               buttonLabel="Batal"
-              buttonAction={() =>
-                (
-                  document?.getElementById('my_modal_2') as HTMLDialogElement
-                ).close()
-              }
+              buttonAction={() => document.getElementById('my_modal_2').close()!}
               backgroundColor="transparent"
               hoverBackgroundColor="gray-100"
               darkHoverBackgroundColor="gray-700"
@@ -293,7 +289,7 @@ export default function MembershipRegistrationForm() {
             />
             <ButtonAction
               buttonLabel="Daftar"
-              buttonAction={async (e: React.ChangeEvent<any>) => {
+              buttonAction={async (e) => {
                 e.preventDefault();
                 onRegisterNewMembership();
               }}

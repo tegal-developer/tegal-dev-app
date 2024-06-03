@@ -26,13 +26,10 @@ export default async function postNewMembership({
     formData.append('linkedin', linkedin);
     formData.append('photo', photo as File);
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TEGAL_DEV_API_BASE_URL}/memberships`,
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+    const response = await fetch('api/memberships', {
+      method: 'POST',
+      body: formData,
+    });
 
     const responseJson = await response.json();
 

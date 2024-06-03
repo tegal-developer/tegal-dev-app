@@ -6,12 +6,12 @@ import EventSection from '@/components/organisms/EventSection';
 import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
 import Template from '@/components/templates/Template';
-import { getHomePageContent } from '@/data/remote/single';
-import getAllInvitationLinks from '@/data/remote/collection/get-all-invitation-links';
-import getAllCommunityBenefits from '@/data/remote/collection/get-all-community-benefits';
-import getAllCommunityHastags from '@/data/remote/collection/get-all-community-hashtags';
-import getAllCommunityActivities from '@/data/remote/collection/get-all-community-activities';
-import getAllFAQs from '@/data/remote/collection/get-all-faqs';
+import { getHomePageContent } from '@/data/remote/strapi/single';
+import getAllInvitationLinks from '@/data/remote/strapi/collection/get-all-invitation-links';
+import getAllCommunityBenefits from '@/data/remote/strapi/collection/get-all-community-benefits';
+import getAllCommunityHastags from '@/data/remote/strapi/collection/get-all-community-hashtags';
+import getAllCommunityActivities from '@/data/remote/strapi/collection/get-all-community-activities';
+import getAllFAQs from '@/data/remote/strapi/collection/get-all-faqs';
 import MemberSection from '@/components/organisms/MemberSection';
 
 export default async function Home() {

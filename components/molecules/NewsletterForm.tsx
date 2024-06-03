@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import InputText from '../atoms/InputText';
 import useInputText from '@/hooks/useInputText';
 import { isValidEmail } from '@/utils';
-import postNewsLetterSubscriber from '@/data/remote/collection/post-newsletter-subscriber';
+import postNewsLetterSubscriber from '@/data/remote/strapi/collection/post-newsletter-subscriber';
 import { useState } from 'react';
 
 export default function NewsletterForm() {
