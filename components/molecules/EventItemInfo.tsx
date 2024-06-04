@@ -1,18 +1,55 @@
+import { dateFormatter, getTime } from '@/utils';
 import TextBodyInfoItem from '../atoms/TextBodyInfoItem';
 import TextBodyItem from '../atoms/TextBodyItem';
 import TextHeadingItem from '../atoms/TextHeadingItem';
+import { CiCalendarDate, CiLocationOn, CiTimer } from 'react-icons/ci';
+import { MdRsvp } from 'react-icons/md';
 
-export default function EventItemInfo() {
+export default function EventItemInfo({
+  eventHeading,
+  eventStartDateTime,
+  eventEndDateTime,
+  eventLocation,
+  eventTotalRSVP,
+  eventMaxRSVP,
+  eventDescription,
+}: {
+  eventHeading: string;
+  eventStartDateTime: string;
+  eventEndDateTime: string;
+  eventLocation: string;
+  eventTotalRSVP: string;
+  eventMaxRSVP: string;
+  eventDescription: string;
+}) {
   return (
     <div className="flex flex-col gap-3">
-      <TextHeadingItem />
-      <TextBodyInfoItem text="Dipublikasikan pada Sabtu, 25 Mei 2024" />
-      <TextBodyInfoItem text="Trasa Coworking Space" />
-      <TextBodyItem
-        text="Tegal Dev merupakan sebuah komunitas developer teknologi informasi yang
-      dibentuk sejak tahun 2024 dan merupakan wadah untuk belajar dan kolaborasi
-      di Tegal"
-      />
+      <TextHeadingItem text={eventHeading} />
+      <div className="flex justify-between">
+        <div className="flex gap-2">
+          <CiCalendarDate />
+          <TextBodyInfoItem text={dateFormatter(eventStartDateTime)} />
+        </div>
+        <div className="flex gap-2">
+          <CiTimer />
+          <TextBodyInfoItem
+            text={`${getTime(eventStartDateTime)} - ${getTime(
+              eventEndDateTime,
+            )}`}
+          />
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <div className="flex gap-2">
+          <CiLocationOn />
+          <TextBodyInfoItem text={eventLocation} />
+        </div>
+        <div className="flex gap-2">
+          <p className="text-xs">{`${eventTotalRSVP}/${eventMaxRSVP}`}</p>
+          <MdRsvp size={20} />
+        </div>
+      </div>
+      <TextBodyItem text={eventDescription} />
     </div>
   );
 }

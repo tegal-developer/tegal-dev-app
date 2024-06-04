@@ -5,7 +5,6 @@ export default function ButtonEventItem() {
       className={`
         bg-[#E7EDF2]
         text-gray-700
-        active:scale-95
         duration-150
         py-1
         px-10

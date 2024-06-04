@@ -6,7 +6,7 @@ import TextPublisherBlogThumbnail from '../atoms/TextPublisherBlogThumbnail';
 export default function BlogItemInfo() {
   return (
     <div className="flex flex-col gap-3">
-      <TextHeadingItem />
+      <TextHeadingItem text="Fundamental Programming itu Penting" />
       <TextBodyInfoItem text="Dipublikasikan pada Sabtu, 24 Mei 2024" />
       <TextPublisherBlogThumbnail />
       <TextBodyItem

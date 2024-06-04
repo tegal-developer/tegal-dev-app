@@ -1,7 +1,11 @@
 export default async function getHeadlineNewestEvents() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events`,
-  );
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events?populate=*`,
+    );
 
-  return response.json();
+    return response.json();
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
 }

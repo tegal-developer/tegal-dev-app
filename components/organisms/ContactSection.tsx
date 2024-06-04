@@ -10,8 +10,8 @@ export default function ContactSection({
     <section
       id="contact"
       className="
-        bg-white
-        dark:bg-gray-900
+      bg-[#FAFBFD]
+      dark:bg-gray-900
         border-t
         border-gray-300
         dark:border-gray-700

@@ -18,7 +18,7 @@ export default function HeroSection({
   communityHashtags: any;
 }) {
   return (
-    <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900">
+    <section className="px-5 pt-14 bg-[#FAFBFD] dark:bg-gray-900 ">
       <BlurryEffect />
       <div
         className="

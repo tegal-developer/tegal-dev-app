@@ -1,7 +1,7 @@
-export default async function getHeadlineNewestBlogs() {
+export default async function getAllNewestEventsByPage() {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/blogs`,
+      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events`,
     );
 
     return response.json();

@@ -8,8 +8,10 @@ import toast from 'react-hot-toast';
 
 export default function EventSection({
   eventHeading,
+  headlineNewestEvents,
 }: {
   eventHeading: string;
+  headlineNewestEvents: any;
 }) {
   const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
 
@@ -33,9 +35,17 @@ export default function EventSection({
     >
       <Container>
         <TextHeadingSection heading={eventHeading} />
-        <p>Belum ada event nih!</p>
-        {/* <EventItemList />
-        <ButtonSection label="Muat lebih banyak" action={handleButtoClick} /> */}
+        {headlineNewestEvents === null || headlineNewestEvents?.length === 0 ? (
+          <p>Belum ada event nih!</p>
+        ) : (
+          <>
+            <EventItemList headlineNewestEvents={headlineNewestEvents} />
+            <ButtonSection
+              label="Lihat lebih banyak"
+              action={handleButtoClick}
+            />
+          </>
+        )}
       </Container>
     </section>
   );

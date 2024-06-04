@@ -1,5 +1,3 @@
-'use client';
-
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import parse from 'html-react-parser';
 
@@ -18,7 +16,7 @@ export default function QuestionItem({
 }) {
   return (
     <div
-      className="collapse cursor-pointer bg-gray-100 dark:bg-gray-800"
+      className="collapse cursor-pointer bg-[#FAFBFD] dark:bg-gray-800"
       onClick={() => {
         if (selected === questionId) setIsSelected(0);
         else setIsSelected(questionId);
