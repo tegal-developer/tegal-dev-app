@@ -34,7 +34,6 @@ export default function ButtonAction({
         rounded-lg
         focus:ring-4
         w-full
-        md:w-56
         active:scale-95
         duration-150
         focus:ring-gray-100

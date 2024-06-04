@@ -5,6 +5,7 @@ import TextHeadingSection from '../atoms/TextHeadingSection';
 import EventItemList from '../molecules/EventItemList';
 import ButtonSection from '../atoms/ButtonSection';
 import toast from 'react-hot-toast';
+import { Suspense } from 'react';
 
 export default function EventSection({
   eventHeading,
@@ -39,7 +40,9 @@ export default function EventSection({
           <p>Belum ada event nih!</p>
         ) : (
           <>
-            <EventItemList headlineNewestEvents={headlineNewestEvents} />
+            <Suspense>
+              <EventItemList headlineNewestEvents={headlineNewestEvents} />
+            </Suspense>
             <ButtonSection
               label="Lihat lebih banyak"
               action={handleButtoClick}

@@ -11,18 +11,20 @@ export default function InvitationButtonLinks({
 }) {
   return (
     <>
-      <ButtonAction
-        buttonLabel="Gabung Keanggotaan"
-        buttonAction={() =>
-          (
-            document?.getElementById('my_modal_2') as HTMLDialogElement
-          ).showModal()
-        }
-        backgroundColor="transparent"
-        hoverBackgroundColor="gray-100"
-        darkHoverBackgroundColor="gray-700"
-        textColor="gray-700"
-      />
+      <div className="md:w-56">
+        <ButtonAction
+          buttonLabel="Gabung Keanggotaan"
+          buttonAction={() =>
+            (
+              document?.getElementById('my_modal_2') as HTMLDialogElement
+            ).showModal()
+          }
+          backgroundColor="transparent"
+          hoverBackgroundColor="gray-100"
+          darkHoverBackgroundColor="gray-700"
+          textColor="gray-700"
+        />
+      </div>
       <DialogRegistration />
       {invitationLinks?.map((invitationLink: any) => (
         <ButtonLink
