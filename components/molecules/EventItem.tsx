@@ -30,8 +30,9 @@ export default function EventItem({
       bg-[#FAFBFD]
       dark:bg-gray-900
       w-full
-      min-w-[340px]
-      max-w-[540px]
+      min-w-[300px]
+      max-w-[360px]
+      2xl:max-w-[560px]
       flex flex-col
       2xl:flex-row
       gap-5
