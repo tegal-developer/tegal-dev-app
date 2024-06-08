@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import EventItem from './EventItem';
 import Image from 'next/image';
 import { CiCalendarDate, CiLocationOn, CiTimer } from 'react-icons/ci';
@@ -7,9 +7,8 @@ import { MdRsvp } from 'react-icons/md';
 import parse from 'html-react-parser';
 import ButtonAction from '../atoms/ButtonAction';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { TbProgressBolt } from 'react-icons/tb';
-import getEventDetailBySlug from '@/data/remote/strapi/collection/get-event-detail-by-slug';
 import TegalDevLogo from '@/public/Tegal.dev-AA-Exception.png';
 
 export default function EventItemList({
@@ -17,32 +16,20 @@ export default function EventItemList({
 }: {
   headlineNewestEvents: any;
 }) {
-  const [eventDetail, setEventDetail] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [eventDetail] = useState(null);
   const [isLoadingEventDetail, setIsLoadingEventDetail] = useState(false);
-  const searchParams = useSearchParams();
-  const event = searchParams.get('event');
   const router = useRouter();
-
-  useEffect(() => {
-    setIsLoading(true);
-    if (event !== null) {
-      getEventDetailBySlug(event)
-        .then((retrievedEventDetail) =>
-          setEventDetail(retrievedEventDetail?.data[0]),
-        )
-        .then(() =>
-          (
-            document.getElementById('modal_event') as HTMLDialogElement
-          ).showModal(),
-        );
-    }
-    setIsLoading(false);
-  }, [event]);
+  const pathname = usePathname();
 
   return (
-    <div>
-      <div className="flex gap-5 w-full xl:justify-evenly">
+    <>
+      <div
+        className={`flex gap-10 w-full p-5 ${
+          pathname === '/events'
+            ? 'flex-wrap justify-center'
+            : 'overflow-x-scroll md:overflow-hidden md:justify-center'
+        }`}
+      >
         {headlineNewestEvents?.map((headlineEvent: any) => (
           <EventItem
             key={headlineEvent?.id}
@@ -57,24 +44,9 @@ export default function EventItemList({
             eventTotalRSVP={headlineEvent?.attributes?.total_rsvp}
             eventMaxRSVP={headlineEvent?.attributes?.max_rsvp}
             eventDescription={headlineEvent?.attributes?.description}
-            setEventDetail={setEventDetail}
             setIsLoadingEventDetail={setIsLoadingEventDetail}
           />
         ))}
-      </div>
-      <div
-        id="loading-screen"
-        className={`w-full h-full fixed ${
-          isLoading ? 'block' : 'hidden'
-        } top-0 left-0 bg-[#FAFBFD] dark:bg-gray-800 z-50`}
-      >
-        <Image
-          src={TegalDevLogo}
-          alt="Tegal Dev logo"
-          width={75}
-          height={75}
-          className="top-1/2 my-0 mx-auto block relative animate-bounce"
-        />
       </div>
       <div
         id="loading-screen"
@@ -309,6 +281,6 @@ export default function EventItemList({
           </button>
         </form>
       </dialog>
-    </div>
+    </>
   );
 }

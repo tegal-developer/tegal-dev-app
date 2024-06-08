@@ -24,6 +24,7 @@ export default function Footer({ content }: { content: string }) {
       <div
         className="
         lg:container
+        lg:max-w-[1800px]
         lg:mx-auto
         flex
         flex-col-reverse

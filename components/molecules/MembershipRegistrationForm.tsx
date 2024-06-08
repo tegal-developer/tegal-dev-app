@@ -5,6 +5,7 @@ import ButtonAction from '../atoms/ButtonAction';
 import { useState } from 'react';
 import Link from 'next/link';
 import postNewMembership from '@/data/remote/next/post-new-membership';
+import { isValidEmail } from '@/utils';
 
 export default function MembershipRegistrationForm() {
   const [name, nameChangeHandler] = useInputText('');
@@ -58,6 +59,14 @@ export default function MembershipRegistrationForm() {
         setIsWarning({
           warning: true,
           message: 'Ups, email kamu wajib diisi nih!',
+        });
+        return setIsLoading(false);
+      }
+
+      if (!isValidEmail(email)) {
+        setIsWarning({
+          warning: true,
+          message: 'Ups, email kamu ngga valid nih!',
         });
         return setIsLoading(false);
       }

@@ -33,6 +33,7 @@ export default function HeroSection({
           md:flex-row
           justify-between
           lg:container
+          lg:max-w-[1800px]
           lg:mx-auto"
       >
         <SubHeroContent

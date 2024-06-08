@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Navbar from '../molecules/Navbar';
 
 export default function Header({
@@ -16,8 +15,6 @@ export default function Header({
   logoImageWidth: number;
   logoImageHeight: number;
 }) {
-  const [isClosed, setIsClosed] = useState(false);
-
   return (
     <header>
       <Navbar

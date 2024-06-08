@@ -19,7 +19,7 @@ export default function FAQSection({
         border-gray-300
         dark:border-gray-700"
     >
-      <div className="lg:container lg:mx-auto">
+      <div className="lg:container lg:max-w-[1800px] lg:mx-auto">
         <FAQ faqHeading={faqHeading} faqs={faqs} />
       </div>
     </section>

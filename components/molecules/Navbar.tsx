@@ -42,12 +42,12 @@ export default function Navbar({
         duration-300"
     >
       <div
-        className="lg:container lg:mx-auto flex
+        className="lg:container lg:max-w-[1800px] lg:mx-auto flex
         items-center
         justify-between"
       >
         <div className="flex items-center gap-20">
-          <Link href={'#'} onClick={() => setIsOpen(!isOpen)}>
+          <Link href={'/'}>
             <Logo
               imageLightSource={logoImageLightSource}
               imageDarkSource={logoImageDarkSource}

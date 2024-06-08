@@ -5,6 +5,7 @@ export default function Container({
     <div
       className="
         lg:container
+        lg:max-w-[1800px]
         lg:mx-auto 
         flex
         flex-col

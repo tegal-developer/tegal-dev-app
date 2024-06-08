@@ -4,8 +4,8 @@ import Container from '../templates/Container';
 import TextHeadingSection from '../atoms/TextHeadingSection';
 import EventItemList from '../molecules/EventItemList';
 import ButtonSection from '../atoms/ButtonSection';
-import toast from 'react-hot-toast';
 import { Suspense } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function EventSection({
   eventHeading,
@@ -14,25 +14,26 @@ export default function EventSection({
   eventHeading: string;
   headlineNewestEvents: any;
 }) {
-  const handleButtoClick = () => toast('Fitur ini akan segera diluncurkan!');
+  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <section
       id="event"
-      className="
+      className={`
         bg-white
         dark:bg-gray-900
-        border-t
         border-gray-300
         dark:border-gray-700
         px-5
         py-12
+        ${pathname === '/events' ? 'pt-32' : ''}
         text-gray-700
         dark:text-white
         flex
         flex-col
         gap-10
-        items-center"
+        items-center`}
     >
       <Container>
         <TextHeadingSection heading={eventHeading} />
@@ -43,10 +44,14 @@ export default function EventSection({
             <Suspense>
               <EventItemList headlineNewestEvents={headlineNewestEvents} />
             </Suspense>
-            <ButtonSection
-              label="Lihat lebih banyak"
-              action={handleButtoClick}
-            />
+            {pathname === '/events' ? (
+              ''
+            ) : (
+              <ButtonSection
+                label="Lihat lebih banyak"
+                action={() => router.push('/events')}
+              />
+            )}
           </>
         )}
       </Container>
