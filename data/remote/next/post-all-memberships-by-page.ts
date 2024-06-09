@@ -1,4 +1,4 @@
-export default async function getAllMembershipsByPage(page: number) {
+export default async function postAllMembershipsByPage(page: number) {
   try {
     const response = await fetch('api/memberships', {
       method: 'POST',

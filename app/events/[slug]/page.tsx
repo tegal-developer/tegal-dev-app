@@ -1,5 +1,5 @@
 import Template from '@/components/templates/Template';
-import getEventDetailBySlug from '@/data/remote/strapi/collection/get-event-detail-by-slug';
+import getEventBySlug from '@/data/remote/strapi/collection/get-event-by-slug';
 import EventSection from '@/components/organisms/EventSection';
 import getAllNewestEventsByPage from '@/data/remote/strapi/collection/get-all-newest-events-by-page';
 import EventDetailSection from '@/components/organisms/EventDetailSection';
@@ -11,7 +11,7 @@ export default async function EventDetail({
   params: { slug: string };
 }) {
   const eventDetailPageContent = await getEventDetailPageContent();
-  const eventDetail = await getEventDetailBySlug(slug);
+  const eventDetail = await getEventBySlug(slug);
   const headlineNewestEvents = await getAllNewestEventsByPage(1);
 
   return (

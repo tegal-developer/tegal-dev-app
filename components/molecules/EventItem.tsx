@@ -13,7 +13,6 @@ export default function EventItem({
   eventTotalRSVP,
   eventMaxRSVP,
   eventDescription,
-  setIsLoadingEventDetail,
 }: {
   eventSlug: string;
   eventImage: string;
@@ -24,7 +23,6 @@ export default function EventItem({
   eventTotalRSVP: string;
   eventMaxRSVP: string;
   eventDescription: string;
-  setIsLoadingEventDetail: any;
 }) {
   const router = useRouter();
 
@@ -52,11 +50,7 @@ export default function EventItem({
           dark:hover:bg-gray-700
           dark:border
           dark:border-gray-700"
-        onClick={async () => {
-          setIsLoadingEventDetail(true);
-          router.push(`/events/${eventSlug}`);
-          setIsLoadingEventDetail(false);
-        }}
+        onClick={() => router.push(`/events/${eventSlug}`)}
       >
         <Image
           className="rounded-lg object-cover w-full 2xl:w-[200px]"

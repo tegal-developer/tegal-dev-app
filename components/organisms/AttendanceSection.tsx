@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import getRSVPByAttendanceCode from '@/data/remote/strapi/collection/get-rsvp-by-attendance-code';
 import putRSVPById from '@/data/remote/strapi/collection/put-rsvp-by-id';
 import getAttendanceAccessByCode from '@/data/remote/strapi/collection/get-attendance-access-by-code';
-import getEventDetailByEventId from '@/data/remote/strapi/collection/get-event-detail-by-id';
+import getEventById from '@/data/remote/strapi/collection/get-event-by-id';
 import { useState } from 'react';
 
 export default function AttendanceSection() {
@@ -98,8 +98,8 @@ export default function AttendanceSection() {
                   return toast.error('Sudah ditandai hadir');
                 }
 
-                const eventDetail = await getEventDetailByEventId(
-                  rsvp?.data[0]?.attributes?.event_id?.data?.id,
+                const eventDetail = await getEventById(
+                  rsvp?.data[0]?.attributes?.event?.data?.id,
                 );
 
                 await putRSVPById(

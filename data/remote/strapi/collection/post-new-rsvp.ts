@@ -26,9 +26,9 @@ export default async function postNewRSVP({
         },
         body: JSON.stringify({
           data: {
-            user_id: userId,
-            event_id: eventId,
-            rsvp_status_id: rsvpStatusId,
+            user: userId,
+            event: eventId,
+            rsvp_status: rsvpStatusId,
             attendance_code: attendanceCode,
             motivation,
             expectation,

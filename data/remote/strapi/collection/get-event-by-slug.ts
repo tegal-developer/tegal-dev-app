@@ -1,4 +1,4 @@
-export default async function getEventDetailBySlug(slug: string) {
+export default async function getEventBySlug(slug: string) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events?filters[slug]=${slug}&populate=*`,

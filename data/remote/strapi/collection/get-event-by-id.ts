@@ -1,4 +1,4 @@
-export default async function getEventDetailByEventId(eventId: string) {
+export default async function getEventById(eventId: string) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events/${eventId}`,

@@ -9,7 +9,6 @@ import ButtonAction from '../atoms/ButtonAction';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { usePathname, useRouter } from 'next/navigation';
 import { TbProgressBolt } from 'react-icons/tb';
-import TegalDevLogo from '@/public/Tegal.dev-AA-Exception.png';
 
 export default function EventItemList({
   headlineNewestEvents,
@@ -17,7 +16,6 @@ export default function EventItemList({
   headlineNewestEvents: any;
 }) {
   const [eventDetail] = useState(null);
-  const [isLoadingEventDetail, setIsLoadingEventDetail] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -44,23 +42,8 @@ export default function EventItemList({
             eventTotalRSVP={headlineEvent?.attributes?.total_rsvp}
             eventMaxRSVP={headlineEvent?.attributes?.max_rsvp}
             eventDescription={headlineEvent?.attributes?.description}
-            setIsLoadingEventDetail={setIsLoadingEventDetail}
           />
         ))}
-      </div>
-      <div
-        id="loading-screen"
-        className={`w-full h-full fixed ${
-          isLoadingEventDetail ? 'block' : 'hidden'
-        } top-0 left-0 bg-white dark:bg-gray-700 opacity-75 z-50`}
-      >
-        <Image
-          src={TegalDevLogo}
-          alt="Tegal Dev logo"
-          width={75}
-          height={75}
-          className="top-1/2 my-0 mx-auto block relative animate-bounce"
-        />
       </div>
       <dialog
         id={`modal_event`}
