@@ -3,13 +3,17 @@ import { generateRandomString } from '@/utils';
 export default async function postNewRSVP({
   userId,
   eventId,
+  rsvpStatusId,
   motivation,
   expectation,
+  queueNumber = 0,
 }: {
   userId: number;
   eventId: number;
+  rsvpStatusId: number;
   motivation: string;
   expectation: string;
+  queueNumber?: number;
 }) {
   try {
     const attendanceCode = generateRandomString(5);
@@ -24,9 +28,11 @@ export default async function postNewRSVP({
           data: {
             user_id: userId,
             event_id: eventId,
+            rsvp_status_id: rsvpStatusId,
             attendance_code: attendanceCode,
             motivation,
             expectation,
+            queue_number: queueNumber,
           },
         }),
       },

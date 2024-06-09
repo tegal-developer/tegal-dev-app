@@ -1,7 +1,7 @@
-export default async function putRSVPByAttendanceCode(rsvpId: string) {
+export default async function putEventById(eventId: number, totalRSVP: number) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/rsvps/${rsvpId}?populate=*`,
+      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/events/${eventId}`,
       {
         method: 'PUT',
         headers: {
@@ -9,9 +9,7 @@ export default async function putRSVPByAttendanceCode(rsvpId: string) {
         },
         body: JSON.stringify({
           data: {
-            attendance_code: '',
-            is_attended: true,
-            attended_at: new Date().getTime(),
+            total_rsvp: totalRSVP,
           },
         }),
       },

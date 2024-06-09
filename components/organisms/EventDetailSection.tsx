@@ -18,6 +18,7 @@ import getRSVPByUserId from '@/data/remote/strapi/collection/get-rsvp-by-user-id
 import Link from 'next/link';
 import TextHeadingSection from '../atoms/TextHeadingSection';
 import postSendMailRSVP from '@/data/remote/strapi/collection/post-send-mail-rsvp';
+import putEventById from '@/data/remote/strapi/collection/put-event-by-id';
 
 export default function EventDetailSection({
   eventDetailHeading,
@@ -37,6 +38,294 @@ export default function EventDetailSection({
   const [expectation, expectationChangeHandler] = useInputText('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isWaitingList, setIsWaitingList] = useState(false);
+
+  const renderUI = () => {
+    if (isSuccess) {
+      return (
+        <div role="alert" className="alert alert-success">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>
+            Yay, kamu berhasil terdaftar di event ini. Silakan cek email yah!
+          </span>
+        </div>
+      );
+    }
+
+    if (isWaitingList) {
+      return (
+        <div role="alert" className="alert alert-warning">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>
+            Yay, kamu terdaftar di waiting list. Mohon tunggu informasi
+            selanjutnya!
+          </span>
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-full">
+        <ButtonAction
+          buttonLabel="RSVP"
+          buttonAction={async () => {
+            setIsLoading(true);
+            try {
+              if (name === undefined || name === '') {
+                toast.error('Ups, nama kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (email === undefined || email === '') {
+                toast.error('Ups, email kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (!isValidEmail(email)) {
+                toast.error('Ups! Email yang kamu isi gak valid nih!');
+                return setIsLoading(false);
+              }
+
+              if (phoneNumber === undefined || phoneNumber === '') {
+                toast.error('Ups, nomor whatsapp kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (interest === undefined || interest === '') {
+                toast.error('Ups, minat kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (occupation === undefined || occupation === '') {
+                toast.error('Ups, pekerjaan kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (institution === undefined || institution === '') {
+                toast.error('Ups, institusi kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (address === undefined || address === '') {
+                toast.error('Ups alamat kamu wajib diisi nih!');
+                return setIsLoading(false);
+              }
+
+              if (motivation === undefined || motivation === '') {
+                toast.error(
+                  'Ups, kamu wajib mengisi alasan mengikuti event ini nih!',
+                );
+                return setIsLoading(false);
+              }
+
+              if (expectation === undefined || expectation === '') {
+                toast.error(
+                  'Ups, kamu wajib mengisi harapan setelah mengikuti event ini nih!',
+                );
+                return setIsLoading(false);
+              }
+
+              const registeredUser = await postNewUser({
+                name,
+                email,
+                phoneNumber,
+                interest,
+                occupation,
+                institution,
+                address,
+              });
+
+              if (registeredUser?.data === null) {
+                const retrievedUser = await getUserByEmail(email);
+
+                const { id: userId } = retrievedUser[0];
+
+                const retrievedRSVP = await getRSVPByUserId(userId);
+
+                if (retrievedRSVP?.data?.length > 0) {
+                  toast.error('Ups, kamu sudah terdaftar di event ini tau!');
+                  return setIsLoading(false);
+                }
+
+                if (
+                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
+                  (eventDetail as any)?.data[0]?.attributes?.max_rsvp
+                ) {
+                  await postNewRSVP({
+                    userId,
+                    eventId: (eventDetail as any)?.data[0]?.id,
+                    rsvpStatusId: 2,
+                    motivation,
+                    expectation,
+                    queueNumber:
+                      (eventDetail as any)?.data[0]?.attributes?.total_rsvp +
+                      1 -
+                      (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
+                  });
+
+                  setIsWaitingList(true);
+                  setIsLoading(false);
+
+                  return await putEventById(
+                    (eventDetail as any)?.data[0]?.id,
+                    (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                  );
+                }
+
+                const rsvp = await postNewRSVP({
+                  userId,
+                  eventId: (eventDetail as any)?.data[0]?.id,
+                  rsvpStatusId: 1,
+                  motivation,
+                  expectation,
+                });
+
+                await putEventById(
+                  (eventDetail as any)?.data[0]?.id,
+                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                );
+
+                await postSendMailRSVP({
+                  rsvpName: name,
+                  rsvpEmail: email,
+                  rsvpAttendanceQRCode: `${
+                    process.env.NEXT_PUBLIC_CMS_API_BASE_URL
+                  }/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
+                    rsvp?.data?.attributes?.attendance_code
+                  }&filename=qrcode-event-attendance-${
+                    (eventDetail as any)?.data[0]?.id
+                  }&download=true`,
+                  eventName: (eventDetail as any)?.data[0]?.attributes?.title,
+                  eventDate: dateFormatter(
+                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                  ),
+                  eventTime: `${getTime(
+                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                  )} - ${getTime(
+                    (eventDetail as any)?.data[0]?.attributes?.end_date_time,
+                  )}`,
+                  eventLocation: (eventDetail as any)?.data[0]?.attributes
+                    ?.location,
+                  eventGMAPLocationLink: (eventDetail as any)?.data[0]
+                    ?.attributes?.gmap_location_link,
+                });
+
+                setIsSuccess(true);
+              } else {
+                const {
+                  user: { id: userId },
+                } = registeredUser;
+
+                const retrievedRSVP = await getRSVPByUserId(userId);
+
+                if (retrievedRSVP?.data?.length > 0) {
+                  toast.error('Ups, kamu sudah terdaftar di event ini tau!');
+                  return setIsLoading(false);
+                }
+
+                if (
+                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
+                  (eventDetail as any)?.data[0]?.attributes?.max_rsvp
+                ) {
+                  await postNewRSVP({
+                    userId,
+                    eventId: (eventDetail as any)?.data[0]?.id,
+                    rsvpStatusId: 2,
+                    motivation,
+                    expectation,
+                    queueNumber:
+                      (eventDetail as any)?.data[0]?.attributes?.total_rsvp +
+                      1 -
+                      (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
+                  });
+
+                  setIsWaitingList(true);
+                  setIsLoading(false);
+
+                  return await putEventById(
+                    (eventDetail as any)?.data[0]?.id,
+                    (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                  );
+                }
+
+                const rsvp = await postNewRSVP({
+                  userId,
+                  eventId: (eventDetail as any)?.data[0]?.id,
+                  rsvpStatusId: 1,
+                  motivation,
+                  expectation,
+                });
+
+                await putEventById(
+                  (eventDetail as any)?.data[0]?.id,
+                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                );
+
+                await postSendMailRSVP({
+                  rsvpName: name,
+                  rsvpEmail: email,
+                  rsvpAttendanceQRCode: `${
+                    process.env.NEXT_PUBLIC_CMS_API_BASE_URL
+                  }/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
+                    rsvp?.data?.attributes?.attendance_code
+                  }&filename=qrcode-event-attendance-${
+                    (eventDetail as any)?.data[0]?.id
+                  }&download=true`,
+                  eventName: (eventDetail as any)?.data[0]?.attributes?.title,
+                  eventDate: dateFormatter(
+                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                  ),
+                  eventTime: `${getTime(
+                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                  )} - ${getTime(
+                    (eventDetail as any)?.data[0]?.attributes?.end_date_time,
+                  )}`,
+                  eventLocation: (eventDetail as any)?.data[0]?.attributes
+                    ?.location,
+                  eventGMAPLocationLink: (eventDetail as any)?.data[0]
+                    ?.attributes?.gmap_location_link,
+                });
+
+                setIsSuccess(true);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+            setIsLoading(false);
+          }}
+          backgroundColor="[#1B71D8]"
+          hoverBackgroundColor="[#0d4385]"
+          darkHoverBackgroundColor="[#0d4385]"
+          textColor="white"
+          isDisabled={isLoading}
+        />
+      </div>
+    );
+  };
 
   return (
     <section
@@ -282,246 +571,7 @@ export default function EventDetailSection({
                           <span className="text-red-500">*</span>
                         </label>
                       </div>
-                      {!isSuccess ? (
-                        <div className="w-full">
-                          <ButtonAction
-                            buttonLabel="RSVP"
-                            buttonAction={async () => {
-                              setIsLoading(true);
-                              try {
-                                if (name === undefined || name === '') {
-                                  toast.error(
-                                    'Ups, nama kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (email === undefined || email === '') {
-                                  toast.error(
-                                    'Ups, email kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (!isValidEmail(email)) {
-                                  toast.error(
-                                    'Ups! Email yang kamu isi gak valid nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (
-                                  phoneNumber === undefined ||
-                                  phoneNumber === ''
-                                ) {
-                                  toast.error(
-                                    'Ups, nomor whatsapp kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (interest === undefined || interest === '') {
-                                  toast.error(
-                                    'Ups, minat kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (
-                                  occupation === undefined ||
-                                  occupation === ''
-                                ) {
-                                  toast.error(
-                                    'Ups, pekerjaan kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (
-                                  institution === undefined ||
-                                  institution === ''
-                                ) {
-                                  toast.error(
-                                    'Ups, institusi kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (address === undefined || address === '') {
-                                  toast.error(
-                                    'Ups alamat kamu wajib diisi nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (
-                                  motivation === undefined ||
-                                  motivation === ''
-                                ) {
-                                  toast.error(
-                                    'Ups, kamu wajib mengisi alasan mengikuti event ini nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                if (
-                                  expectation === undefined ||
-                                  expectation === ''
-                                ) {
-                                  toast.error(
-                                    'Ups, kamu wajib mengisi harapan setelah mengikuti event ini nih!',
-                                  );
-                                  return setIsLoading(false);
-                                }
-
-                                const registeredUser = await postNewUser({
-                                  name,
-                                  email,
-                                  phoneNumber,
-                                  interest,
-                                  occupation,
-                                  institution,
-                                  address,
-                                });
-
-                                if (registeredUser?.data === null) {
-                                  const retrievedUser = await getUserByEmail(
-                                    email,
-                                  );
-
-                                  const { id: userId } = retrievedUser[0];
-
-                                  const retrievedRSVP = await getRSVPByUserId(
-                                    userId,
-                                  );
-
-                                  if (retrievedRSVP?.data?.length > 0) {
-                                    toast.error(
-                                      'Ups, kamu sudah terdaftar di event ini tau!',
-                                    );
-                                    return setIsLoading(false);
-                                  }
-
-                                  const rsvp = await postNewRSVP({
-                                    userId,
-                                    eventId: eventDetail?.data[0]?.id,
-                                    motivation,
-                                    expectation,
-                                  });
-
-                                  await postSendMailRSVP({
-                                    rsvpName: name,
-                                    rsvpEmail: email,
-                                    rsvpAttendanceQRCode: `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
-                                      rsvp?.data?.attributes?.attendance_code
-                                    }&filename=qrcode-event-attendance-${
-                                      (eventDetail as any)?.data[0]?.id
-                                    }&download=true`,
-                                    eventName: (eventDetail as any)?.data[0]
-                                      ?.attributes?.title,
-                                    eventDate: dateFormatter(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.start_date_time,
-                                    ),
-                                    eventTime: `${getTime(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.start_date_time,
-                                    )} - ${getTime(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.end_date_time,
-                                    )}`,
-                                    eventLocation: (eventDetail as any)?.data[0]
-                                      ?.attributes?.location,
-                                    eventGMAPLocationLink: (eventDetail as any)
-                                      ?.data[0]?.attributes?.gmap_location_link,
-                                  });
-
-                                  setIsSuccess(true);
-                                } else {
-                                  const {
-                                    user: { id: userId },
-                                  } = registeredUser;
-
-                                  const retrievedRSVP = await getRSVPByUserId(
-                                    userId,
-                                  );
-
-                                  if (retrievedRSVP?.data?.length > 0) {
-                                    toast.error(
-                                      'Ups, kamu sudah terdaftar di event ini tau!',
-                                    );
-                                    return setIsLoading(false);
-                                  }
-
-                                  const rsvp = await postNewRSVP({
-                                    userId,
-                                    eventId: eventDetail?.data[0]?.id,
-                                    motivation,
-                                    expectation,
-                                  });
-
-                                  await postSendMailRSVP({
-                                    rsvpName: name,
-                                    rsvpEmail: email,
-                                    rsvpAttendanceQRCode: `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
-                                      rsvp?.data?.attributes?.attendance_code
-                                    }&filename=qrcode-event-attendance-${
-                                      (eventDetail as any)?.data[0]?.id
-                                    }&download=true`,
-                                    eventName: (eventDetail as any)?.data[0]
-                                      ?.attributes?.title,
-                                    eventDate: dateFormatter(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.start_date_time,
-                                    ),
-                                    eventTime: `${getTime(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.start_date_time,
-                                    )} - ${getTime(
-                                      (eventDetail as any)?.data[0]?.attributes
-                                        ?.end_date_time,
-                                    )}`,
-                                    eventLocation: (eventDetail as any)?.data[0]
-                                      ?.attributes?.location,
-                                    eventGMAPLocationLink: (eventDetail as any)
-                                      ?.data[0]?.attributes?.gmap_location_link,
-                                  });
-
-                                  setIsSuccess(true);
-                                }
-                              } catch (error) {
-                                console.log(error);
-                              }
-                              setIsLoading(false);
-                            }}
-                            backgroundColor="[#1B71D8]"
-                            hoverBackgroundColor="[#0d4385]"
-                            darkHoverBackgroundColor="[#0d4385]"
-                            textColor="white"
-                            isDisabled={isLoading}
-                          />
-                        </div>
-                      ) : (
-                        <div role="alert" className="alert alert-success">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="stroke-current shrink-0 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          <span>
-                            Yay, kamu berhasil terdaftar di event ini. Silakan
-                            cek email yah!
-                          </span>
-                        </div>
-                      )}
+                      {renderUI()}
                     </form>
                   </div>
                 </div>
