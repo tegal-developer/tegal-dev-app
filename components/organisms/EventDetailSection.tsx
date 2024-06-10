@@ -338,7 +338,7 @@ export default function EventDetailSection({
           dark:border-gray-700
           px-5
           py-12
-          pt-32
+          pt-24
           text-gray-700
           dark:text-white
           flex
@@ -349,9 +349,9 @@ export default function EventDetailSection({
       <TextHeadingSection heading={eventDetailHeading} />
       <Container>
         <div className="bg-[#FAFBFD] dark:bg-gray-900 text-gray-700 dark:text-white p-5 dark:border dark:border-gray-700 md:p-10 rounded-xl w-full">
-          <div className="flex flex-col md:flex-row gap-10 mt-5">
+          <div className="flex flex-col xl:flex-row gap-10 mt-5">
             <Image
-              className="rounded-lg object-cover w-full max-w-[420px] max-h-[420px]"
+              className="rounded-lg object-cover w-full xl:max-w-[420px] xl:max-h-[420px]"
               src={
                 (eventDetail as any)?.data[0]?.attributes?.flyer_image?.data
                   ?.attributes?.url
@@ -437,6 +437,7 @@ export default function EventDetailSection({
                       text-xs
                       font-semibold
                       text-center
+                      ml-4
                       mt-2
                       mb-0
                       text-black

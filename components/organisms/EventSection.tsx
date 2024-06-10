@@ -5,7 +5,7 @@ import TextHeadingSection from '../atoms/TextHeadingSection';
 import EventItemList from '../molecules/EventItemList';
 import ButtonSection from '../atoms/ButtonSection';
 import { Suspense } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export default function EventSection({
   eventHeading,
@@ -14,7 +14,6 @@ export default function EventSection({
   eventHeading: string;
   headlineNewestEvents: any;
 }) {
-  const router = useRouter();
   const pathname = usePathname();
 
   return (
@@ -27,7 +26,7 @@ export default function EventSection({
         dark:border-gray-700
         px-5
         py-12
-        ${pathname === '/events' ? 'pt-32' : ''}
+        ${pathname === '/events' ? 'pt-24' : 'pt-6'}
         text-gray-700
         dark:text-white
         flex
@@ -52,7 +51,7 @@ export default function EventSection({
                 <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
                   2
                 </button>
-                <button className="join-item btn bg-white hover:bg-[#E7EDF2] btn-disabled border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
                   ...
                 </button>
                 <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
