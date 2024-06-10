@@ -203,6 +203,7 @@ export default function EventDetailSection({
                   motivation,
                   expectation,
                 });
+                console.log(rsvp);
 
                 await putEventById(
                   (eventDetail as any)?.data[0]?.id,
@@ -214,7 +215,9 @@ export default function EventDetailSection({
                   rsvpEmail: email,
                   rsvpAttendanceQRCode: `${
                     process.env.NEXT_PUBLIC_CMS_API_BASE_URL
-                  }/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
+                  }/qrcode-generator?url=https://tegal.dev/events/${
+                    (eventDetail as any)?.data[0]?.attributes?.slug
+                  }/attendances?code=${
                     rsvp?.data?.attributes?.attendance_code
                   }&filename=qrcode-event-attendance-${
                     (eventDetail as any)?.data[0]?.id
@@ -290,7 +293,9 @@ export default function EventDetailSection({
                   rsvpEmail: email,
                   rsvpAttendanceQRCode: `${
                     process.env.NEXT_PUBLIC_CMS_API_BASE_URL
-                  }/qrcode-generator?url=https://tegal.dev/events/attendances?code=${
+                  }/qrcode-generator?url=https://tegal.dev/events/${
+                    (eventDetail as any)?.data[0]?.attributes?.slug
+                  }/attendances?code=${
                     rsvp?.data?.attributes?.attendance_code
                   }&filename=qrcode-event-attendance-${
                     (eventDetail as any)?.data[0]?.id
@@ -419,7 +424,7 @@ export default function EventDetailSection({
                     } Exp Point`}</p>
                   </div>
                 </div>
-                <div className="tracking-wide text-xs md:text-lg">
+                <div className="tracking-wide text-xs md:text-lg space-y-3">
                   {(eventDetail as any)?.data[0]?.attributes?.description !==
                   undefined
                     ? parse(
