@@ -1,14 +1,17 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function ButtonSection({
   label,
-  action,
+  destination,
 }: {
   label: string;
-  action: any;
+  destination: any;
 }) {
   return (
-    <button
+    <Link
+      href={destination}
       type="button"
       className="
         sm:min-w-[160px]
@@ -22,10 +25,10 @@ export default function ButtonSection({
         px-3
         text-xs
         font-semibold
-        rounded-lg"
-      onClick={action}
+        rounded-lg
+        text-center"
     >
       {label}
-    </button>
+    </Link>
   );
 }

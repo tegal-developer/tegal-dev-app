@@ -12,6 +12,7 @@
     "html-react-parser": "^5.1.10",
     "next": "14.2.2",
     "next-themes": "^0.3.0",
+    "nextjs-toploader": "^1.6.12",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",

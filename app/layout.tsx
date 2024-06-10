@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import './globals.css';
 import FABThemeSwitcher from '@/components/molecules/FABThemeSwitcher';
 import { ProviderTheme } from '@/contexts';
+import TopLoader from '@/components/molecules/TopLoader';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={plusJakartaSans.className}>
+        <TopLoader />
         <ProviderTheme>
           <Toaster position="bottom-center" />
           <FABThemeSwitcher />

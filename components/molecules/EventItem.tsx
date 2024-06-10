@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import EventItemInfo from './EventItemInfo';
 import ButtonEventItem from '../atoms/ButtonEventItem';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function EventItem({
   eventSlug,
@@ -24,14 +24,12 @@ export default function EventItem({
   eventMaxRSVP: string;
   eventDescription: string;
 }) {
-  const router = useRouter();
-
   return (
     <div className="indicator active:scale-95 duration-300">
       <span className="indicator-item badge badge-primary bg-[#1B71D8] text-white mr-3">
         new
       </span>
-      <div
+      <Link
         className="
           bg-[#FAFBFD]
           dark:bg-gray-900
@@ -50,7 +48,7 @@ export default function EventItem({
           dark:hover:bg-gray-700
           dark:border
           dark:border-gray-700"
-        onClick={() => router.push(`/events/${eventSlug}`)}
+        href={`/events/${eventSlug}`}
       >
         <Image
           className="rounded-lg object-cover w-full 2xl:w-[200px]"
@@ -71,7 +69,7 @@ export default function EventItem({
           />
           <ButtonEventItem />
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

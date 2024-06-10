@@ -12,7 +12,7 @@ export default function Navigation() {
         <TextLink href="#" text="Community" />
       </li>
       <li>
-        <TextLink href="/#event" text="Event" />
+        <TextLink href="/events" text="Events" />
       </li>
       <li>
         <TextLink href="/#blog" text="Blog" />

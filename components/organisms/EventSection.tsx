@@ -45,12 +45,25 @@ export default function EventSection({
               <EventItemList headlineNewestEvents={headlineNewestEvents} />
             </Suspense>
             {pathname === '/events' ? (
-              ''
+              <div className="join">
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                  1
+                </button>
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                  2
+                </button>
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] btn-disabled border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                  ...
+                </button>
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                  99
+                </button>
+                <button className="join-item btn bg-white hover:bg-[#E7EDF2] border-gray-300 text-gray-700 hover:border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
+                  100
+                </button>
+              </div>
             ) : (
-              <ButtonSection
-                label="Lihat lebih banyak"
-                action={() => router.push('/events')}
-              />
+              <ButtonSection label="Lihat lebih banyak" destination="/events" />
             )}
           </>
         )}
