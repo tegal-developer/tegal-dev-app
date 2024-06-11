@@ -3,9 +3,8 @@ export default function ButtonBlogItem() {
     <button
       type="button"
       className={`
-        bg-[#E7EDF2]
-        text-gray-700
-        active:scale-95
+        bg-[#1B71D8]
+        text-white
         duration-150
         py-1
         px-10

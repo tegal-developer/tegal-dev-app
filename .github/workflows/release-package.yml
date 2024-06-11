@@ -36,7 +36,6 @@ jobs:
 
       - name: Build and push docker image
         env:
-          NEXT_PUBLIC_TEGAL_DEV_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_TEGAL_DEV_API_BASE_URL }}
           NEXT_PUBLIC_CMS_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_CMS_API_BASE_URL }}
           NEXT_PUBLIC_EDITECH_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_EDITECH_API_BASE_URL }}
           NEXT_PUBLIC_EDITECH_X_USERNAME: ${{ secrets.NEXT_PUBLIC_EDITECH_X_USERNAME }}

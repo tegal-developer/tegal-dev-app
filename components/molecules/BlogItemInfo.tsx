@@ -2,18 +2,29 @@ import TextBodyItem from '../atoms/TextBodyItem';
 import TextBodyInfoItem from '../atoms/TextBodyInfoItem';
 import TextHeadingItem from '../atoms/TextHeadingItem';
 import TextPublisherBlogThumbnail from '../atoms/TextPublisherBlogThumbnail';
+import { dateFormatter } from '@/utils';
 
-export default function BlogItemInfo() {
+export default function BlogItemInfo({
+  blogTitle,
+  blogPublishedDate,
+  blogCreator,
+  blogBody,
+}: {
+  blogTitle: string;
+  blogPublishedDate: string;
+  blogCreator: string;
+  blogBody: string;
+}) {
   return (
     <div className="flex flex-col gap-3">
-      <TextHeadingItem text="Fundamental Programming itu Penting" />
-      <TextBodyInfoItem text="Dipublikasikan pada Sabtu, 24 Mei 2024" />
-      <TextPublisherBlogThumbnail />
-      <TextBodyItem
-        text="Tegal Dev merupakan sebuah komunitas developer teknologi informasi yang
-      dibentuk sejak tahun 2024 dan merupakan wadah untuk belajar dan kolaborasi
-      di Tegal"
-      />
+      <TextHeadingItem text={blogTitle} />
+      <div className="flex flex-col gap-2">
+        <TextBodyInfoItem
+          text={`Dipublikasikan pada ${dateFormatter(blogPublishedDate)}`}
+        />
+        <TextPublisherBlogThumbnail text={blogCreator} />
+      </div>
+      <TextBodyItem text={blogBody} />
     </div>
   );
 }

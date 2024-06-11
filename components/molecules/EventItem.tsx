@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import EventItemInfo from './EventItemInfo';
-import ButtonEventItem from '../atoms/ButtonEventItem';
 import Link from 'next/link';
 
 export default function EventItem({
@@ -51,11 +50,11 @@ export default function EventItem({
         href={`/events/${eventSlug}`}
       >
         <Image
-          className="rounded-lg object-cover w-full 2xl:w-[200px]"
+          className="rounded-lg object-cover w-full 2xl:w-[170px]"
           src={eventImage}
-          alt="Flyer image"
-          width={200}
-          height={200}
+          alt="Event image"
+          width={170}
+          height={170}
         />
         <div className="flex flex-col gap-5">
           <EventItemInfo
@@ -67,7 +66,6 @@ export default function EventItem({
             eventMaxRSVP={eventMaxRSVP}
             eventDescription={eventDescription}
           />
-          <ButtonEventItem />
         </div>
       </Link>
     </div>

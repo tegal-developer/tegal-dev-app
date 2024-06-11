@@ -14,6 +14,7 @@ import getAllFAQs from '@/data/remote/strapi/collection/get-all-faqs';
 import MemberSection from '@/components/organisms/MemberSection';
 import getHomePageContent from '@/data/remote/strapi/single/get-home-page-content';
 import getHeadlineNewestEvents from '@/data/remote/strapi/collection/get-headline-newest-events';
+import getHeadlineNewestBlogs from '@/data/remote/strapi/collection/get-headline-newest-blogs';
 
 export default async function Home() {
   const homePageContent = await getHomePageContent();
@@ -22,6 +23,7 @@ export default async function Home() {
   const communityHashtags = await getAllCommunityHastags();
   const communityActivities = await getAllCommunityActivities();
   const headlineNewestEvents = await getHeadlineNewestEvents();
+  const headlineNewestBlogs = await getHeadlineNewestBlogs();
   const faqs = await getAllFAQs();
 
   return (
@@ -43,6 +45,7 @@ export default async function Home() {
       />
       <BlogSection
         blogHeading={homePageContent?.data?.attributes?.blog_section_heading}
+        headlineNewestBlogs={headlineNewestBlogs?.data}
       />
       <AboutSection
         aboutHeading={homePageContent?.data?.attributes?.about_section_heading}
