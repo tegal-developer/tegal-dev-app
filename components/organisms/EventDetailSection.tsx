@@ -203,7 +203,6 @@ export default function EventDetailSection({
                   motivation,
                   expectation,
                 });
-                console.log(rsvp);
 
                 await putEventById(
                   (eventDetail as any)?.data[0]?.id,
@@ -356,21 +355,21 @@ export default function EventDetailSection({
         <div className="bg-[#FAFBFD] dark:bg-gray-900 text-gray-700 dark:text-white p-5 dark:border dark:border-gray-700 md:p-10 rounded-xl w-full">
           <div className="flex flex-col xl:flex-row gap-10 mt-5">
             <Image
-              className="rounded-lg object-cover w-full xl:max-w-[420px] xl:max-h-[420px]"
+              className="rounded-lg object-cover w-full xl:max-w-[480px] xl:max-h-[480px]"
               src={
                 (eventDetail as any)?.data[0]?.attributes?.flyer_image?.data
                   ?.attributes?.url
               }
               alt="Flyer image"
-              width={420}
-              height={420}
+              width={480}
+              height={480}
             />
             <div className="flex flex-col gap-10">
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-5 md:gap-10">
                 <h1 className="font-semibold tracking-wider text-sm md:text-2xl">
                   {(eventDetail as any)?.data[0]?.attributes?.title}
                 </h1>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-2 md:gap-5">
                   <div className="flex justify-between items-center">
                     <div className="flex gap-2 items-center">
                       <CiCalendarDate />
@@ -432,11 +431,13 @@ export default function EventDetailSection({
                       )
                     : ''}
                 </div>
-
-                <div className="collapse bg-[#E7EDF2]/75 hover:bg-[#E7EDF2]  dark:bg-gray-800/75 dark:hover:bg-gray-800 dark:text-white mt-5">
-                  <input type="checkbox" />
-                  <div
-                    className={`
+              </div>
+            </div>
+          </div>
+          <div className="collapse bg-[#E7EDF2]/75 hover:bg-[#E7EDF2]  dark:bg-gray-800/75 dark:hover:bg-gray-800 dark:text-white mt-10">
+            <input type="checkbox" />
+            <div
+              className={`
                       collapse-title
                       duration-150
                       text-xs
@@ -447,36 +448,36 @@ export default function EventDetailSection({
                       mb-0
                       text-black
                       dark:text-white`}
-                  >
-                    RSVP
-                  </div>
-                  <div className="collapse-content">
-                    <form className="flex flex-col gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Nama"
-                            value={name}
-                            onChange={nameChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Email"
-                            value={email}
-                            onChange={emailChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label
-                          className="
+            >
+              RSVP
+            </div>
+            <div className="collapse-content">
+              <form className="flex flex-col gap-5">
+                <div className="flex flex-col gap-2">
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Nama"
+                      value={name}
+                      onChange={nameChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Email"
+                      value={email}
+                      onChange={emailChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label
+                    className="
                           input
                           input-bordered
                           flex
@@ -485,9 +486,9 @@ export default function EventDetailSection({
                           bg-transparent
                         
                           pl-0"
-                        >
-                          <span
-                            className="
+                  >
+                    <span
+                      className="
                             bg-[#2a323c]
                             dark:bg-gray-700
                             p-3
@@ -498,91 +499,88 @@ export default function EventDetailSection({
                             flex
                             h-full
                             font-medium"
-                          >
-                            62
-                          </span>
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="No WhatsApp (ex: 812 xxx)"
-                            value={phoneNumber}
-                            onChange={phoneNumberChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Minat"
-                            value={interest}
-                            onChange={interestChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Pekerjaan"
-                            value={occupation}
-                            onChange={occupationChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Institusi"
-                            value={institution}
-                            onChange={institutionChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Alamat"
-                            value={address}
-                            onChange={addressChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Alasan mengikuti event ini"
-                            value={motivation}
-                            onChange={motivationChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
-                          <input
-                            type="text"
-                            className="grow w-full"
-                            placeholder="Harapan setelah mengikuti event ini"
-                            value={expectation}
-                            onChange={expectationChangeHandler}
-                            required
-                          />
-                          <span className="text-red-500">*</span>
-                        </label>
-                      </div>
-                      {renderUI()}
-                    </form>
-                  </div>
+                    >
+                      62
+                    </span>
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="No WhatsApp (ex: 812 xxx)"
+                      value={phoneNumber}
+                      onChange={phoneNumberChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Minat"
+                      value={interest}
+                      onChange={interestChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Pekerjaan"
+                      value={occupation}
+                      onChange={occupationChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Institusi"
+                      value={institution}
+                      onChange={institutionChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Alamat"
+                      value={address}
+                      onChange={addressChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Alasan mengikuti event ini"
+                      value={motivation}
+                      onChange={motivationChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <label className="input input-bordered flex items-center gap-2 bg-transparent">
+                    <input
+                      type="text"
+                      className="grow w-full"
+                      placeholder="Harapan setelah mengikuti event ini"
+                      value={expectation}
+                      onChange={expectationChangeHandler}
+                      required
+                    />
+                    <span className="text-red-500">*</span>
+                  </label>
                 </div>
-              </div>
+                {renderUI()}
+              </form>
             </div>
           </div>
         </div>
