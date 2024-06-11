@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Container from '../templates/Container';
 import TextHeadingSection from '../atoms/TextHeadingSection';
 import useInputText from '@/hooks/useInputText';
@@ -12,7 +12,11 @@ import getEventById from '@/data/remote/strapi/collection/get-event-by-id';
 import { useState } from 'react';
 import getEventByCode from '@/data/remote/strapi/collection/get-event-by-code';
 
-export default function AttendanceSection() {
+export default function AttendanceSection({
+  attendedRSVPs,
+}: {
+  attendedRSVPs: any;
+}) {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   const [attendanceCode, attendanceCodeChangeHandler] = useInputText(
@@ -20,6 +24,7 @@ export default function AttendanceSection() {
   );
   const [eventCode, eventCodeChangeHandler] = useInputText('');
   const [isLoading, setIsLoading] = useState(false);
+  const { slug } = useParams<{ slug: string }>();
 
   return (
     <section
@@ -40,7 +45,7 @@ export default function AttendanceSection() {
         items-center"
     >
       <Container>
-        <TextHeadingSection heading="Absensi Kehadiran Event" />
+        <TextHeadingSection heading="Absensi Kehadiran" />
         <form className="flex flex-col md:flex-row gap-3 w-full">
           <div className="flex flex-col md:flex-row gap-2 w-full">
             <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
@@ -64,7 +69,7 @@ export default function AttendanceSection() {
               />
             </label>
           </div>
-          <div className="w-full max-w-[480px]">
+          <div className="w-full md:max-w-[480px]">
             <ButtonAction
               buttonLabel="Tandai Hadir"
               buttonAction={async () => {
@@ -80,9 +85,12 @@ export default function AttendanceSection() {
                     return toast.error('Ups, kode kehadiran wajib diisi nih!');
                   }
 
-                  const attendanceAccess = await getEventByCode(eventCode);
+                  const event = await getEventByCode(eventCode);
 
-                  if (attendanceAccess?.data?.length < 1) {
+                  if (
+                    event?.data?.length < 1 &&
+                    event?.data?.attributes?.slug !== slug
+                  ) {
                     setIsLoading(false);
                     return toast.error(
                       'Ups, kode event yang kamu masukan tidak valid nih!',
@@ -128,6 +136,46 @@ export default function AttendanceSection() {
             />
           </div>
         </form>
+        <div className="overflow-x-auto w-full">
+          <table className="table">
+            <thead>
+              <tr className="border-gray-300 dark:border-gray-700">
+                <th></th>
+                <th>Nama</th>
+                <th>Kode Kehadiran</th>
+                <th>Hadir Pada</th>
+              </tr>
+            </thead>
+            <tbody>
+              {attendedRSVPs?.map((attendedRSVP: any, index: number) => (
+                <tr
+                  key={(attendanceCode as any)?.data?.id}
+                  className="border-gray-300 dark:border-gray-700"
+                >
+                  <th>{index + 1}</th>
+                  <td>
+                    {attendedRSVP?.attributes?.user?.data?.attributes?.name}
+                  </td>
+                  <td>{attendedRSVP?.attributes?.attendance_code}</td>
+                  <td>
+                    {new Date(
+                      attendedRSVP?.attributes?.attended_at,
+                    ).toLocaleString('id-ID')}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {attendedRSVPs?.length === 0 ? (
+            <div className="text-center mt-5">
+              <p className="text-sm text-gray-400 dark:text-gray-500">
+                Data kehadiran masih kosong nih!
+              </p>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </Container>
     </section>
   );
