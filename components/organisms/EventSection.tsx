@@ -37,7 +37,11 @@ export default function EventSection({
       <Container>
         <TextHeadingSection heading={eventHeading} />
         {headlineNewestEvents === null || headlineNewestEvents?.length === 0 ? (
-          <p>Belum ada event nih!</p>
+          <p>
+            {pathname === '/events'
+              ? 'Belum ada event nih!'
+              : 'Belum ada event lain nih!'}
+          </p>
         ) : (
           <>
             <Suspense>

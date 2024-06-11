@@ -453,10 +453,10 @@ export default function EventDetailSection({
                   <div className="collapse-content">
                     <form className="flex flex-col gap-5">
                       <div className="flex flex-col gap-2">
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Nama"
                             value={name}
                             onChange={nameChangeHandler}
@@ -464,10 +464,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Email"
                             value={email}
                             onChange={emailChangeHandler}
@@ -483,7 +483,7 @@ export default function EventDetailSection({
                           items-center
                           gap-2
                           bg-transparent
-                          w-full
+                        
                           pl-0"
                         >
                           <span
@@ -503,7 +503,7 @@ export default function EventDetailSection({
                           </span>
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="No WhatsApp (ex: 812 xxx)"
                             value={phoneNumber}
                             onChange={phoneNumberChangeHandler}
@@ -511,10 +511,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Minat"
                             value={interest}
                             onChange={interestChangeHandler}
@@ -522,10 +522,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Pekerjaan"
                             value={occupation}
                             onChange={occupationChangeHandler}
@@ -533,10 +533,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Institusi"
                             value={institution}
                             onChange={institutionChangeHandler}
@@ -544,10 +544,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Alamat"
                             value={address}
                             onChange={addressChangeHandler}
@@ -555,10 +555,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Alasan mengikuti event ini"
                             value={motivation}
                             onChange={motivationChangeHandler}
@@ -566,10 +566,10 @@ export default function EventDetailSection({
                           />
                           <span className="text-red-500">*</span>
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent w-full">
+                        <label className="input input-bordered flex items-center gap-2 bg-transparent">
                           <input
                             type="text"
-                            className="grow"
+                            className="grow w-full"
                             placeholder="Harapan setelah mengikuti event ini"
                             value={expectation}
                             onChange={expectationChangeHandler}

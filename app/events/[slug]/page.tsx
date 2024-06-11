@@ -13,6 +13,10 @@ export default async function EventDetail({
   const eventDetailPageContent = await getEventDetailPageContent();
   const eventDetail = await getEventBySlug(slug);
   const headlineNewestEvents = await getAllNewestEventsByPage(1);
+  const filteredHeadlineNewestEventDetail = headlineNewestEvents?.data?.filter(
+    (headlineNewestEvent: any) =>
+      headlineNewestEvent?.attributes?.slug !== slug,
+  );
 
   return (
     <Template>
@@ -22,7 +26,7 @@ export default async function EventDetail({
       />
       <EventSection
         eventHeading="Event Lainnya"
-        headlineNewestEvents={headlineNewestEvents?.data}
+        headlineNewestEvents={filteredHeadlineNewestEventDetail}
       />
     </Template>
   );
