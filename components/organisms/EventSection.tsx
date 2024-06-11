@@ -26,7 +26,7 @@ export default function EventSection({
         dark:border-gray-700
         px-5
         py-12
-        ${pathname === '/events' ? 'pt-24' : 'pt-6'}
+        ${pathname === '/events' ? 'pt-24' : 'pt-12'}
         text-gray-700
         dark:text-white
         flex
