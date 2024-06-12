@@ -25,7 +25,7 @@ export default function BlogItemList({
           }
           blogTitle={headlineBlog?.attributes?.title}
           blogPublishedDate={headlineBlog?.attributes?.publishedAt}
-          blogCreator={headlineBlog?.attributes?.creator}
+          blogCreator={headlineBlog?.attributes?.author}
           blogBody={headlineBlog?.attributes?.body}
         />
       ))}

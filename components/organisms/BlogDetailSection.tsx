@@ -25,13 +25,13 @@ export default function BlogDetailSection({ blogDetail }: { blogDetail: any }) {
         items-center"
     >
       <div className="flex flex-col gap-10 max-w-[1024px]">
-        <div className="flex gap-10">
+        <div className="flex flex-col md:flex-row gap-10">
           <Image
             src={blogDetail?.attributes?.image?.data?.attributes?.url}
             alt="Blog image"
             width={280}
             height={280}
-            className="rounded-lg"
+            className="w-full md:max-w-[280px] rounded-lg"
           />
           <div className="flex flex-col gap-5 tracking-wider">
             <TextHeadingSection heading={blogDetail?.attributes?.title} />
