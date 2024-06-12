@@ -1,15 +1,17 @@
 import BlogDetailSection from '@/components/organisms/BlogDetailSection';
 import Template from '@/components/templates/Template';
-import getBlogDetailPageContent from '@/data/remote/strapi/single/get-blog-detail-page-content';
+import getBlogDetailBySlug from '@/data/remote/strapi/collection/get-blog-by-slug';
 
-export default async function BlogDetail() {
-  const blogDetailPageContent = await getBlogDetailPageContent();
+export default async function BlogDetail({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  const blogDetail = await getBlogDetailBySlug(slug);
 
   return (
     <Template>
-      <BlogDetailSection
-        blogDetailHeading={blogDetailPageContent?.data?.attributes?.heading}
-      />
+      <BlogDetailSection blogDetail={blogDetail?.data[0]} />
     </Template>
   );
 }

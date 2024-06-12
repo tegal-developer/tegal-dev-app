@@ -27,7 +27,11 @@ export default function BlogSection({
         dark:bg
         px-5
         py-12
-        ${pathname === '/blogs' ? 'pt-24' : 'pt-12'}
+        ${
+          pathname === '/blogs' || pathname.includes('/blogs/authors')
+            ? 'pt-24'
+            : 'pt-12'
+        }
         text-gray-700
         dark:text-white
         flex

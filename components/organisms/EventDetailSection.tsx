@@ -350,8 +350,8 @@ export default function EventDetailSection({
           gap-10
           items-center"
     >
-      <TextHeadingSection heading={eventDetailHeading} />
       <Container>
+        <TextHeadingSection heading={eventDetailHeading} />
         <div className="bg-[#FAFBFD] dark:bg-gray-900 text-gray-700 dark:text-white p-5 dark:border dark:border-gray-700 md:p-10 rounded-xl w-full">
           <div className="flex flex-col xl:flex-row gap-10 mt-5">
             <Image
