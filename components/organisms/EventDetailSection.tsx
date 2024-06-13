@@ -172,7 +172,7 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
-                const retrievedEvent = getEventById(
+                const retrievedEvent = await getEventById(
                   (eventDetail as any)?.data[0]?.id,
                 );
 
@@ -254,7 +254,7 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
-                const retrievedEvent = getEventById(
+                const retrievedEvent = await getEventById(
                   (eventDetail as any)?.data[0]?.id,
                 );
 
