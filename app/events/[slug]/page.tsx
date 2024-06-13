@@ -1,8 +1,8 @@
-import Template from '@/components/templates/Template';
-import getEventBySlug from '@/data/remote/strapi/collection/get-event-by-slug';
-import EventSection from '@/components/organisms/EventSection';
-import getAllNewestEventsByPage from '@/data/remote/strapi/collection/get-all-newest-events-by-page';
 import EventDetailSection from '@/components/organisms/EventDetailSection';
+import EventSection from '@/components/organisms/EventSection';
+import Template from '@/components/templates/Template';
+import getAllNewestEventsByPage from '@/data/remote/strapi/collection/get-all-newest-events-by-page';
+import getEventBySlug from '@/data/remote/strapi/collection/get-event-by-slug';
 import getEventDetailPageContent from '@/data/remote/strapi/single/get-event-detail-page-content';
 
 export default async function EventDetail({
@@ -22,7 +22,7 @@ export default async function EventDetail({
     <Template>
       <EventDetailSection
         eventDetailHeading={eventDetailPageContent?.data?.attributes?.heading}
-        eventDetail={eventDetail}
+        eventDetail={eventDetail?.data[0]}
       />
       <EventSection
         eventHeading="Event Lainnya"

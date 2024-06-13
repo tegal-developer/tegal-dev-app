@@ -1,19 +1,27 @@
 import Link from 'next/link';
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
-export default function SocialIconList() {
+export default function SocialIconList({
+  instagramURL,
+  linkedinURL,
+  githubURL,
+}: {
+  instagramURL: string;
+  linkedinURL: string;
+  githubURL: string;
+}) {
   return (
     <div className="flex gap-3">
-      <Link href="https://instagram.com/tegal.dev" target="_blank">
+      <Link href={instagramURL} target="_blank">
         <FaInstagram size={20} className="cursor-pointer hover:text-gray-300" />
       </Link>
-      <Link href="https://linkedin.com/company/tegal-dev" target="_blank">
+      <Link href={linkedinURL} target="_blank">
         <FaLinkedinIn
           size={20}
           className="cursor-pointer hover:text-gray-300"
         />
       </Link>
-      <Link href="https://github.com/tegal-developer" target="_blank">
+      <Link href={githubURL} target="_blank">
         <FaGithub size={20} className="cursor-pointer hover:text-gray-300" />
       </Link>
     </div>

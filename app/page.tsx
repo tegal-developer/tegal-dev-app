@@ -5,16 +5,16 @@ import ContactSection from '@/components/organisms/ContactSection';
 import EventSection from '@/components/organisms/EventSection';
 import FAQSection from '@/components/organisms/FAQSection';
 import HeroSection from '@/components/organisms/HeroSection';
+import MemberSection from '@/components/organisms/MemberSection';
 import Template from '@/components/templates/Template';
-import getAllInvitationLinks from '@/data/remote/strapi/collection/get-all-invitation-links';
+import getAllCommunityActivities from '@/data/remote/strapi/collection/get-all-community-activities';
 import getAllCommunityBenefits from '@/data/remote/strapi/collection/get-all-community-benefits';
 import getAllCommunityHastags from '@/data/remote/strapi/collection/get-all-community-hashtags';
-import getAllCommunityActivities from '@/data/remote/strapi/collection/get-all-community-activities';
 import getAllFAQs from '@/data/remote/strapi/collection/get-all-faqs';
-import MemberSection from '@/components/organisms/MemberSection';
-import getHomePageContent from '@/data/remote/strapi/single/get-home-page-content';
-import getHeadlineNewestEvents from '@/data/remote/strapi/collection/get-headline-newest-events';
+import getAllInvitationLinks from '@/data/remote/strapi/collection/get-all-invitation-links';
 import getHeadlineNewestBlogs from '@/data/remote/strapi/collection/get-headline-newest-blogs';
+import getHeadlineNewestEvents from '@/data/remote/strapi/collection/get-headline-newest-events';
+import getHomePageContent from '@/data/remote/strapi/single/get-home-page-content';
 
 export default async function Home() {
   const homePageContent = await getHomePageContent();

@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
+import FABThemeSwitcher from '@/components/molecules/FABThemeSwitcher';
+import TopLoader from '@/components/molecules/TopLoader';
+import { ProviderTheme } from '@/contexts';
+import { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
-import FABThemeSwitcher from '@/components/molecules/FABThemeSwitcher';
-import { ProviderTheme } from '@/contexts';
-import TopLoader from '@/components/molecules/TopLoader';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],

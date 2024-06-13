@@ -1,7 +1,7 @@
+import getFooterContent from '@/data/remote/strapi/single/get-footer-content';
+import getHeaderContent from '@/data/remote/strapi/single/get-header-content';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
-import getHeaderContent from '@/data/remote/strapi/single/get-header-content';
-import getFooterContent from '@/data/remote/strapi/single/get-footer-content';
 
 export default async function Template({
   children,
@@ -19,7 +19,7 @@ export default async function Template({
         logoImageHeight={headerContent?.data?.attributes?.logo_image_height}
       />
       <main>{children}</main>
-      <Footer content={footerContent?.data?.attributes?.content} />
+      <Footer footerContent={footerContent?.data?.attributes} />
     </>
   );
 }

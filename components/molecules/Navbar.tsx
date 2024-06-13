@@ -1,13 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import Logo from '../atoms/Logo';
-import Navigation from './Navigation';
-import AuthNav from './AuthNav';
-import ThemeSwitcher from './ThemeSwitcher';
-import { useState } from 'react';
-import HamburgerButton from './HamburgerButton';
-import PopUpMenu from './PopUpMenu';
+import DesktopNavigation from './DesktopNavigation';
+import MobileNavigation from './MobileNavigation';
 
 export default function Navbar({
   logoImageLightSource,
@@ -22,8 +16,6 @@ export default function Navbar({
   logoImageWidth: number;
   logoImageHeight: number;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <nav
       className="
@@ -41,29 +33,15 @@ export default function Navbar({
         backdrop-blur-xl
         duration-300"
     >
-      <div
-        className="lg:container lg:max-w-[1800px] lg:mx-auto flex
-        items-center
-        justify-between"
-      >
-        <div className="flex items-center gap-20">
-          <Link href={'/'}>
-            <Logo
-              imageLightSource={logoImageLightSource}
-              imageDarkSource={logoImageDarkSource}
-              imageAlt={logoImageAlt}
-              imageWidth={logoImageWidth}
-              imageHeight={logoImageHeight}
-            />
-          </Link>
-          <Navigation />
-        </div>
-        <div className="lg:flex items-center gap-10 hidden">
-          <AuthNav />
-          <ThemeSwitcher />
-        </div>
-        <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        <PopUpMenu isOpen={isOpen} />
+      <div className="lg:container lg:max-w-[1800px] lg:mx-auto flex items-center justify-between">
+        <DesktopNavigation
+          logoImageLightSource={logoImageLightSource}
+          logoImageDarkSource={logoImageDarkSource}
+          logoImageAlt={logoImageAlt}
+          logoImageWidth={logoImageWidth}
+          logoImageHeight={logoImageHeight}
+        />
+        <MobileNavigation />
       </div>
     </nav>
   );

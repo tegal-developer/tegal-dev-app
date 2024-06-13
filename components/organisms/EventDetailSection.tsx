@@ -173,44 +173,44 @@ export default function EventDetailSection({
                 }
 
                 const retrievedEvent = await getEventById(
-                  (eventDetail as any)?.data[0]?.id,
+                  eventDetail.id,
                 );
 
                 if (
-                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
-                  (eventDetail as any)?.data[0]?.attributes?.max_rsvp
+                  eventDetail.attributes?.total_rsvp >=
+                  eventDetail.attributes?.max_rsvp
                 ) {
                   await postNewRSVP({
                     userId,
-                    eventId: (eventDetail as any)?.data[0]?.id,
+                    eventId: eventDetail.id,
                     rsvpStatusId: 2,
                     motivation,
                     expectation,
                     queueNumber:
                       (retrievedEvent as any)?.data?.attributes?.total_rsvp +
                       1 -
-                      (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
+                      eventDetail.attributes?.max_rsvp,
                   });
 
                   setIsWaitingList(true);
                   setIsLoading(false);
 
                   return await putEventById(
-                    (eventDetail as any)?.data[0]?.id,
+                    eventDetail.id,
                     (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                   );
                 }
 
                 const rsvp = await postNewRSVP({
                   userId,
-                  eventId: (eventDetail as any)?.data[0]?.id,
+                  eventId: eventDetail.id,
                   rsvpStatusId: 1,
                   motivation,
                   expectation,
                 });
 
                 await putEventById(
-                  (eventDetail as any)?.data[0]?.id,
+                  eventDetail.id,
                   (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                 );
 
@@ -220,22 +220,22 @@ export default function EventDetailSection({
                   rsvpAttendanceQRCode: `${
                     process.env.NEXT_PUBLIC_CMS_API_BASE_URL
                   }/qrcode-generator?url=https://tegal.dev/events/${
-                    (eventDetail as any)?.data[0]?.attributes?.slug
+                    eventDetail.attributes?.slug
                   }/attendances?code=${
                     rsvp?.data?.attributes?.attendance_code
                   }&filename=qrcode-event-attendance-${
-                    (eventDetail as any)?.data[0]?.id
+                    eventDetail.id
                   }&download=true`,
-                  eventName: (eventDetail as any)?.data[0]?.attributes?.title,
+                  eventName: eventDetail.attributes?.title,
                   eventDate: dateFormatter(
-                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                    eventDetail.attributes?.start_date_time,
                   ),
                   eventTime: `${getTime(
-                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                    eventDetail.attributes?.start_date_time,
                   )} - ${getTime(
-                    (eventDetail as any)?.data[0]?.attributes?.end_date_time,
+                    eventDetail.attributes?.end_date_time,
                   )}`,
-                  eventLocation: (eventDetail as any)?.data[0]?.attributes
+                  eventLocation: eventDetail.attributes
                     ?.location,
                   eventGMAPLocationLink: (eventDetail as any)?.data[0]
                     ?.attributes?.gmap_location_link,
@@ -255,44 +255,44 @@ export default function EventDetailSection({
                 }
 
                 const retrievedEvent = await getEventById(
-                  (eventDetail as any)?.data[0]?.id,
+                  eventDetail.id,
                 );
 
                 if (
-                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
-                  (eventDetail as any)?.data[0]?.attributes?.max_rsvp
+                  eventDetail.attributes?.total_rsvp >=
+                  eventDetail.attributes?.max_rsvp
                 ) {
                   await postNewRSVP({
                     userId,
-                    eventId: (eventDetail as any)?.data[0]?.id,
+                    eventId: eventDetail.id,
                     rsvpStatusId: 2,
                     motivation,
                     expectation,
                     queueNumber:
                       (retrievedEvent as any)?.data?.attributes?.total_rsvp +
                       1 -
-                      (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
+                      eventDetail.attributes?.max_rsvp,
                   });
 
                   setIsWaitingList(true);
                   setIsLoading(false);
 
                   return await putEventById(
-                    (eventDetail as any)?.data[0]?.id,
+                    eventDetail.id,
                     (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                   );
                 }
 
                 const rsvp = await postNewRSVP({
                   userId,
-                  eventId: (eventDetail as any)?.data[0]?.id,
+                  eventId: eventDetail.id,
                   rsvpStatusId: 1,
                   motivation,
                   expectation,
                 });
 
                 await putEventById(
-                  (eventDetail as any)?.data[0]?.id,
+                  eventDetail.id,
                   (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                 );
 
@@ -302,22 +302,22 @@ export default function EventDetailSection({
                   rsvpAttendanceQRCode: `${
                     process.env.NEXT_PUBLIC_CMS_API_BASE_URL
                   }/qrcode-generator?url=https://tegal.dev/events/${
-                    (eventDetail as any)?.data[0]?.attributes?.slug
+                    eventDetail.attributes?.slug
                   }/attendances?code=${
                     rsvp?.data?.attributes?.attendance_code
                   }&filename=qrcode-event-attendance-${
-                    (eventDetail as any)?.data[0]?.id
+                    eventDetail.id
                   }&download=true`,
-                  eventName: (eventDetail as any)?.data[0]?.attributes?.title,
+                  eventName: eventDetail.attributes?.title,
                   eventDate: dateFormatter(
-                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                    eventDetail.attributes?.start_date_time,
                   ),
                   eventTime: `${getTime(
-                    (eventDetail as any)?.data[0]?.attributes?.start_date_time,
+                    eventDetail.attributes?.start_date_time,
                   )} - ${getTime(
-                    (eventDetail as any)?.data[0]?.attributes?.end_date_time,
+                    eventDetail.attributes?.end_date_time,
                   )}`,
-                  eventLocation: (eventDetail as any)?.data[0]?.attributes
+                  eventLocation: eventDetail.attributes
                     ?.location,
                   eventGMAPLocationLink: (eventDetail as any)?.data[0]
                     ?.attributes?.gmap_location_link,
@@ -366,7 +366,7 @@ export default function EventDetailSection({
             <Image
               className="rounded-lg object-cover w-full xl:max-w-[480px] xl:max-h-[480px]"
               src={
-                (eventDetail as any)?.data[0]?.attributes?.flyer_image?.data
+                eventDetail.attributes?.flyer_image?.data
                   ?.attributes?.url
               }
               alt="Flyer image"
@@ -376,7 +376,7 @@ export default function EventDetailSection({
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-5 md:gap-10">
                 <h1 className="font-semibold tracking-wider text-sm md:text-2xl">
-                  {(eventDetail as any)?.data[0]?.attributes?.title}
+                  {eventDetail.attributes?.title}
                 </h1>
                 <div className="flex flex-col gap-2 md:gap-5">
                   <div className="flex justify-between items-center">
@@ -384,7 +384,7 @@ export default function EventDetailSection({
                       <CiCalendarDate />
                       <p className="text-xs md:text-base tracking-wider">
                         {dateFormatter(
-                          (eventDetail as any)?.data[0]?.attributes
+                          eventDetail.attributes
                             ?.start_date_time,
                         )}
                       </p>
@@ -393,10 +393,10 @@ export default function EventDetailSection({
                       <CiTimer />
                       <p className="text-xs md:text-base tracking-wider">
                         {`${getTime(
-                          (eventDetail as any)?.data[0]?.attributes
+                          eventDetail.attributes
                             ?.start_date_time,
                         )} - ${getTime(
-                          (eventDetail as any)?.data[0]?.attributes
+                          eventDetail.attributes
                             ?.end_date_time,
                         )}`}
                       </p>
@@ -407,20 +407,20 @@ export default function EventDetailSection({
                       <CiLocationOn />
                       <Link
                         href={
-                          (eventDetail as any)?.data[0]?.attributes
+                          eventDetail.attributes
                             ?.gmap_location_link
                         }
                         target="_blank"
                         className="text-xs md:text-base tracking-wider"
                       >
-                        {(eventDetail as any)?.data[0]?.attributes?.location}
+                        {eventDetail.attributes?.location}
                       </Link>
                     </div>
                     <div className="flex gap-2 items-center">
                       <p className="text-xs md:text-base">{`${
-                        (eventDetail as any)?.data[0]?.attributes?.total_rsvp
+                        eventDetail.attributes?.total_rsvp
                       }/${
-                        (eventDetail as any)?.data[0]?.attributes?.max_rsvp
+                        eventDetail.attributes?.max_rsvp
                       }`}</p>
                       <MdRsvp size={25} />
                     </div>
@@ -428,26 +428,35 @@ export default function EventDetailSection({
                   <div className="flex gap-2 items-center">
                     <TbProgressBolt />
                     <p className="text-xs md:text-base">{`${
-                      (eventDetail as any)?.data[0]?.attributes?.xp_point
+                      eventDetail.attributes?.xp_point
                     } Exp Point`}</p>
                   </div>
                 </div>
                 <div className="tracking-wide text-xs md:text-lg space-y-3">
-                  {(eventDetail as any)?.data[0]?.attributes?.description !==
+                  {eventDetail.attributes?.description !==
                   undefined
                     ? parse(
-                        (eventDetail as any)?.data[0]?.attributes?.description,
+                        eventDetail.attributes?.description,
                       )
                     : ''}
                 </div>
               </div>
             </div>
           </div>
-          <div className="collapse bg-[#E7EDF2]/75 hover:bg-[#E7EDF2]  dark:bg-gray-800/75 dark:hover:bg-gray-800 dark:text-white mt-10">
+          <div
+            className="
+              collapse
+              bg-[#E7EDF2]/75
+              hover:bg-[#E7EDF2] 
+              dark:bg-gray-800/75
+              dark:hover:bg-gray-800
+              dark:text-white mt-10
+              "
+          >
             <input
               type="checkbox"
               disabled={
-                (eventDetail as any)?.data[0]?.attributes?.is_rsvp_closed
+                eventDetail.attributes?.is_rsvp_closed
               }
             />
             <div
@@ -463,8 +472,8 @@ export default function EventDetailSection({
                       text-black
                       dark:text-white`}
             >
-              {(eventDetail as any)?.data[0]?.attributes?.is_rsvp_closed
-                ? 'RSVP Ditutup'
+              {eventDetail.attributes?.is_rsvp_closed
+                ? 'RSVP Telah Ditutup'
                 : 'RSVP'}
             </div>
             <div className="collapse-content">
