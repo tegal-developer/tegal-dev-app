@@ -19,6 +19,7 @@ import Link from 'next/link';
 import TextHeadingSection from '../atoms/TextHeadingSection';
 import postSendMailRSVP from '@/data/remote/strapi/collection/post-send-mail-rsvp';
 import putEventById from '@/data/remote/strapi/collection/put-event-by-id';
+import getEventById from '@/data/remote/strapi/collection/get-event-by-id';
 
 export default function EventDetailSection({
   eventDetailHeading,
@@ -171,6 +172,10 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
+                const retrievedEvent = getEventById(
+                  (eventDetail as any)?.data[0]?.id,
+                );
+
                 if (
                   (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
                   (eventDetail as any)?.data[0]?.attributes?.max_rsvp
@@ -182,7 +187,7 @@ export default function EventDetailSection({
                     motivation,
                     expectation,
                     queueNumber:
-                      (eventDetail as any)?.data[0]?.attributes?.total_rsvp +
+                      (retrievedEvent as any)?.data?.attributes?.total_rsvp +
                       1 -
                       (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
                   });
@@ -192,7 +197,7 @@ export default function EventDetailSection({
 
                   return await putEventById(
                     (eventDetail as any)?.data[0]?.id,
-                    (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                    (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                   );
                 }
 
@@ -206,7 +211,7 @@ export default function EventDetailSection({
 
                 await putEventById(
                   (eventDetail as any)?.data[0]?.id,
-                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                  (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                 );
 
                 await postSendMailRSVP({
@@ -249,6 +254,10 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
+                const retrievedEvent = getEventById(
+                  (eventDetail as any)?.data[0]?.id,
+                );
+
                 if (
                   (eventDetail as any)?.data[0]?.attributes?.total_rsvp >=
                   (eventDetail as any)?.data[0]?.attributes?.max_rsvp
@@ -260,7 +269,7 @@ export default function EventDetailSection({
                     motivation,
                     expectation,
                     queueNumber:
-                      (eventDetail as any)?.data[0]?.attributes?.total_rsvp +
+                      (retrievedEvent as any)?.data?.attributes?.total_rsvp +
                       1 -
                       (eventDetail as any)?.data[0]?.attributes?.max_rsvp,
                   });
@@ -270,7 +279,7 @@ export default function EventDetailSection({
 
                   return await putEventById(
                     (eventDetail as any)?.data[0]?.id,
-                    (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                    (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                   );
                 }
 
@@ -284,7 +293,7 @@ export default function EventDetailSection({
 
                 await putEventById(
                   (eventDetail as any)?.data[0]?.id,
-                  (eventDetail as any)?.data[0]?.attributes?.total_rsvp + 1,
+                  (retrievedEvent as any)?.data?.attributes?.total_rsvp + 1,
                 );
 
                 await postSendMailRSVP({
@@ -435,7 +444,12 @@ export default function EventDetailSection({
             </div>
           </div>
           <div className="collapse bg-[#E7EDF2]/75 hover:bg-[#E7EDF2]  dark:bg-gray-800/75 dark:hover:bg-gray-800 dark:text-white mt-10">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              disabled={
+                (eventDetail as any)?.data[0]?.attributes?.is_rsvp_closed
+              }
+            />
             <div
               className={`
                       collapse-title
@@ -449,7 +463,9 @@ export default function EventDetailSection({
                       text-black
                       dark:text-white`}
             >
-              RSVP
+              {(eventDetail as any)?.data[0]?.attributes?.is_rsvp_closed
+                ? 'RSVP Ditutup'
+                : 'RSVP'}
             </div>
             <div className="collapse-content">
               <form className="flex flex-col gap-5">
