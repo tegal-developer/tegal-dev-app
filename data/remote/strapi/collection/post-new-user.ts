@@ -32,7 +32,7 @@ export default async function postNewUser({
           email,
           password,
           name,
-          phoneNumber: `62${phoneNumber}`,
+          phone_number: `62${phoneNumber}`,
           interest,
           occupation,
           institution,

@@ -172,9 +172,7 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
-                const retrievedEvent = await getEventById(
-                  eventDetail.id,
-                );
+                const retrievedEvent = await getEventById(eventDetail.id);
 
                 if (
                   eventDetail.attributes?.total_rsvp >=
@@ -217,26 +215,15 @@ export default function EventDetailSection({
                 await postSendMailRSVP({
                   rsvpName: name,
                   rsvpEmail: email,
-                  rsvpAttendanceQRCode: `${
-                    process.env.NEXT_PUBLIC_CMS_API_BASE_URL
-                  }/qrcode-generator?url=https://tegal.dev/events/${
-                    eventDetail.attributes?.slug
-                  }/attendances?code=${
-                    rsvp?.data?.attributes?.attendance_code
-                  }&filename=qrcode-event-attendance-${
-                    eventDetail.id
-                  }&download=true`,
+                  rsvpAttendanceQRCode: `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/qrcode-generator?url=https://tegal.dev/events/${eventDetail.attributes?.slug}/attendances?code=${rsvp?.data?.attributes?.attendance_code}&filename=qrcode-event-attendance-${eventDetail.id}&download=true`,
                   eventName: eventDetail.attributes?.title,
                   eventDate: dateFormatter(
                     eventDetail.attributes?.start_date_time,
                   ),
                   eventTime: `${getTime(
                     eventDetail.attributes?.start_date_time,
-                  )} - ${getTime(
-                    eventDetail.attributes?.end_date_time,
-                  )}`,
-                  eventLocation: eventDetail.attributes
-                    ?.location,
+                  )} - ${getTime(eventDetail.attributes?.end_date_time)}`,
+                  eventLocation: eventDetail.attributes?.location,
                   eventGMAPLocationLink: (eventDetail as any)?.data[0]
                     ?.attributes?.gmap_location_link,
                 });
@@ -254,9 +241,7 @@ export default function EventDetailSection({
                   return setIsLoading(false);
                 }
 
-                const retrievedEvent = await getEventById(
-                  eventDetail.id,
-                );
+                const retrievedEvent = await getEventById(eventDetail.id);
 
                 if (
                   eventDetail.attributes?.total_rsvp >=
@@ -299,26 +284,15 @@ export default function EventDetailSection({
                 await postSendMailRSVP({
                   rsvpName: name,
                   rsvpEmail: email,
-                  rsvpAttendanceQRCode: `${
-                    process.env.NEXT_PUBLIC_CMS_API_BASE_URL
-                  }/qrcode-generator?url=https://tegal.dev/events/${
-                    eventDetail.attributes?.slug
-                  }/attendances?code=${
-                    rsvp?.data?.attributes?.attendance_code
-                  }&filename=qrcode-event-attendance-${
-                    eventDetail.id
-                  }&download=true`,
+                  rsvpAttendanceQRCode: `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/qrcode-generator?url=https://tegal.dev/events/${eventDetail.attributes?.slug}/attendances?code=${rsvp?.data?.attributes?.attendance_code}&filename=qrcode-event-attendance-${eventDetail.id}&download=true`,
                   eventName: eventDetail.attributes?.title,
                   eventDate: dateFormatter(
                     eventDetail.attributes?.start_date_time,
                   ),
                   eventTime: `${getTime(
                     eventDetail.attributes?.start_date_time,
-                  )} - ${getTime(
-                    eventDetail.attributes?.end_date_time,
-                  )}`,
-                  eventLocation: eventDetail.attributes
-                    ?.location,
+                  )} - ${getTime(eventDetail.attributes?.end_date_time)}`,
+                  eventLocation: eventDetail.attributes?.location,
                   eventGMAPLocationLink: (eventDetail as any)?.data[0]
                     ?.attributes?.gmap_location_link,
                 });
@@ -365,10 +339,7 @@ export default function EventDetailSection({
           <div className="flex flex-col xl:flex-row gap-10 mt-5">
             <Image
               className="rounded-lg object-cover w-full xl:max-w-[480px] xl:max-h-[480px]"
-              src={
-                eventDetail.attributes?.flyer_image?.data
-                  ?.attributes?.url
-              }
+              src={eventDetail.attributes?.flyer_image?.data?.attributes?.url}
               alt="Flyer image"
               width={480}
               height={480}
@@ -383,22 +354,15 @@ export default function EventDetailSection({
                     <div className="flex gap-2 items-center">
                       <CiCalendarDate />
                       <p className="text-xs md:text-base tracking-wider">
-                        {dateFormatter(
-                          eventDetail.attributes
-                            ?.start_date_time,
-                        )}
+                        {dateFormatter(eventDetail.attributes?.start_date_time)}
                       </p>
                     </div>
                     <div className="flex gap-2 items-center">
                       <CiTimer />
                       <p className="text-xs md:text-base tracking-wider">
                         {`${getTime(
-                          eventDetail.attributes
-                            ?.start_date_time,
-                        )} - ${getTime(
-                          eventDetail.attributes
-                            ?.end_date_time,
-                        )}`}
+                          eventDetail.attributes?.start_date_time,
+                        )} - ${getTime(eventDetail.attributes?.end_date_time)}`}
                       </p>
                     </div>
                   </div>
@@ -406,10 +370,7 @@ export default function EventDetailSection({
                     <div className="flex gap-2 items-center">
                       <CiLocationOn />
                       <Link
-                        href={
-                          eventDetail.attributes
-                            ?.gmap_location_link
-                        }
+                        href={eventDetail.attributes?.gmap_location_link}
                         target="_blank"
                         className="text-xs md:text-base tracking-wider"
                       >
@@ -417,27 +378,18 @@ export default function EventDetailSection({
                       </Link>
                     </div>
                     <div className="flex gap-2 items-center">
-                      <p className="text-xs md:text-base">{`${
-                        eventDetail.attributes?.total_rsvp
-                      }/${
-                        eventDetail.attributes?.max_rsvp
-                      }`}</p>
+                      <p className="text-xs md:text-base">{`${eventDetail.attributes?.total_rsvp}/${eventDetail.attributes?.max_rsvp}`}</p>
                       <MdRsvp size={25} />
                     </div>
                   </div>
                   <div className="flex gap-2 items-center">
                     <TbProgressBolt />
-                    <p className="text-xs md:text-base">{`${
-                      eventDetail.attributes?.xp_point
-                    } Exp Point`}</p>
+                    <p className="text-xs md:text-base">{`${eventDetail.attributes?.xp_point} Exp Point`}</p>
                   </div>
                 </div>
                 <div className="tracking-wide text-xs md:text-lg space-y-3">
-                  {eventDetail.attributes?.description !==
-                  undefined
-                    ? parse(
-                        eventDetail.attributes?.description,
-                      )
+                  {eventDetail.attributes?.description !== undefined
+                    ? parse(eventDetail.attributes?.description)
                     : ''}
                 </div>
               </div>
@@ -455,9 +407,7 @@ export default function EventDetailSection({
           >
             <input
               type="checkbox"
-              disabled={
-                eventDetail.attributes?.is_rsvp_closed
-              }
+              disabled={eventDetail.attributes?.is_rsvp_closed}
             />
             <div
               className={`
