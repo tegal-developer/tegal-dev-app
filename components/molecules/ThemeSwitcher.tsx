@@ -17,7 +17,7 @@ export default function ThemeSwitcher() {
       <input
         type="checkbox"
         checked={resolvedTheme === 'dark'}
-        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+        onChange={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       />
       <svg
         className="swap-on fill-current w-6 h-6 text-white"

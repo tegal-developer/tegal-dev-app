@@ -10,7 +10,7 @@ export default function HamburgerButton({
       <input
         type="checkbox"
         checked={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        onChange={() => setIsOpen(!isOpen)}
       />
 
       <svg

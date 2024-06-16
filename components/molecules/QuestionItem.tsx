@@ -22,7 +22,7 @@ export default function QuestionItem({
         else setIsSelected(questionId);
       }}
     >
-      <input type="checkbox" checked={selected === questionId} />
+      <input type="checkbox" defaultChecked={selected === questionId} />
       <div className="collapse-title flex justify-between items-center p-4">
         <h2 className="leading-relaxed">{questionText}</h2>
         <div>

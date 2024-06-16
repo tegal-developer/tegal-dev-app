@@ -17,7 +17,6 @@ export default function BlogItem({
   blogCreator: string;
   blogBody: string;
 }) {
-  console.log(blogImageSource);
   return (
     <div className="indicator active:scale-95 duration-300">
       <span className="indicator-item badge badge-primary bg-[#1B71D8] text-white mr-3">
