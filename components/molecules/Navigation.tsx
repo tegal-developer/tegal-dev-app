@@ -18,6 +18,9 @@ export default function Navigation() {
         <TextLink href="/blogs" text="Blogs" />
       </li>
       <li>
+        <TextLink href="/merchandises" text="Merchandises" />
+      </li>
+      <li>
         <TextLink href="/#about" text="About" />
       </li>
       <li>
@@ -25,9 +28,6 @@ export default function Navigation() {
       </li>
       <li>
         <TextLink href="/#membership" text="Membership" />
-      </li>
-      <li>
-        <TextLink href="/#merchandise" text="Merchandise" />
       </li>
       <li>
         <TextLink href="/#contact" text="Contact" />

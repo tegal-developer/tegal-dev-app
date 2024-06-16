@@ -13,7 +13,7 @@ export default function PopUpMenu({ isOpen }: { isOpen: boolean }) {
         left-0
         w-full
         menu
-        mt-[17rem]
+        mt-[20rem]
         py-5
         z-10
         lg:hidden
@@ -32,12 +32,17 @@ export default function PopUpMenu({ isOpen }: { isOpen: boolean }) {
       <li className="w-full" onClick={() => handleButtoClick()}>
         <a className="w-full justify-center">Community</a>
       </li>
-      <li className="w-full" onClick={() => handleButtoClick()}>
+      <li className="w-full">
+        <Link href="/merchandises" className="w-full justify-center">
+          Merchandises
+        </Link>
+      </li>
+      <li className="w-full">
         <Link href="/events" className="w-full justify-center">
           Events
         </Link>
       </li>
-      <li className="w-full" onClick={() => handleButtoClick()}>
+      <li className="w-full">
         <Link href="/blogs" className="w-full justify-center">
           Blogs
         </Link>
