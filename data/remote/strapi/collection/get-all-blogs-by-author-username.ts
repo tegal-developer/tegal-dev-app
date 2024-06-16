@@ -3,7 +3,10 @@ export default async function getAllBlogsByAuthorUsername(
 ) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/blogs?filters[author_username][$eq]=${authorUsername}&populate=*`,
+      `${process.env.NEXT_PUBLIC_CMS_API_BASE_URL}/api/blogs?filters[author_username]=${authorUsername}&populate=*`,
+      {
+        cache: 'no-store',
+      },
     );
 
     return response.json();
