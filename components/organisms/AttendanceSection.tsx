@@ -144,6 +144,7 @@ export default function AttendanceSection({
                 <th>Nama</th>
                 <th>Kode Kehadiran</th>
                 <th>Hadir Pada</th>
+                <th>Imbalan</th>
               </tr>
             </thead>
             <tbody>
@@ -162,6 +163,7 @@ export default function AttendanceSection({
                       attendedRSVP?.attributes?.attended_at,
                     ).toLocaleString('id-ID')}
                   </td>
+                  <td>{`${attendedRSVP?.attributes?.achieved_xp_point} Exp Point`}</td>
                 </tr>
               ))}
             </tbody>
