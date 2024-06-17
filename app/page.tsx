@@ -1,6 +1,7 @@
 import AboutSection from '@/components/organisms/AboutSection';
 import ActivitySection from '@/components/organisms/ActivitySection';
 import BlogSection from '@/components/organisms/BlogSection';
+import CommunityPartnerSection from '@/components/organisms/CommunityPartnerSection';
 import ContactSection from '@/components/organisms/ContactSection';
 import EventSection from '@/components/organisms/EventSection';
 import FAQSection from '@/components/organisms/FAQSection';
@@ -10,6 +11,7 @@ import Template from '@/components/templates/Template';
 import getAllCommunityActivities from '@/data/remote/strapi/collection/get-all-community-activities';
 import getAllCommunityBenefits from '@/data/remote/strapi/collection/get-all-community-benefits';
 import getAllCommunityHastags from '@/data/remote/strapi/collection/get-all-community-hashtags';
+import getAllCommunityPartners from '@/data/remote/strapi/collection/get-all-community-partners';
 import getAllFAQs from '@/data/remote/strapi/collection/get-all-faqs';
 import getAllInvitationLinks from '@/data/remote/strapi/collection/get-all-invitation-links';
 import getHeadlineNewestBlogs from '@/data/remote/strapi/collection/get-headline-newest-blogs';
@@ -21,9 +23,10 @@ export default async function Home() {
   const invitationLinks = await getAllInvitationLinks();
   const communityBenefits = await getAllCommunityBenefits();
   const communityHashtags = await getAllCommunityHastags();
-  const communityActivities = await getAllCommunityActivities();
   const headlineNewestEvents = await getHeadlineNewestEvents();
   const headlineNewestBlogs = await getHeadlineNewestBlogs();
+  const communityActivities = await getAllCommunityActivities();
+  const communityPartners = await getAllCommunityPartners();
   const faqs = await getAllFAQs();
 
   return (
@@ -67,6 +70,7 @@ export default async function Home() {
           homePageContent?.data?.attributes?.contact_section_heading
         }
       />
+      <CommunityPartnerSection communityPartners={communityPartners?.data} />
       <FAQSection
         faqHeading={homePageContent?.data?.attributes?.faq_section_heading}
         faqs={faqs?.data}
