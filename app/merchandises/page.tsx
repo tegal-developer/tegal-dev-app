@@ -1,29 +1,15 @@
-import TextHeadingSection from '@/components/atoms/TextHeadingSection';
-import Container from '@/components/templates/Container';
+import MerchandiseSection from '@/components/organisms/MerchandiseSection';
 import Template from '@/components/templates/Template';
+import getMerchandisesPageContent from '@/data/remote/strapi/single/get-merchandises-page-content';
 
-export default function Merchandises() {
+export default async function Merchandises() {
+  const merchandisesPageContent = await getMerchandisesPageContent();
+
   return (
     <Template>
-      <section
-        className="
-          bg-white
-          dark:bg-gray-900
-          border-gray-300
-          dark:border-gray-700
-          px-5
-          py-24
-          text-gray-700
-          dark:text-white
-          flex
-          flex-col
-          gap-10
-          items-center"
-      >
-        <Container>
-          <TextHeadingSection heading="Merchandises Tegal Dev" />
-        </Container>
-      </section>
+      <MerchandiseSection
+        merchandiseHeading={merchandisesPageContent?.data?.attributes?.heading}
+      />
     </Template>
   );
 }
