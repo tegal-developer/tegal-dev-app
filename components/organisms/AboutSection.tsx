@@ -15,8 +15,7 @@ export default function AboutSection({
       className="
         bg-white
         dark:bg-gray-900
-        border-t
-        border-gray-300
+        dark:border-t
         dark:border-gray-700
         px-5
         py-12

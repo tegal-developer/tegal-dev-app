@@ -17,8 +17,7 @@ export default function ActivitySection({
         dark:bg-gray-900
         h-[560px]
         md:h-full
-        border-t
-        border-gray-300
+        dark:border-t
         dark:border-gray-700
         px-5
         py-12

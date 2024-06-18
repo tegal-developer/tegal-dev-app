@@ -21,8 +21,7 @@ export default function BlogSection({
       className={`
         bg-[#FAFBFD]
         dark:bg-gray-900
-        border-t
-        border-gray-300
+        dark:border-t
         dark:border-gray-700
         dark:bg
         px-5
