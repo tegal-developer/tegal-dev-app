@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import BlogItemInfo from './BlogItemInfo';
 import Link from 'next/link';
+import moment from 'moment';
 
 export default function BlogItem({
   blogSlug,
@@ -19,9 +20,13 @@ export default function BlogItem({
 }) {
   return (
     <div className="indicator active:scale-95 duration-300">
-      <span className="indicator-item badge badge-primary bg-[#1B71D8] text-white mr-3">
-        new
-      </span>
+      {moment(new Date().getTime()).diff(blogPublishedDate, 'days') < 7 ? (
+        <span className="indicator-item badge badge-primary bg-[#1B71D8] text-white mr-3">
+          new
+        </span>
+      ) : (
+        ''
+      )}
       <Link
         href={`/blogs/${blogSlug}`}
         className="
