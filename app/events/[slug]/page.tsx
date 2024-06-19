@@ -14,14 +14,13 @@ export default async function EventDetail({
   const eventDetail = await getEventBySlug(slug);
   const headlineNewestEvents = await getAllNewestEventsByPage(1);
   const filteredHeadlineNewestEventDetail = headlineNewestEvents?.data?.filter(
-    (headlineNewestEvent: any) =>
-      headlineNewestEvent?.attributes?.slug !== slug,
+    (headlineNewestEvent: any) => headlineNewestEvent?.slug !== slug,
   );
 
   return (
     <Template>
       <EventDetailSection
-        eventDetailHeading={eventDetailPageContent?.data?.attributes?.heading}
+        eventDetailHeading={eventDetailPageContent?.data?.heading}
         eventDetail={eventDetail?.data[0]}
       />
       <EventSection

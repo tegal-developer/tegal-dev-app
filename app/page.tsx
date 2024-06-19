@@ -32,47 +32,38 @@ export default async function Home() {
   return (
     <Template>
       <HeroSection
-        heroHeading={homePageContent?.data?.attributes?.hero_section_heading}
-        heroBody={homePageContent?.data?.attributes?.hero_section_body}
-        heroImages={
-          homePageContent?.data?.attributes?.hero_section_images?.data[0]
-            ?.attributes?.url
-        }
-        invitationLinks={invitationLinks}
+        heroHeading={homePageContent?.data?.hero_section_heading}
+        heroBody={homePageContent?.data?.hero_section_body}
+        heroImages={homePageContent?.data?.hero_section_images[0]?.url}
+        invitationLinks={invitationLinks?.data}
         communityBenefits={communityBenefits?.data}
         communityHashtags={communityHashtags?.data}
       />
       <EventSection
-        eventHeading={homePageContent?.data?.attributes?.event_section_heading}
+        eventHeading={homePageContent?.data?.event_section_heading}
         headlineNewestEvents={headlineNewestEvents?.data}
       />
       <BlogSection
-        blogHeading={homePageContent?.data?.attributes?.blog_section_heading}
+        blogHeading={homePageContent?.data?.blog_section_heading}
         headlineNewestBlogs={headlineNewestBlogs?.data}
       />
       <AboutSection
-        aboutHeading={homePageContent?.data?.attributes?.about_section_heading}
-        aboutBody={homePageContent?.data?.attributes?.about_section_body}
+        aboutHeading={homePageContent?.data?.about_section_heading}
+        aboutBody={homePageContent?.data?.about_section_body}
       />
       <ActivitySection
-        activityHeading={
-          homePageContent?.data?.attributes?.activity_section_heading
-        }
+        activityHeading={homePageContent?.data?.activity_section_heading}
         communityActivities={communityActivities?.data}
       />
       <MemberSection
-        membershipHeading={
-          homePageContent?.data?.attributes?.member_section_heading
-        }
+        membershipHeading={homePageContent?.data?.member_section_heading}
       />
       <ContactSection
-        contactHeading={
-          homePageContent?.data?.attributes?.contact_section_heading
-        }
+        contactHeading={homePageContent?.data?.contact_section_heading}
       />
       <CommunityPartnerSection communityPartners={communityPartners?.data} />
       <FAQSection
-        faqHeading={homePageContent?.data?.attributes?.faq_section_heading}
+        faqHeading={homePageContent?.data?.faq_section_heading}
         faqs={faqs?.data}
       />
     </Template>

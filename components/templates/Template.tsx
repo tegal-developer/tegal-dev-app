@@ -12,14 +12,14 @@ export default async function Template({
   return (
     <>
       <Header
-        logoImageLightSource={`${headerContent.data?.attributes?.logo_image_light?.data?.attributes?.url}`}
-        logoImageDarkSource={`${headerContent.data?.attributes?.logo_image_dark?.data?.attributes?.url}`}
-        logoImageAlt={headerContent?.data?.attributes?.logo_image_alt}
-        logoImageWidth={headerContent?.data?.attributes?.logo_image_width}
-        logoImageHeight={headerContent?.data?.attributes?.logo_image_height}
+        logoImageLightSource={`${headerContent.data?.logo_image_light?.url}`}
+        logoImageDarkSource={`${headerContent.data?.logo_image_dark?.url}`}
+        logoImageAlt={headerContent?.data?.logo_image_alt}
+        logoImageWidth={headerContent?.data?.logo_image_width}
+        logoImageHeight={headerContent?.data?.logo_image_height}
       />
       <main>{children}</main>
-      <Footer footerContent={footerContent?.data?.attributes} />
+      <Footer footerContent={footerContent?.data} />
     </>
   );
 }

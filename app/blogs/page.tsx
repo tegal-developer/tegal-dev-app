@@ -10,7 +10,7 @@ export default async function Blogs() {
   return (
     <Template>
       <BlogSection
-        blogHeading={blogsPageContent?.data?.attributes?.heading}
+        blogHeading={blogsPageContent?.data?.heading}
         headlineNewestBlogs={headlineNewestBlogs?.data}
       />
     </Template>

@@ -39,7 +39,7 @@ export default function HeroSection({
         <SubHeroContent
           heroHeading={heroHeading}
           heroBody={heroBody}
-          invitationLinks={invitationLinks?.data}
+          invitationLinks={invitationLinks}
           communityBenefits={communityBenefits}
           communityHashtags={communityHashtags}
         />

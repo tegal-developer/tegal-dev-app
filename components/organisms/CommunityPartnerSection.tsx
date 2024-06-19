@@ -27,8 +27,8 @@ export default function CommunityPartnerSection({
         {communityPartners?.map((communityPartner: any) => (
           <Image
             key={communityPartner?.id}
-            src={communityPartner?.attributes?.image?.data?.attributes?.url}
-            alt={communityPartner?.attributes?.name}
+            src={communityPartner?.image?.url}
+            alt={communityPartner?.name}
             width={250}
             height={250}
             className="bg-white rounded-xl cursor-pointer hover:brightness-75 duration-300"

@@ -28,7 +28,7 @@ export default function ActivityItemList({
           <ActivityItem
             key={communityActivity?.id}
             id={communityActivity?.id}
-            text={communityActivity?.attributes?.name}
+            text={communityActivity?.name}
             selectedActivity={selectedActivity}
             setSelectedActivity={setSelectedActivity}
           />
@@ -47,7 +47,7 @@ export default function ActivityItemList({
             <ActivityItem
               key={communityActivity?.id}
               id={communityActivity?.id}
-              text={communityActivity?.attributes?.name}
+              text={communityActivity?.name}
               selectedActivity={selectedActivity}
               setSelectedActivity={setSelectedActivity}
             />
@@ -62,10 +62,10 @@ export default function ActivityItemList({
           >
             <div className="flex flex-col gap-5 tracking-wider">
               <h2 className="text-xl md:text-2xl font-bold">
-                {communityActivity?.attributes?.name}
+                {communityActivity?.name}
               </h2>
               <div className="space-y-5 text-sm tracking-wide leading-relaxed">
-                {parse(communityActivity?.attributes?.description)}
+                {parse(communityActivity?.description)}
               </div>
             </div>
           </div>

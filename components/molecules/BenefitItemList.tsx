@@ -10,7 +10,7 @@ export default function BenefitItemList({
       {communityBenefits?.map((communityBenefit: any) => (
         <BenefitItem
           key={communityBenefit?.id}
-          communityBenefit={communityBenefit?.attributes?.benefit}
+          communityBenefit={communityBenefit?.benefit}
         />
       ))}
     </div>

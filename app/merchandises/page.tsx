@@ -8,7 +8,7 @@ export default async function Merchandises() {
   return (
     <Template>
       <MerchandiseSection
-        merchandiseHeading={merchandisesPageContent?.data?.attributes?.heading}
+        merchandiseHeading={merchandisesPageContent?.data?.heading}
       />
     </Template>
   );

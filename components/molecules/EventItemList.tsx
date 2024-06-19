@@ -19,17 +19,15 @@ export default function EventItemList({
       {headlineNewestEvents?.map((headlineEvent: any) => (
         <EventItem
           key={headlineEvent?.id}
-          eventSlug={headlineEvent?.attributes?.slug}
-          eventImage={
-            headlineEvent?.attributes?.flyer_image?.data?.attributes?.url
-          }
-          eventHeading={headlineEvent?.attributes?.title}
-          eventStartDateTime={headlineEvent?.attributes?.start_date_time}
-          eventEndDateTime={headlineEvent?.attributes?.end_date_time}
-          eventLocation={headlineEvent?.attributes?.location}
-          eventTotalRSVP={headlineEvent?.attributes?.total_rsvp}
-          eventMaxRSVP={headlineEvent?.attributes?.max_rsvp}
-          eventDescription={headlineEvent?.attributes?.description}
+          eventSlug={headlineEvent?.slug}
+          eventImage={headlineEvent?.flyer_image?.url}
+          eventHeading={headlineEvent?.title}
+          eventStartDateTime={headlineEvent?.start_date_time}
+          eventEndDateTime={headlineEvent?.end_date_time}
+          eventLocation={headlineEvent?.location}
+          eventTotalRSVP={headlineEvent?.total_rsvp}
+          eventMaxRSVP={headlineEvent?.max_rsvp}
+          eventDescription={headlineEvent?.description}
         />
       ))}
     </div>

@@ -87,10 +87,7 @@ export default function AttendanceSection({
 
                   const event = await getEventByCode(eventCode);
 
-                  if (
-                    event?.data?.length < 1 &&
-                    event?.data?.attributes?.slug !== slug
-                  ) {
+                  if (event?.data?.length < 1 && event?.data?.slug !== slug) {
                     setIsLoading(false);
                     return toast.error(
                       'Ups, kode event yang kamu masukan tidak valid nih!',
@@ -106,7 +103,7 @@ export default function AttendanceSection({
                     );
                   }
 
-                  if (rsvp?.data[0]?.attributes?.is_attended) {
+                  if (rsvp?.data[0]?.is_attended) {
                     setIsLoading(false);
                     return toast.error(
                       'Ups, peserta dengan kode tersebut sudah ditandai hadir nih!',
@@ -114,12 +111,12 @@ export default function AttendanceSection({
                   }
 
                   const eventDetail = await getEventById(
-                    rsvp?.data[0]?.attributes?.event?.data?.id,
+                    rsvp?.data[0]?.event?.data?.id,
                   );
 
                   await putRSVPById(
                     rsvp?.data[0]?.id,
-                    eventDetail?.data?.attributes?.xp_point,
+                    eventDetail?.data?.xp_point,
                   );
 
                   toast.success('Yay! Peserta berhasil ditandai hadir!');
@@ -154,16 +151,14 @@ export default function AttendanceSection({
                   className="border-gray-300 dark:border-gray-700"
                 >
                   <th>{index + 1}</th>
+                  <td>{attendedRSVP?.user?.data?.name}</td>
+                  <td>{attendedRSVP?.attendance_code}</td>
                   <td>
-                    {attendedRSVP?.attributes?.user?.data?.attributes?.name}
+                    {new Date(attendedRSVP?.attended_at).toLocaleString(
+                      'id-ID',
+                    )}
                   </td>
-                  <td>{attendedRSVP?.attributes?.attendance_code}</td>
-                  <td>
-                    {new Date(
-                      attendedRSVP?.attributes?.attended_at,
-                    ).toLocaleString('id-ID')}
-                  </td>
-                  <td>{`${attendedRSVP?.attributes?.achieved_xp_point} Exp Point`}</td>
+                  <td>{`${attendedRSVP?.achieved_xp_point} Exp Point`}</td>
                 </tr>
               ))}
             </tbody>

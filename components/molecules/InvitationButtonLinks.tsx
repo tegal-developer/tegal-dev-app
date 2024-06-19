@@ -29,8 +29,8 @@ export default function InvitationButtonLinks({
       {invitationLinks?.map((invitationLink: any) => (
         <ButtonLink
           key={invitationLink?.id}
-          href={invitationLink?.attributes?.button_link}
-          text={invitationLink?.attributes?.button_label}
+          href={invitationLink?.button_link}
+          text={invitationLink?.button_label}
         />
       ))}
     </>

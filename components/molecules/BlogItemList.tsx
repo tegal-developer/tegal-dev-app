@@ -19,14 +19,12 @@ export default function BlogItemList({
       {headlineNewestBlogs?.map((headlineBlog: any) => (
         <BlogItem
           key={headlineBlog?.id}
-          blogSlug={headlineBlog?.attributes?.slug}
-          blogImageSource={
-            headlineBlog?.attributes?.image?.data?.attributes?.url
-          }
-          blogTitle={headlineBlog?.attributes?.title}
-          blogPublishedDate={headlineBlog?.attributes?.publishedAt}
-          blogCreator={headlineBlog?.attributes?.author}
-          blogBody={headlineBlog?.attributes?.body}
+          blogSlug={headlineBlog?.slug}
+          blogImageSource={headlineBlog?.image?.url}
+          blogTitle={headlineBlog?.title}
+          blogPublishedDate={headlineBlog?.publishedAt}
+          blogCreator={headlineBlog?.author}
+          blogBody={headlineBlog?.body}
         />
       ))}
     </div>

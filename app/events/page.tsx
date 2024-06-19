@@ -10,7 +10,7 @@ export default async function Events() {
   return (
     <Template>
       <EventSection
-        eventHeading={eventsPageContent?.data?.attributes?.heading}
+        eventHeading={eventsPageContent?.data?.heading}
         headlineNewestEvents={headlineNewestEvents?.data}
       />
     </Template>

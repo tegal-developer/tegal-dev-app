@@ -22,7 +22,7 @@ export default function HashtagItemList({
       {communityHashtags?.map((communityHashtag: any) => (
         <HashtagItem
           key={communityHashtag?.id}
-          hashtagContent={communityHashtag?.attributes?.hashtag}
+          hashtagContent={communityHashtag?.hashtag}
         />
       ))}
     </div>

@@ -12,8 +12,8 @@ export default function QuestionItemList({ faqs }: { faqs: any }) {
         <QuestionItem
           key={faq?.id}
           questionId={faq?.id}
-          questionText={faq?.attributes?.question}
-          answerText={faq?.attributes?.answer}
+          questionText={faq?.question}
+          answerText={faq?.answer}
           selected={selected}
           setIsSelected={setIsSelected}
         />
