@@ -40,8 +40,8 @@ export default function BlogDetailSection({ blogDetail }: { blogDetail: any }) {
               </p>
               <p>
                 Oleh{' '}
-                <Link href={`/blogs/authors/${blogDetail?.author_username}`}>
-                  {blogDetail?.author}
+                <Link href={`/blogs/authors/${blogDetail?.user?.username}`}>
+                  {blogDetail?.user?.name}
                 </Link>
               </p>
             </div>
