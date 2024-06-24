@@ -7,7 +7,7 @@ export default function ButtonSection({
   destination,
 }: {
   label: string;
-  destination: any;
+  destination: string;
 }) {
   return (
     <Link
