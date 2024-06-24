@@ -23,7 +23,7 @@ export default function BlogItemList({
           blogImageSource={headlineBlog?.image?.url}
           blogTitle={headlineBlog?.title}
           blogPublishedDate={headlineBlog?.publishedAt}
-          blogCreator={headlineBlog?.author}
+          blogCreator={headlineBlog?.user?.name}
           blogBody={headlineBlog?.body}
         />
       ))}
