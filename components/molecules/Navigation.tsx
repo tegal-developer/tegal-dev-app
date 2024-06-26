@@ -15,25 +15,13 @@ export default function Navigation() {
         <TextLink href="/events" text="Events" />
       </li>
       <li>
+        <TextLink href="/challenges" text="Challenges" />
+      </li>
+      <li>
         <TextLink href="/blogs" text="Blogs" />
       </li>
       <li>
         <TextLink href="/merchandises" text="Merchandises" />
-      </li>
-      <li>
-        <TextLink href="/#about" text="About" />
-      </li>
-      <li>
-        <TextLink href="/#activity" text="Activity" />
-      </li>
-      <li>
-        <TextLink href="/#membership" text="Membership" />
-      </li>
-      <li>
-        <TextLink href="/#contact" text="Contact" />
-      </li>
-      <li>
-        <TextLink href="/#faq" text="FAQ" />
       </li>
     </ul>
   );
