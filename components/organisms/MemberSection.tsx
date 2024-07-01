@@ -25,7 +25,7 @@ export default function MemberSection({
     <section
       id="membership"
       className="
-        bg-white
+        bg-[#FAFBFD]
         dark:bg-gray-900
         dark:border-t
         dark:border-gray-700
@@ -72,7 +72,16 @@ export default function MemberSection({
 
         <div className="join grid grid-cols-2">
           <button
-            className="join-item btn btn-outline hover:bg-gray-100 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white dark:hover:bg-gray-700"
+            className="
+              join-item
+              btn
+              btn-outline
+              hover:bg-gray-100
+              border-gray-300
+              dark:border-gray-700
+              text-gray-700
+              dark:text-white
+              dark:hover:bg-gray-700"
             onClick={() => {
               if (page > 1) return setPage(page - 1);
               else return;
@@ -81,7 +90,16 @@ export default function MemberSection({
             Previous
           </button>
           <button
-            className="join-item btn btn-outline hover:bg-gray-100 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white dark:hover:bg-gray-700"
+            className="
+              join-item
+              btn
+              btn-outline
+              hover:bg-gray-100
+              border-gray-300
+              dark:border-gray-700
+              text-gray-700
+              dark:text-white
+              dark:hover:bg-gray-700"
             onClick={() => setPage(page + 1)}
           >
             Next

@@ -20,8 +20,6 @@ export default function QuestionItem({
         collapse
         cursor-pointer
         bg-[#FAFBFD]
-        border
-        dark:border-gray-700
         dark:bg-gray-800"
       onClick={() => {
         if (selected === questionId) setIsSelected(0);

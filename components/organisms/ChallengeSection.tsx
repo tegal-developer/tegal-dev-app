@@ -1,32 +1,32 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Container from '../templates/Container';
 import TextHeadingSection from '../atoms/TextHeadingSection';
-import EventItemList from '../molecules/EventItemList';
-import ButtonSection from '../atoms/ButtonSection';
 import { Suspense } from 'react';
-import { usePathname } from 'next/navigation';
+import ButtonSection from '../atoms/ButtonSection';
+import ChallengeItemList from '../molecules/ChallengeItemList';
 
-export default function EventSection({
-  eventHeading,
-  headlineNewestEvents,
+export default function ChallengeSection({
+  challengeHeading,
+  headlineNewestChallenges,
 }: {
-  eventHeading: string;
-  headlineNewestEvents: any;
+  challengeHeading: string;
+  headlineNewestChallenges: any;
 }) {
   const pathname = usePathname();
 
   return (
     <section
-      id="event"
+      id="challenge"
       className={`
-        bg-white
+        bg-[#FAFBFD]
         dark:bg-gray-900
-        border-gray-300
+        dark:border-t
         dark:border-gray-700
         px-5
         py-12
-        ${pathname === '/events' ? 'pt-24' : 'pt-12'}
+        ${pathname === '/challenges' ? 'pt-24' : 'pt-12'}
         text-gray-700
         dark:text-white
         flex
@@ -35,19 +35,20 @@ export default function EventSection({
         items-center`}
     >
       <Container>
-        <TextHeadingSection heading={eventHeading} />
-        {headlineNewestEvents === null || headlineNewestEvents?.length === 0 ? (
+        <TextHeadingSection heading={challengeHeading} />
+        {headlineNewestChallenges === null ||
+        headlineNewestChallenges?.length === 0 ? (
           <p>
-            {pathname === '/events'
-              ? 'Belum ada event nih!'
-              : 'Belum ada event lain nih!'}
+            {pathname === '/challenges'
+              ? 'Belum ada challenge nih!'
+              : 'Belum ada challenge lain nih!'}
           </p>
         ) : (
           <>
             <Suspense>
-              <EventItemList headlineNewestEvents={headlineNewestEvents} />
+              <ChallengeItemList challenges={headlineNewestChallenges} />
             </Suspense>
-            {pathname === '/events' ? (
+            {pathname === '/challenges' ? (
               <div className="join">
                 <button
                   className="
@@ -131,7 +132,10 @@ export default function EventSection({
                 </button>
               </div>
             ) : (
-              <ButtonSection label="Lihat lebih banyak" destination="/events" />
+              <ButtonSection
+                label="Lihat lebih banyak"
+                destination="/challenges"
+              />
             )}
           </>
         )}

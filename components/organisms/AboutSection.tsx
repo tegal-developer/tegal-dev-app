@@ -13,7 +13,7 @@ export default function AboutSection({
     <section
       id="about"
       className="
-        bg-white
+        bg-[#FAFBFD]
         dark:bg-gray-900
         dark:border-t
         dark:border-gray-700

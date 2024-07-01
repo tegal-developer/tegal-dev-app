@@ -19,7 +19,7 @@ export default function BlogSection({
     <section
       id="blog"
       className={`
-        bg-[#FAFBFD]
+        bg-white
         dark:bg-gray-900
         dark:border-t
         dark:border-gray-700

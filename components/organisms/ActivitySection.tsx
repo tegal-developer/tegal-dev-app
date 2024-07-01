@@ -13,7 +13,7 @@ export default function ActivitySection({
     <section
       id="activity"
       className="
-        bg-[#FAFBFD]
+        bg-white
         dark:bg-gray-900
         h-[560px]
         md:h-full

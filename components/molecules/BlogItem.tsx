@@ -30,7 +30,7 @@ export default function BlogItem({
       <Link
         href={`/blogs/${blogSlug}`}
         className="
-          bg-white
+          bg-[#FAFBFD]
           dark:bg-gray-900
           w-full
           min-w-[300px]

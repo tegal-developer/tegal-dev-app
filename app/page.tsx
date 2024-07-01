@@ -1,6 +1,7 @@
 import AboutSection from '@/components/organisms/AboutSection';
 import ActivitySection from '@/components/organisms/ActivitySection';
 import BlogSection from '@/components/organisms/BlogSection';
+import ChallengeSection from '@/components/organisms/ChallengeSection';
 import CommunityPartnerSection from '@/components/organisms/CommunityPartnerSection';
 import ContactSection from '@/components/organisms/ContactSection';
 import EventSection from '@/components/organisms/EventSection';
@@ -15,6 +16,7 @@ import getAllCommunityPartners from '@/data/remote/strapi/collection/get-all-com
 import getAllFAQs from '@/data/remote/strapi/collection/get-all-faqs';
 import getAllInvitationLinks from '@/data/remote/strapi/collection/get-all-invitation-links';
 import getHeadlineNewestBlogs from '@/data/remote/strapi/collection/get-headline-newest-blogs';
+import getHeadlineNewestChallenges from '@/data/remote/strapi/collection/get-headline-newest-challenges';
 import getHeadlineNewestEvents from '@/data/remote/strapi/collection/get-headline-newest-events';
 import getHomePageContent from '@/data/remote/strapi/single/get-home-page-content';
 
@@ -24,6 +26,7 @@ export default async function Home() {
   const communityBenefits = await getAllCommunityBenefits();
   const communityHashtags = await getAllCommunityHastags();
   const headlineNewestEvents = await getHeadlineNewestEvents();
+  const headlineNewestChallenges = await getHeadlineNewestChallenges();
   const headlineNewestBlogs = await getHeadlineNewestBlogs();
   const communityActivities = await getAllCommunityActivities();
   const communityPartners = await getAllCommunityPartners();
@@ -42,6 +45,10 @@ export default async function Home() {
       <EventSection
         eventHeading={homePageContent?.data?.event_section_heading}
         headlineNewestEvents={headlineNewestEvents?.data}
+      />
+      <ChallengeSection
+        challengeHeading={homePageContent?.data?.challenge_section_heading}
+        headlineNewestChallenges={headlineNewestChallenges?.data}
       />
       <BlogSection
         blogHeading={homePageContent?.data?.blog_section_heading}

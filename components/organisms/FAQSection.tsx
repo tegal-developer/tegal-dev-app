@@ -11,7 +11,7 @@ export default function FAQSection({
     <section
       id="faq"
       className="
-      bg-[#FAFBFD]
+      bg-white
       dark:bg-gray-900
         px-5
         py-12

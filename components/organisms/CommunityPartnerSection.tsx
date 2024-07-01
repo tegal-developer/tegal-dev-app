@@ -11,7 +11,7 @@ export default function CommunityPartnerSection({
     <section
       id="contact"
       className="
-      bg-white
+      bg-[#FAFBFD]
       dark:bg-gray-900
         dark:border-t
         dark:border-gray-700
